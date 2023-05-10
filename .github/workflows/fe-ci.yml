@@ -19,7 +19,8 @@ jobs:
 
     - name: Cypress run
       uses: cypress-io/github-action@v5.7.1
-      browser: chrome
+      with:
+        browser: chrome
       
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
