@@ -7,7 +7,7 @@ import { Route, Switch } from 'react-router-dom/cjs/react-router-dom.min';
 import './App.css';
 
 
-export default const App = () => {
+const App = () => {
   return (
     <div className="App">
 
@@ -15,4 +15,4 @@ export default const App = () => {
   );
 };
 
-
+export default App;
