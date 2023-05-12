@@ -1,9 +1,10 @@
 import React from 'react';
 import './App.css';
 import { Route, Switch } from 'react-router-dom/cjs/react-router-dom.min';
-import Login  from '../Login/Login';
+import Login from '../Login/Login';
 import DreamInput from '../DreamInput/DreamInput';
 import DreamList from '../DreamList/DreamList';
+import NotFound from '../NotFound/NotFound';
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
         <Route exact path="/" render={() => <Login /> } />
         <Route exact path="/Home" render={() => <DreamInput />} />
         <Route exact path="/Dreams" render={() => <DreamList />} />
+        <Route path="*" render={() => <NotFound />} />
       </Switch>
     </div>
   );
