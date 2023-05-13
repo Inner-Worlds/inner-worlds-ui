@@ -1,0 +1,89 @@
+.login {
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+
+.app-name,
+.app-desc {
+  margin: 0;
+  padding: 0;
+  color: white;
+}
+
+.login-design {
+  height: 100%;
+  width: 50%;
+  position: relative;
+}
+
+.stripes {
+  height: 250px;
+  width: 800px;
+  background-image: url('../../assets/Color\ Stripes\ -\ \(250\ x\ 800px\).svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 43%;
+}
+
+.astronaut {
+  height: 550px;
+  width: 550px;
+  background-image: url('../../assets/Astronaut\ -\ \(550\ x\ 550px\).svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: -25%;
+  right: -16%;
+}
+
+.login-header {
+  font-family: 'Livvic', sans-serif;
+  width: 50%;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-imgs {
+  height: 50%;
+  width: 80%;
+  position: relative;
+}
+
+.login-logo {
+  height: 80%;
+  position: absolute;
+}
+
+.dj-text {
+  height: 20%;
+  position: absolute;
+  bottom: 15%;
+  left: 5%;
+}
+
+.user-btns {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 20%;
+}
+
+.login-button {
+  width: 18%;
+  font-family: 'Livvic', sans-serif;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  font-size: 1.3rem;
+  text-decoration: none;
+  color: #E9DCB7;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(4.9px);
+  -webkit-backdrop-filter: blur(4.9px);
+}
