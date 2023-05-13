@@ -5,7 +5,7 @@
   height: 100%;
   width: 100%;
   overflow: hidden;
-  font-family: 'Livvic', sans-serif;
+  font-family: "Livvic", sans-serif;
 }
 
 .dream-input form {
@@ -21,14 +21,19 @@
   border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
+.dream-input input:focus,
+.dream-input select:focus {
+  outline: none;
+}
+
 .dream-input h2 {
   text-align: center;
   font-size: 50px;
   margin-top: 5px;
   margin-bottom: 7px;
-  font-family: 'Livvic', sans-serif;
+  font-family: "Livvic", sans-serif;
   color: white;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.10);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
   pointer-events: none;
 }
 
@@ -39,8 +44,9 @@
   margin: 0 auto;
   border: 1px solid rgba(131, 202, 215, 0.16);
   border-radius: 4px;
-  height: 120px; 
-  resize: vertical;
+  height: 120px;
+  resize: none;
+  overflow-y: scroll;
 }
 
 .dream-input label {
@@ -91,7 +97,7 @@
 }
 
 .dream-input input[type="text"]::placeholder {
-  color: white; 
+  color: white;
 }
 
 .dream-input textarea::placeholder {
@@ -102,7 +108,7 @@
 .dream-input input[type="date"],
 .dream-input textarea,
 .dream-input select {
-  font-family:'Livvic', sans-serif;
+  font-family: "Livvic", sans-serif;
   background-color: #06142a9b;
   color: white !important;
 }
@@ -119,7 +125,7 @@
   cursor: pointer;
   font-weight: bold;
   font-size: 20px;
-  font-family: 'Livvic', sans-serif;
+  font-family: "Livvic", sans-serif;
 }
 
 .glow-on-hover {
@@ -131,11 +137,11 @@
 }
 
 .glow-on-hover:before {
-  content: '';
-  background: linear-gradient(45deg, #dcdad7, #7b7a7a, #4f4fb0, #47DFD1);
+  content: "";
+  background: linear-gradient(45deg, #dcdad7, #7b7a7a, #4f4fb0, #47dfd1);
   position: absolute;
   top: -2px;
-  left:-2px;
+  left: -2px;
   background-size: 400%;
   z-index: -1;
   filter: blur(5px);
@@ -143,12 +149,12 @@
   height: calc(100% + 4px);
   animation: glowing 20s linear infinite;
   opacity: 0;
-  transition: opacity .3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
   border-radius: 10px;
 }
 
 .glow-on-hover:active {
-  color: #000
+  color: #000;
 }
 
 .glow-on-hover:active:after {
@@ -161,7 +167,7 @@
 
 .glow-on-hover:after {
   z-index: -1;
-  content: '';
+  content: "";
   position: absolute;
   width: 100%;
   height: 100%;
@@ -172,7 +178,13 @@
 }
 
 @keyframes glowing {
-  0% { background-position: 0 0; }
-  50% { background-position: 400% 0; }
-  100% { background-position: 0 0; }
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
 }
