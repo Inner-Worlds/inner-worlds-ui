@@ -14,8 +14,8 @@ const App = () => {
         <Route exact path="/" render={() => <Login /> } />
         <Route exact path="/Home" render={() => 
         <>
-        <DreamInput />
         <Nav />
+        <DreamInput />
         </>} />
         <Route exact path="/Dreams" render={() => 
         <>
