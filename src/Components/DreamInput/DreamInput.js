@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { mockEmotions, mockTags } from '../../mock-data';
+import './DreamInput.css'
 
 const DreamInput = () => {
   const [date, setDate] = useState('');
@@ -33,7 +34,6 @@ const DreamInput = () => {
 
   return (
     <div className="dream-input">
-      <h2>Record Your Dream</h2>
       <form onSubmit={handleSubmit}>
         <label>
           Date:
@@ -66,7 +66,7 @@ const DreamInput = () => {
           <select
             value={selectedEmotion}
             onChange={(e) => setSelectedEmotion(e.target.value)}
-          >
+           >
             <option value="">Select an emotion</option>
             {mockEmotions.data.emotions.map((emotion) => (
               <option key={emotion} value={emotion}>

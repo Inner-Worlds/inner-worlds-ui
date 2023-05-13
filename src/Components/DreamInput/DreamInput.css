@@ -1,0 +1,53 @@
+.dream-input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.dream-input form {
+  width: 400px;
+  padding: 50px;
+ /* From https://css.glass */
+background: rgba(255, 255, 255, 0.2);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(10px);
+}
+
+.dream-input h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.dream-input label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.dream-input input,
+.dream-input textarea,
+.dream-input select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid rgba(131, 202, 215, 0.16);
+  border-radius: 4px;
+}
+
+.dream-input button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #43279f;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.dream-input button:hover {
+  background-color: #532eb6;
+}
+
