@@ -1,12 +1,13 @@
 import React from "react";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
+import Logo from '../../assets/Inner Worlds - HOME Logo (500 × 300 px).svg'
 import "./Nav.css" 
 
 const Nav = () => {
     return (
         <header className="nav-bar">
             <NavLink to="/Home">
-            <img className="logo" />  
+            <img src={Logo} className="logo" alt="Inner Worlds" />  
             </NavLink>
         <div className="nav-links">
             <NavLink to="/Home" className='nav-link1' >
