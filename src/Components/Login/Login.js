@@ -5,7 +5,7 @@ import djText from '../../assets/Dream Journal - (600 x 100px).svg';
 import orSat from '../../assets/Saturn Orange - (140 x 85px).svg';
 import tealSat from '../../assets/Saturn Teal - (140 x 85px).svg';
 
-const Login = () => {
+const Login = ({ getUser }) => {
     return (
         <main className="login">
             <div className="styling login-design">
@@ -19,11 +19,11 @@ const Login = () => {
                     <img src={djText} alt='Dream Journal' className="dj-text"></img>
                 </section>
                 <section className="styling user-btns">
-                    <NavLink to='/Home' className="user1 login-button" data-userid="123">
+                    <NavLink to='/Home' className="user1 login-button" onClick={() => getUser('123')}>
                         <img src={orSat} alt='orange saturn'></img>
                         <p>User 1</p>
                     </NavLink>
-                    <NavLink to='/Home' className="user2 login-button" data-userid="456">
+                    <NavLink to='/Home' className="user2 login-button" onClick={() => getUser('456')}>
                         <img src={tealSat} alt='teal saturn'></img>
                         <p>User 2</p>
                     </NavLink>
