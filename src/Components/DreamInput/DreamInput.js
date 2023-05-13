@@ -45,6 +45,7 @@ const DreamInput = () => {
           value={date}
           aria-label="Date"
           onChange={(e) => setDate(e.target.value)}
+          required
         />
         <br />
         <input
@@ -53,6 +54,7 @@ const DreamInput = () => {
           placeholder="My Dream Title.."
           aria-label="Title"
           onChange={(e) => setTitle(e.target.value)}
+          required
         />
         <br />
         <textarea
@@ -60,6 +62,7 @@ const DreamInput = () => {
           placeholder="My Dream Description.."
           aria-label="Description"
           onChange={(e) => setDescription(e.target.value)}
+          required
         />
         <br />
         <Select
