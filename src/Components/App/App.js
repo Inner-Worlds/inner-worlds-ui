@@ -17,9 +17,16 @@ const App = () => {
         <DreamInput />
         <Nav />
         </>} />
-        <Route exact path="/Dreams" render={() => <DreamList />
-      } />
-        <Route path="*" render={() => <NotFound />} />
+        <Route exact path="/Dreams" render={() => 
+        <>
+        <Nav />
+        <DreamList />
+        </>} />
+        <Route path="*" render={() =>
+        <>
+        <Nav />
+        <NotFound />
+        </> } />
       </Switch>
     </div>
   );
