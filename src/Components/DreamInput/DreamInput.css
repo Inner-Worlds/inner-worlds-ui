@@ -3,41 +3,82 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
+  font-family: 'Livvic', sans-serif;;
 }
 
 .dream-input form {
-  width: 400px;
-  padding: 50px;
- /* From https://css.glass */
-background: rgba(255, 255, 255, 0.2);
-border-radius: 16px;
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(5px);
--webkit-backdrop-filter: blur(10px);
+  width: 700px;
+  padding: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
 .dream-input h2 {
   text-align: center;
-  margin-bottom: 20px;
+  font-size: 50px;
+  margin-top: 5px;
+  margin-bottom: 7px;
+  font-family: 'Livvic', sans-serif;
+  color: white;
+}
+
+.dream-input textarea {
+  width: 90%;
+  padding: 8px;
+  margin-top: 20px;
+  border: 1px solid rgba(131, 202, 215, 0.16);
+  border-radius: 4px;
+  height: 120px; 
+  resize: vertical; 
 }
 
 .dream-input label {
   display: block;
-  margin-bottom: 10px;
+  text-align: center;
+  color: white;
+  margin-bottom: 5px;
 }
 
-.dream-input input,
-.dream-input textarea,
+.dream-input input[type="date"] {
+  width: fit-content;
+  height: 30px;
+  padding: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  border-radius: 5px;
+}
+
+.dream-input input[type="text"] {
+  width: 70%;
+  margin: 0 auto;
+  display: block;
+  font-size: 20px;
+  border-radius: 5px;
+}
+
 .dream-input select {
-  width: 100%;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
   padding: 8px;
+  margin-top: 5px;
   border: 1px solid rgba(131, 202, 215, 0.16);
   border-radius: 4px;
 }
 
 .dream-input button {
   display: block;
-  width: 100%;
+  width: 20%;
+  margin-left: auto;
+  margin-right: auto;
   padding: 10px;
   background-color: #43279f;
   color: #fff;

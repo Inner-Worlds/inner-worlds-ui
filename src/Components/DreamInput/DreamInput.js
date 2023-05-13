@@ -1,13 +1,13 @@
-import { useState } from 'react';
-import { mockEmotions, mockTags } from '../../mock-data';
-import './DreamInput.css'
+import { useState } from "react";
+import { mockEmotions, mockTags } from "../../mock-data";
+import "./DreamInput.css";
 
 const DreamInput = () => {
-  const [date, setDate] = useState('');
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [selectedEmotion, setSelectedEmotion] = useState('');
-  const [selectedTag, setSelectedTag] = useState('');
+  const [date, setDate] = useState("");
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [selectedEmotion, setSelectedEmotion] = useState("");
+  const [selectedTag, setSelectedTag] = useState("");
   const [lucidityLevel, setLucidityLevel] = useState(0);
 
   const handleSubmit = (event) => {
@@ -24,72 +24,65 @@ const DreamInput = () => {
 
     console.log(dreamData);
 
-    setDate('');
-    setTitle('');
-    setDescription('');
-    setSelectedEmotion('');
-    setSelectedTag('');
+    setDate("");
+    setTitle("");
+    setDescription("");
+    setSelectedEmotion("");
+    setSelectedTag("");
     setLucidityLevel(0);
   };
 
   return (
     <div className="dream-input">
       <form onSubmit={handleSubmit}>
-        <label>
-          Date:
-          <input
-            type="date"
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-          />
-        </label>
+        <h2>Dream Journal</h2>
+        <input
+          type="date"
+          value={date}
+          aria-label="Date"
+          onChange={(e) => setDate(e.target.value)}
+        />
         <br />
-        <label>
-          Title:
-          <input
-            type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-        </label>
+        <input
+          type="text"
+          value={title}
+          placeholder="My Dream Title.."
+          aria-label="Title"
+          onChange={(e) => setTitle(e.target.value)}
+        />
         <br />
-        <label>
-          Description:
-          <textarea
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
-        </label>
+        <textarea
+          value={description}
+          placeholder="My Dream Description.."
+          aria-label="Description"
+          onChange={(e) => setDescription(e.target.value)}
+        />
         <br />
-        <label>
-          Emotion:
-          <select
-            value={selectedEmotion}
-            onChange={(e) => setSelectedEmotion(e.target.value)}
-           >
-            <option value="">Select an emotion</option>
-            {mockEmotions.data.emotions.map((emotion) => (
-              <option key={emotion} value={emotion}>
-                {emotion}
-              </option>
-            ))}
-          </select>
-        </label>
+        <select
+          value={selectedEmotion}
+          aria-label="Emotion"
+          onChange={(e) => setSelectedEmotion(e.target.value)}
+        >
+          <option value="">Select an emotion</option>
+          {mockEmotions.data.emotions.map((emotion) => (
+            <option key={emotion} value={emotion}>
+              {emotion}
+            </option>
+          ))}
+        </select>
         <br />
-        <label>
-          Tag:
-          <select
-            value={selectedTag}
-            onChange={(e) => setSelectedTag(e.target.value)}
-          >
-            <option value="">Select a tag</option>
-            {mockTags.data.tags.map((tag) => (
-              <option key={tag} value={tag}>
-                {tag}
-              </option>
-            ))}
-          </select>
-        </label>
+        <select
+          value={selectedTag}
+          aria-label="Tag"
+          onChange={(e) => setSelectedTag(e.target.value)}
+        >
+          <option value="">Select a tag</option>
+          {mockTags.data.tags.map((tag) => (
+            <option key={tag} value={tag}>
+              {tag}
+            </option>
+          ))}
+        </select>
         <br />
         <label>
           Lucidity Level: {lucidityLevel}
