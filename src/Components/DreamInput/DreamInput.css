@@ -2,19 +2,21 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
   font-family: 'Livvic', sans-serif;
 }
 
 .dream-input form {
   width: 700px;
   padding: 40px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
+  margin-top: 30px;
   background: rgba(255, 255, 255, 0.2);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.25);
 }
@@ -26,17 +28,19 @@
   margin-bottom: 7px;
   font-family: 'Livvic', sans-serif;
   color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.10);
+  pointer-events: none;
 }
 
 .dream-input textarea {
+  display: block;
   width: 90%;
   padding: 8px;
-  margin-left: 20px;
-  margin-bottom: 20px;
+  margin: 0 auto;
   border: 1px solid rgba(131, 202, 215, 0.16);
   border-radius: 4px;
   height: 120px; 
-  resize: vertical; 
+  resize: vertical;
 }
 
 .dream-input label {
@@ -50,10 +54,10 @@
   width: fit-content;
   height: 30px;
   padding: 5px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
   display: block;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .dream-input input[type="text"] {
@@ -66,26 +70,47 @@
 
 .dream-input select {
   width: 22%;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
   display: block;
   padding: 8px;
   margin-top: 5px;
   border: 1px solid rgba(131, 202, 215, 0.16);
   border-radius: 4px;
+  cursor: pointer;
 }
 
 .dream-input input[type="range"] {
   width: 40%;
   margin: 0 auto;
   display: block;
+  cursor: pointer;
+}
+
+.dream-input input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+.dream-input input[type="text"]::placeholder {
+  color: white; 
+}
+
+.dream-input textarea::placeholder {
+  color: white;
+}
+
+.dream-input input[type="text"],
+.dream-input input[type="date"],
+.dream-input textarea,
+.dream-input select {
+  font-family:'Livvic', sans-serif;
+  background-color: #06142a9b;
+  color: white !important;
 }
 
 .dream-input button {
   display: block;
   width: 20%;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
   padding: 10px;
   background-color: #43279f;
   color: #fff;
@@ -107,7 +132,7 @@
 
 .glow-on-hover:before {
   content: '';
-  background: linear-gradient(45deg, #FFAF00, #D34A24, #992800, #47DFD1);
+  background: linear-gradient(45deg, #dcdad7, #7b7a7a, #4f4fb0, #47DFD1);
   position: absolute;
   top: -2px;
   left:-2px;

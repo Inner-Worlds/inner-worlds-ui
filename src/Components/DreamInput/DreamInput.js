@@ -63,7 +63,7 @@ const DreamInput = () => {
           aria-label="Emotion"
           onChange={(e) => setSelectedEmotion(e.target.value)}
         >
-          <option value="">Select an emotion</option>
+          <option value="">Select an Emotion</option>
           {mockEmotions.data.emotions.map((emotion) => (
             <option key={emotion} value={emotion}>
               {emotion}
@@ -76,7 +76,7 @@ const DreamInput = () => {
           aria-label="Tag"
           onChange={(e) => setSelectedTag(e.target.value)}
         >
-          <option value="">Select a tag</option>
+          <option value="">Select a Tag</option>
           {mockTags.data.tags.map((tag) => (
             <option key={tag} value={tag}>
               {tag}
