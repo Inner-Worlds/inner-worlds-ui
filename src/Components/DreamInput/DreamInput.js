@@ -95,7 +95,7 @@ const DreamInput = () => {
           />
         </label>
         <br />
-        <button type="submit">Submit</button>
+        <button className="glow-on-hover" type="submit">Submit</button>
       </form>
     </div>
   );

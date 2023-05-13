@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  font-family: 'Livvic', sans-serif;;
+  font-family: 'Livvic', sans-serif;
 }
 
 .dream-input form {
@@ -31,7 +31,8 @@
 .dream-input textarea {
   width: 90%;
   padding: 8px;
-  margin-top: 20px;
+  margin-left: 20px;
+  margin-bottom: 20px;
   border: 1px solid rgba(131, 202, 215, 0.16);
   border-radius: 4px;
   height: 120px; 
@@ -56,7 +57,7 @@
 }
 
 .dream-input input[type="text"] {
-  width: 70%;
+  width: fit-content;
   margin: 0 auto;
   display: block;
   font-size: 20px;
@@ -64,7 +65,7 @@
 }
 
 .dream-input select {
-  width: fit-content;
+  width: 22%;
   margin-left: auto;
   margin-right: auto;
   display: block;
@@ -72,6 +73,12 @@
   margin-top: 5px;
   border: 1px solid rgba(131, 202, 215, 0.16);
   border-radius: 4px;
+}
+
+.dream-input input[type="range"] {
+  width: 40%;
+  margin: 0 auto;
+  display: block;
 }
 
 .dream-input button {
@@ -83,12 +90,64 @@
   background-color: #43279f;
   color: #fff;
   border: none;
-  border-radius: 4px;
+  border-radius: 10px;
   cursor: pointer;
   font-weight: bold;
+  font-size: 20px;
+  font-family: 'Livvic', sans-serif;
 }
 
-.dream-input button:hover {
-  background-color: #532eb6;
+.glow-on-hover {
+  height: 50px;
+  outline: none;
+  background: #111;
+  position: relative;
+  z-index: 0;
 }
 
+.glow-on-hover:before {
+  content: '';
+  background: linear-gradient(45deg, #FFAF00, #D34A24, #992800, #47DFD1);
+  position: absolute;
+  top: -2px;
+  left:-2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing 20s linear infinite;
+  opacity: 0;
+  transition: opacity .3s ease-in-out;
+  border-radius: 10px;
+}
+
+.glow-on-hover:active {
+  color: #000
+}
+
+.glow-on-hover:active:after {
+  background: transparent;
+}
+
+.glow-on-hover:hover:before {
+  opacity: 1;
+}
+
+.glow-on-hover:after {
+  z-index: -1;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #111111;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+
+@keyframes glowing {
+  0% { background-position: 0 0; }
+  50% { background-position: 400% 0; }
+  100% { background-position: 0 0; }
+}
