@@ -32,7 +32,7 @@ const App = () => {
         <Route exact path="/Dreams" render={() => 
         <>
         <Nav />
-        <DreamList />
+        <DreamList dreams={user.dreams}/>
         </>} />
         <Route path="*" render={() =>
         <>
