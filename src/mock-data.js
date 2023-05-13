@@ -73,7 +73,6 @@ const mockEmotions = {
       "Contentment",
       "Enthusiasm",
       "Boredom",
-      "Confused",
       "Inspired",
       "Grateful",
       "Miserable"
