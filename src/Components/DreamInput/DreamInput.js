@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { mockEmotions, mockTags } from "../../mock-data";
 import Select from 'react-select';
 import "./DreamInput.css";
@@ -10,6 +11,7 @@ const DreamInput = () => {
   const [selectedEmotion, setSelectedEmotion] = useState([]);
   const [selectedTag, setSelectedTag] = useState([]);
   const [lucidityLevel, setLucidityLevel] = useState(0);
+  const history = useHistory();
 
   const emotionOptions = mockEmotions.data.emotions.map((emotion) => ({ value: emotion, label: emotion }));
   const tagOptions = mockTags.data.tags.map((tag) => ({ value: tag, label: tag }));
@@ -34,6 +36,8 @@ const DreamInput = () => {
     setSelectedEmotion([]);
     setSelectedTag([]);
     setLucidityLevel(0);
+
+    history.push('/dreams')
   };
 
   return (
