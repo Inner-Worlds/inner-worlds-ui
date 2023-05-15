@@ -87,6 +87,26 @@
   cursor: pointer;
 }
 
+.select-styling__control {
+  min-height: 50px;
+  max-height: 75px;
+  overflow: auto;
+}
+
+.select-styling__menu {
+  max-height: 300px;
+}
+
+.select-styling__multi-value {
+  max-width: 300px;
+}
+
+.select-styling__multi-value__label {
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+
 .dream-input input[type="range"] {
   width: 40%;
   margin: 0 auto;

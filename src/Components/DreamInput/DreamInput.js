@@ -76,6 +76,7 @@ const DreamInput = () => {
           placeholder="Select Emotions.."
           onChange={setSelectedEmotion}
           className="multi-select"
+          classNamePrefix="select-styling"
         />
         <br />
         <Select
@@ -85,6 +86,7 @@ const DreamInput = () => {
           placeholder="Select Tags.."
           onChange={setSelectedTag}
           className="multi-select"
+          classNamePrefix="select-styling"
         />
         <br />
         <label>
