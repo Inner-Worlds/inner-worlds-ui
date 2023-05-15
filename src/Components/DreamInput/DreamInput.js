@@ -4,6 +4,7 @@ import { mockEmotions, mockTags } from "../../mock-data";
 import Select from "react-select";
 import chroma from "chroma-js";
 import "./DreamInput.css";
+import Astronaut from "../../assets/Astronaut - (550 x 550px).svg";
 
 const DreamInput = () => {
   const [date, setDate] = useState("");
@@ -18,12 +19,12 @@ const DreamInput = () => {
   const emotionOptions = mockEmotions.data.emotions.map((emotion) => ({
     value: emotion,
     label: emotion,
-    color: generateColor()
+    color: generateColor(),
   }));
   const tagOptions = mockTags.data.tags.map((tag) => ({
     value: tag,
     label: tag,
-    color: generateColor()
+    color: generateColor(),
   }));
 
   const colourStyles = {
@@ -96,70 +97,77 @@ const DreamInput = () => {
 
   return (
     <div className="dream-input">
-      <form onSubmit={handleSubmit}>
-        <h2>Dream Journal</h2>
-        <input
-          type="date"
-          value={date}
-          aria-label="Date"
-          onChange={(e) => setDate(e.target.value)}
-          required
+        <img
+          className="background-astronaut"
+          src={Astronaut}
+          alt="Floating Astronaut"
         />
-        <br />
-        <input
-          type="text"
-          value={title}
-          placeholder="My Dream Title.."
-          aria-label="Title"
-          onChange={(e) => setTitle(e.target.value)}
-          required
-        />
-        <br />
-        <textarea
-          value={description}
-          placeholder="My Dream Description.."
-          aria-label="Description"
-          onChange={(e) => setDescription(e.target.value)}
-          required
-        />
-        <br />
-        <Select
-          isMulti
-          value={selectedEmotion}
-          options={emotionOptions}
-          placeholder="Select Emotions.."
-          onChange={setSelectedEmotion}
-          styles={colourStyles}
-          className="multi-select"
-          classNamePrefix="select-styling"
-        />
-        <br />
-        <Select
-          isMulti
-          value={selectedTag}
-          options={tagOptions}
-          placeholder="Select Tags.."
-          onChange={setSelectedTag}
-          styles={colourStyles}
-          className="multi-select"
-          classNamePrefix="select-styling"
-        />
-        <br />
-        <label>
-          Lucidity Level: {lucidityLevel}
+      <div className="form-container">
+        <form onSubmit={handleSubmit}>
+          <h2>Dream Journal</h2>
           <input
-            type="range"
-            min={0}
-            max={5}
-            value={lucidityLevel}
-            onChange={(e) => setLucidityLevel(Number(e.target.value))}
+            type="date"
+            value={date}
+            aria-label="Date"
+            onChange={(e) => setDate(e.target.value)}
+            required
           />
-        </label>
-        <br />
-        <button className="glow-on-hover" type="submit">
-          Submit
-        </button>
-      </form>
+          <br />
+          <input
+            type="text"
+            value={title}
+            placeholder="My Dream Title.."
+            aria-label="Title"
+            onChange={(e) => setTitle(e.target.value)}
+            required
+          />
+          <br />
+          <textarea
+            value={description}
+            placeholder="My Dream Description.."
+            aria-label="Description"
+            onChange={(e) => setDescription(e.target.value)}
+            required
+          />
+          <br />
+          <Select
+            isMulti
+            value={selectedEmotion}
+            options={emotionOptions}
+            placeholder="Select Emotions.."
+            onChange={setSelectedEmotion}
+            styles={colourStyles}
+            className="multi-select"
+            classNamePrefix="select-styling"
+          />
+          <br />
+          <Select
+            isMulti
+            value={selectedTag}
+            options={tagOptions}
+            placeholder="Select Tags.."
+            onChange={setSelectedTag}
+            styles={colourStyles}
+            className="multi-select"
+            classNamePrefix="select-styling"
+          />
+          <br />
+          <label>
+            Lucidity Level: {lucidityLevel}
+            <input
+              type="range"
+              min={0}
+              max={5}
+              value={lucidityLevel}
+              onChange={(e) => setLucidityLevel(Number(e.target.value))}
+            />
+          </label>
+          <br />
+          <button className="glow-on-hover" type="submit">
+            Submit
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
