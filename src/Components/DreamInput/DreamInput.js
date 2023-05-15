@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { mockEmotions, mockTags } from "../../mock-data";
-import Select from 'react-select';
+import Select from "react-select";
+import chroma from "chroma-js";
 import "./DreamInput.css";
 
 const DreamInput = () => {
@@ -13,8 +14,61 @@ const DreamInput = () => {
   const [lucidityLevel, setLucidityLevel] = useState(0);
   const history = useHistory();
 
-  const emotionOptions = mockEmotions.data.emotions.map((emotion) => ({ value: emotion, label: emotion }));
-  const tagOptions = mockTags.data.tags.map((tag) => ({ value: tag, label: tag }));
+  const generateColor = () => chroma.random().css();
+  const emotionOptions = mockEmotions.data.emotions.map((emotion) => ({
+    value: emotion,
+    label: emotion,
+    color: generateColor()
+  }));
+  const tagOptions = mockTags.data.tags.map((tag) => ({
+    value: tag,
+    label: tag,
+    color: generateColor()
+  }));
+
+  const colourStyles = {
+    control: (styles) => ({ ...styles, backgroundColor: "white" }),
+    option: (styles, { data, isDisabled, isFocused, isSelected }) => {
+      const color = data.color;
+      return {
+        ...styles,
+        backgroundColor: isDisabled
+          ? null
+          : isSelected
+          ? color
+          : isFocused
+          ? chroma(color).alpha(0.1).css()
+          : null,
+        color: isDisabled
+          ? "#ccc"
+          : isSelected
+          ? chroma.contrast(color, "white") > 2
+            ? "white"
+            : "black"
+          : color,
+        cursor: isDisabled ? "not-allowed" : "default",
+      };
+    },
+    multiValue: (styles, { data }) => {
+      const color = data.color;
+      return {
+        ...styles,
+        backgroundColor: color,
+      };
+    },
+    multiValueLabel: (styles, { data }) => ({
+      ...styles,
+      color: "white",
+    }),
+    multiValueRemove: (styles, { data }) => ({
+      ...styles,
+      color: "white",
+      ":hover": {
+        backgroundColor: data.color,
+        color: "white",
+      },
+    }),
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -23,8 +77,8 @@ const DreamInput = () => {
       date,
       title: title,
       description,
-      emotions: selectedEmotion.map(emotion => emotion.value),
-      tags: selectedTag.map(tag => tag.value),
+      emotions: selectedEmotion.map((emotion) => emotion.value),
+      tags: selectedTag.map((tag) => tag.value),
       lucidityLevel,
     };
 
@@ -37,7 +91,7 @@ const DreamInput = () => {
     setSelectedTag([]);
     setLucidityLevel(0);
 
-    history.push('/dreams')
+    history.push("/dreams");
   };
 
   return (
@@ -75,6 +129,7 @@ const DreamInput = () => {
           options={emotionOptions}
           placeholder="Select Emotions.."
           onChange={setSelectedEmotion}
+          styles={colourStyles}
           className="multi-select"
           classNamePrefix="select-styling"
         />
@@ -85,6 +140,7 @@ const DreamInput = () => {
           options={tagOptions}
           placeholder="Select Tags.."
           onChange={setSelectedTag}
+          styles={colourStyles}
           className="multi-select"
           classNamePrefix="select-styling"
         />
@@ -100,7 +156,9 @@ const DreamInput = () => {
           />
         </label>
         <br />
-        <button className="glow-on-hover" type="submit">Submit</button>
+        <button className="glow-on-hover" type="submit">
+          Submit
+        </button>
       </form>
     </div>
   );
