@@ -1,5 +1,5 @@
 .dream-list {
-  height: 90%;
+  height: 80%;
   width: 100%;
 }
 
@@ -8,7 +8,7 @@
   width: 85%;
   margin: 2% auto 0;
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
   list-style: none;
   overflow: hidden;
   position: relative;

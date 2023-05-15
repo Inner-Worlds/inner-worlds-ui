@@ -3,7 +3,7 @@ import DreamCard from "../DreamCard/DreamCard";
 import { useCarousel } from "use-carousel-hook";
 
 const DreamList = ({ dreams }) => {
-    const { ref, previous, next, setCurrent, reset } = useCarousel();
+    const { ref, previous, next } = useCarousel();
 
     const dreamCards = dreams.map(dream => <DreamCard key={dream.id} id={dream.id} date={dream.date} title={dream.title} description={dream.description} emotions={dream.emotions} tags={dream.tags} lucidity={dream.lucidityLevel}/>)
     

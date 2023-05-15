@@ -1,7 +1,7 @@
 .dream-card {
   font-family: 'Livvic', sans-serif;
   flex: 0 0 40%;
-  height: 90%;
+  height: 100%;
   width: 30%;
   background: rgba(255, 255, 255, 0.4);
   border-radius: 16px;
@@ -32,10 +32,16 @@
   text-align: center;
 }
 
+.dream-buttons {
+  position: absolute;
+  right: 2%;
+  bottom: 2%;
+}
+
 .edit-dream-button,
 .delete-dream-button {
   font-size: 2rem;
   background: transparent;
   border: 0;
-  color: blue;
+  color: black;
 }
