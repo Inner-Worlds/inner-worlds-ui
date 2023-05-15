@@ -2,10 +2,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 90%;
+  height: 89%;
   width: 100%;
   overflow: hidden;
-  font-family: "Livvic", sans-serif;
 }
 
 .dream-input form {
@@ -19,6 +18,7 @@
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.25);
+  font-family: 'Livvic', sans-serif;
 }
 
 .dream-input input:focus,
@@ -28,13 +28,13 @@
 
 .dream-input h2 {
   text-align: center;
-  font-size: 50px;
-  margin-top: 5px;
-  margin-bottom: 7px;
-  font-family: "Livvic", sans-serif;
+  font-size: 70px;
+  margin-top: 2px;
+  margin-bottom: 10px;
   color: white;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
   pointer-events: none;
+  font-family: 'Yellowtail', cursive;
 }
 
 .dream-input textarea {
@@ -47,6 +47,7 @@
   height: 120px;
   resize: none;
   overflow-y: scroll;
+
 }
 
 .dream-input label {
@@ -74,13 +75,14 @@
   border-radius: 5px;
 }
 
-.dream-input select {
-  width: 22%;
+.multi-select {
+  width: 30%;
+  height: 10%;
   margin: 0 auto;
   display: block;
   padding: 8px;
   margin-top: 5px;
-  border: 1px solid rgba(131, 202, 215, 0.16);
+  border: none;
   border-radius: 4px;
   cursor: pointer;
 }
@@ -109,8 +111,8 @@
 .dream-input textarea,
 .dream-input select {
   font-family: "Livvic", sans-serif;
-  background-color: #06142a9b;
-  color: white !important;
+  background-color: #06142a54;
+  color: white;
 }
 
 .dream-input button {
@@ -118,7 +120,6 @@
   width: 20%;
   margin: 0 auto;
   padding: 10px;
-  background-color: #43279f;
   color: #fff;
   border: none;
   border-radius: 10px;

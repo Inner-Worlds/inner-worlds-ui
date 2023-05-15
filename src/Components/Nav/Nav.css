@@ -12,17 +12,17 @@
     height: 110% ;
     }
 
-
 .nav-links {
     display:flex;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 15%;
     width: 18%;
-    font-size: clamp(2rem, 2vw, 6rem);
+    font-size: clamp(1.5rem, 2vw, 6rem);
     font-family: 'Yellowtail', 'cursive';
     color:#FFAF00;
     float: right;
-    margin-top: 3%;
-    margin-right: 50px;
+    height: 100%;
+    align-items: flex-end;
 }
 
 .nav-links a {

@@ -4,4 +4,5 @@
   background-color: #06142A;
   background-image: url('../../assets/InnerWorlds\ Background.svg');
   background-size: cover;
+  overflow: hidden;
 }

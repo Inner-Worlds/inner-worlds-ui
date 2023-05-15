@@ -1,14 +1,20 @@
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { mockEmotions, mockTags } from "../../mock-data";
+import Select from 'react-select';
 import "./DreamInput.css";
 
 const DreamInput = () => {
   const [date, setDate] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [selectedEmotion, setSelectedEmotion] = useState("");
-  const [selectedTag, setSelectedTag] = useState("");
+  const [selectedEmotion, setSelectedEmotion] = useState([]);
+  const [selectedTag, setSelectedTag] = useState([]);
   const [lucidityLevel, setLucidityLevel] = useState(0);
+  const history = useHistory();
+
+  const emotionOptions = mockEmotions.data.emotions.map((emotion) => ({ value: emotion, label: emotion }));
+  const tagOptions = mockTags.data.tags.map((tag) => ({ value: tag, label: tag }));
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -17,8 +23,8 @@ const DreamInput = () => {
       date,
       label: title,
       description,
-      emotions: [selectedEmotion],
-      tags: [selectedTag],
+      emotions: selectedEmotion.map(emotion => emotion.value),
+      tags: selectedTag.map(tag => tag.value),
       lucidityLevel,
     };
 
@@ -27,9 +33,11 @@ const DreamInput = () => {
     setDate("");
     setTitle("");
     setDescription("");
-    setSelectedEmotion("");
-    setSelectedTag("");
+    setSelectedEmotion([]);
+    setSelectedTag([]);
     setLucidityLevel(0);
+
+    history.push('/dreams')
   };
 
   return (
@@ -41,6 +49,7 @@ const DreamInput = () => {
           value={date}
           aria-label="Date"
           onChange={(e) => setDate(e.target.value)}
+          required
         />
         <br />
         <input
@@ -49,6 +58,7 @@ const DreamInput = () => {
           placeholder="My Dream Title.."
           aria-label="Title"
           onChange={(e) => setTitle(e.target.value)}
+          required
         />
         <br />
         <textarea
@@ -56,33 +66,26 @@ const DreamInput = () => {
           placeholder="My Dream Description.."
           aria-label="Description"
           onChange={(e) => setDescription(e.target.value)}
+          required
         />
         <br />
-        <select
+        <Select
+          isMulti
           value={selectedEmotion}
-          aria-label="Emotion"
-          onChange={(e) => setSelectedEmotion(e.target.value)}
-        >
-          <option value="">Select an Emotion</option>
-          {mockEmotions.data.emotions.map((emotion) => (
-            <option key={emotion} value={emotion}>
-              {emotion}
-            </option>
-          ))}
-        </select>
+          options={emotionOptions}
+          placeholder="Select Emotions.."
+          onChange={setSelectedEmotion}
+          className="multi-select"
+        />
         <br />
-        <select
+        <Select
+          isMulti
           value={selectedTag}
-          aria-label="Tag"
-          onChange={(e) => setSelectedTag(e.target.value)}
-        >
-          <option value="">Select a Tag</option>
-          {mockTags.data.tags.map((tag) => (
-            <option key={tag} value={tag}>
-              {tag}
-            </option>
-          ))}
-        </select>
+          options={tagOptions}
+          placeholder="Select Tags.."
+          onChange={setSelectedTag}
+          className="multi-select"
+        />
         <br />
         <label>
           Lucidity Level: {lucidityLevel}
