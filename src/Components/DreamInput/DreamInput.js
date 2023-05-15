@@ -21,7 +21,7 @@ const DreamInput = () => {
 
     const dreamData = {
       date,
-      label: title,
+      title: title,
       description,
       emotions: selectedEmotion.map(emotion => emotion.value),
       tags: selectedTag.map(tag => tag.value),
