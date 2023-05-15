@@ -1,0 +1,33 @@
+.dream-list {
+  height: 90%;
+  width: 100%;
+}
+
+.dream-carousel {
+  height: 100%;
+  width: 85%;
+  margin: 2% auto 0;
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel-button {
+  height: 50px;
+  width: 50px;
+  position: fixed;
+  top: 50%;
+  background: white;
+  border-radius: 25rem;
+  font-size: 2rem;
+}
+
+.prev {
+  left: 1.5%;
+}
+
+.next {
+  right: 1.5%;
+}

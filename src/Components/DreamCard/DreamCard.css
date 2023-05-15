@@ -1,0 +1,41 @@
+.dream-card {
+  font-family: 'Livvic', sans-serif;
+  flex: 0 0 40%;
+  height: 90%;
+  width: 30%;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-sizing: border-box;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.description {
+  max-width: 50ch;
+}
+
+.separator {
+  width: 50%;
+  border-bottom: 1px solid black;
+}
+
+.emotions-list,
+.tags-list {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+}
+
+.edit-dream-button,
+.delete-dream-button {
+  font-size: 2rem;
+  background: transparent;
+  border: 0;
+  color: blue;
+}
