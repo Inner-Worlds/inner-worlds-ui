@@ -2,9 +2,10 @@ import "./DreamList.css"
 import DreamCard from "../DreamCard/DreamCard";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper";
+import { Navigation, EffectCoverflow } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
+import "swiper/css/effect-coverflow"
 
 const DreamList = ({ dreams }) => {
     const dreamCards = dreams.map(dream => {
@@ -23,12 +24,21 @@ const DreamList = ({ dreams }) => {
     
     return (
         <>
-            <Swiper 
+            <Swiper
+                effect="coverflow"
+                grabCursor={true}
                 slidesPerView={3}
                 spaceBetween={30}
                 centeredSlides={true}
                 navigation={true}
-                modules={[Navigation]}
+                coverflowEffect={{
+                    rotate: 50,
+                    stretch: 0,
+                    depth: 200,
+                    modifier: 1,
+                    slideShadows: true,
+                }}
+                modules={[ Navigation, EffectCoverflow ]}
                 className="mySwiper"
             >
                 {dreamCards}
