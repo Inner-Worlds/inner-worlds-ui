@@ -10,7 +10,7 @@ const Login = ({ getUser }) => {
         <main className="login">
             <div className="styling login-design">
                 <div className="styling stripes">
-                    <div className="styling astronaut"></div>
+                    <div className="styling login-astronaut"></div>
                 </div>
             </div>
             <section className="login-header">
