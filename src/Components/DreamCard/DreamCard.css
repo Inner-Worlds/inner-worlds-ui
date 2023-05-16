@@ -1,8 +1,7 @@
 .dream-card {
   font-family: 'Livvic', sans-serif;
-  flex: 0 0 40%;
-  height: 100%;
-  width: 30%;
+  height: 90%;
+ 
   background: rgba(255, 255, 255, 0.4);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);

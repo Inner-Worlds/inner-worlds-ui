@@ -1,9 +1,11 @@
 import React from "react";
 import './DreamCard.css';
 
+import { SwiperSlide } from "swiper/react";
+
 const DreamCard = ({ id, date, title, description, emotions, tags, lucidity }) => {
   return (
-    <li className="dream-card carousel__item">
+    <section className="dream-card">
       <p>{date}</p>
       <h1 className="title">{title}</h1>
       <p className="description">{description}</p>
@@ -15,7 +17,7 @@ const DreamCard = ({ id, date, title, description, emotions, tags, lucidity }) =
         <button className="edit-dream-button fa-solid fa-pen-to-square"></button>
         <button className="delete-dream-button fa-solid fa-trash-can"></button>
       </div>
-    </li>
+    </section>
   );
 };
 

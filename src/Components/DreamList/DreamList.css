@@ -1,5 +1,5 @@
 .dream-list {
-  height: 80%;
+  height: 90%;
   width: 100%;
 }
 
@@ -12,6 +12,12 @@
   list-style: none;
   overflow: hidden;
   position: relative;
+}
+
+.swiper {
+  margin-top: 2%;
+  width: 100%;
+  height: 90%;
 }
 
 .carousel-button {
