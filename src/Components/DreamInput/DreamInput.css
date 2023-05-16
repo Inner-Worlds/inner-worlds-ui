@@ -217,17 +217,18 @@
   }
 }
 
-.background-astronaut {
+.background-dream-astronaut {
   width: 9%;
   position: absolute;
   z-index: 0; 
   left: -100%; 
   top: 50%; 
   transform: translateY(-50%); 
-  animation: float 60s linear infinite; 
+  animation: float 80s linear infinite; 
+  animation-name: float-home;
 }
 
-@keyframes float {
+@keyframes float-home {
   0% {
     left: -100%;
     top: 0%;

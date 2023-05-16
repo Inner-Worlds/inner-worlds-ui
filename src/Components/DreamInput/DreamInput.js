@@ -98,7 +98,7 @@ const DreamInput = () => {
   return (
     <div className="dream-input">
         <img
-          className="background-astronaut"
+          className="background-dream-astronaut"
           src={Astronaut}
           alt="Floating Astronaut"
         />
