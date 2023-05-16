@@ -5,6 +5,7 @@
   height: 89%;
   width: 100%;
   overflow: hidden;
+  position: relative;
 }
 
 .dream-input form {
@@ -19,6 +20,12 @@
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.25);
   font-family: 'Livvic', sans-serif;
+}
+
+.form-container {
+  display: flex;
+  position: relative;
+  z-index: 1;
 }
 
 .dream-input input:focus,
@@ -86,6 +93,26 @@
   border-radius: 4px;
   cursor: pointer;
 }
+
+.select-styling__control {
+  min-height: 50px;
+  max-height: 75px;
+  overflow: auto;
+}
+
+.select-styling__menu {
+  max-height: 300px;
+}
+
+.select-styling__multi-value {
+  max-width: 300px;
+}
+
+.select-styling__multi-value__label {
+  white-space: normal;
+  word-wrap: break-word;
+}
+
 
 .dream-input input[type="range"] {
   width: 40%;
@@ -189,3 +216,35 @@
     background-position: 0 0;
   }
 }
+
+.background-astronaut {
+  width: 9%;
+  position: absolute;
+  z-index: 0; 
+  left: -100%; 
+  top: 50%; 
+  transform: translateY(-50%); 
+  animation: float 60s linear infinite; 
+}
+
+@keyframes float {
+  0% {
+    left: -100%;
+    top: 0%;
+  }
+  25% {
+    top: 30%;
+  }
+  50% {
+    left: 100%;
+    top: 50%;
+  }
+  75% {
+    top: 70%;
+  }
+  100% {
+    left: -100%;
+    top: 100%;
+  }
+}
+
