@@ -35,7 +35,75 @@ const mockUser1 = {
               "Monsters"
           ],
           "lucidityLevel": 0
-        }
+        },
+        {
+          "id": "2",
+          "date": "01/01/2023",
+          "title": "Dream Title",
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+          "emotions": [
+              "Happy",
+              "Sad",
+              "Afraid"
+          ],
+          "tags": [
+              "Adventure",
+              "The Beach",
+              "Hot Air Balloon"
+          ],
+          "lucidityLevel": 3
+        },
+        {
+          "id": "3",
+          "date": "01/01/2023",
+          "title": "Dream Title",
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+          "emotions": [
+              "Happy",
+              "Sad",
+              "Afraid"
+          ],
+          "tags": [
+              "Adventure",
+              "The Beach",
+              "Hot Air Balloon"
+          ],
+          "lucidityLevel": 3
+        },
+        {
+          "id": "4",
+          "date": "01/01/2023",
+          "title": "Dream Title",
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+          "emotions": [
+              "Happy",
+              "Sad",
+              "Afraid"
+          ],
+          "tags": [
+              "Adventure",
+              "The Beach",
+              "Hot Air Balloon"
+          ],
+          "lucidityLevel": 3
+        },
+        {
+          "id": "5",
+          "date": "01/01/2023",
+          "title": "Dream Title",
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+          "emotions": [
+              "Happy",
+              "Sad",
+              "Afraid"
+          ],
+          "tags": [
+              "Adventure",
+              "The Beach",
+              "Hot Air Balloon"
+          ],
+          "lucidityLevel": 3
+        },
       ]
     }
   }
