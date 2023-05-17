@@ -1,8 +1,6 @@
 import React from "react";
 import './DreamCard.css';
 
-import { SwiperSlide } from "swiper/react";
-
 const DreamCard = ({ id, date, title, description, emotions, tags, lucidity }) => {
   return (
     <section className="dream-card">
