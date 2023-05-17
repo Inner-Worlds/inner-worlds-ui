@@ -1,125 +1,3 @@
-const mockUser1 = {
-  "data": {
-    "user": {
-      "id": "123",
-      "name": "Azhar Zoya",
-      "email": "email@email.com",
-      "dreams": [
-        {
-          "id": "0",
-          "date": "01/01/2023",
-          "title": "Dream Title",
-          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-          "emotions": [
-              "Happy",
-              "Sad",
-              "Afraid"
-          ],
-          "tags": [
-              "Adventure",
-              "The Beach",
-              "Hot Air Balloon"
-          ],
-          "lucidityLevel": 3
-        },
-        {
-          "id": "1",
-          "date": "02/02/2023",
-          "title": "Dream Title",
-          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-          "emotions": [
-              "Scared"
-          ],
-          "tags": [
-              "Clowns",
-              "Monsters"
-          ],
-          "lucidityLevel": 0
-        },
-        {
-          "id": "2",
-          "date": "01/01/2023",
-          "title": "Dream Title",
-          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-          "emotions": [
-              "Happy",
-              "Sad",
-              "Afraid"
-          ],
-          "tags": [
-              "Adventure",
-              "The Beach",
-              "Hot Air Balloon"
-          ],
-          "lucidityLevel": 3
-        },
-        {
-          "id": "3",
-          "date": "01/01/2023",
-          "title": "Dream Title",
-          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-          "emotions": [
-              "Happy",
-              "Sad",
-              "Afraid"
-          ],
-          "tags": [
-              "Adventure",
-              "The Beach",
-              "Hot Air Balloon"
-          ],
-          "lucidityLevel": 3
-        },
-        {
-          "id": "4",
-          "date": "01/01/2023",
-          "title": "Dream Title",
-          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-          "emotions": [
-              "Happy",
-              "Sad",
-              "Afraid"
-          ],
-          "tags": [
-              "Adventure",
-              "The Beach",
-              "Hot Air Balloon"
-          ],
-          "lucidityLevel": 3
-        },
-        {
-          "id": "5",
-          "date": "01/01/2023",
-          "title": "Dream Title",
-          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-          "emotions": [
-              "Happy",
-              "Sad",
-              "Afraid"
-          ],
-          "tags": [
-              "Adventure",
-              "The Beach",
-              "Hot Air Balloon"
-          ],
-          "lucidityLevel": 3
-        },
-      ]
-    }
-  }
-};
-
-const mockUser2 = {
-  "data": {
-    "user": {
-        "id": "456",
-        "name": "Clementia Samir",
-        "email": "anotheremail@email.com",
-        "dreams": []
-    }
-  }
-};
-
 const mockEmotions = {
   "data": {
     "emotions": [
@@ -153,20 +31,20 @@ const mockTags = {
     "tags": [
       "Flying",
       "Falling",
-      "Being chased",
-      "Being lost",
-      "Being late",
+      "Chased",
+      "Lost",
+      "Late",
       "Losing teeth",
-      "Being naked",
-      "Being in school",
-      "Being at work",
-      "Being in a car accident",
-      "Being in a fire",
-      "Being in water",
+      "Naked",
+      "School",
+      "Work",
+      "Car accident",
+      "Fire",
+      "Water",
       "Tornadoes",
       "Meeting someone famous",
-      "Seeing a deceased loved one",
-      "Being in a strange place",
+      "Deceased loved one",
+      "Strange place",
       "Nature",
       "Science Fiction",
       "Travel",
@@ -183,4 +61,4 @@ const mockTags = {
   }
 };
 
-export { mockUser1, mockUser2, mockEmotions, mockTags };
+export { mockEmotions, mockTags };
