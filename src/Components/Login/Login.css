@@ -19,8 +19,8 @@
 }
 
 .stripes {
-  height: 250px;
-  width: 800px;
+  height: 23.15vh;
+  width: 41.67vw;
   background-image: url('../../assets/Color\ Stripes\ -\ \(250\ x\ 800px\).svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -29,14 +29,14 @@
 }
 
 .login-astronaut {
-  height: 580px;
-  width: 580px;
+  height: 72.5vh;
+  width: 48.3vw;
   background-image: url('../../assets/Astronaut\ -\ \(550\ x\ 550px\).svg');
   background-size: contain;
   background-repeat: no-repeat;
   position: absolute;
-  top: -20%;
-  right: -24%;
+  top: -41%;
+  right: -34%;
   rotate: -35deg;
   animation-name: float-login;
   animation-duration: 30s;
@@ -117,5 +117,51 @@
 
   100% {
     translate: 0% 0%;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .login{
+    flex-direction: column;
+    width: 100%;
+  }
+  .login-logo{
+    position: relative;
+    width: 85%;
+  }
+  .logo-imgs {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    position: relative;
+  }
+  .dj-text {
+    height: 20%;
+    position: relative;
+  }
+  .login-design {
+    height: 30%;
+    width: 100%;
+  }
+  .login-header{
+    align-items: center;
+    width: 100%;
+  }
+  .login-astronaut{
+    /* width: 50%;
+    height: 50%; */
+    top: -30%;
+    right: -80%;
+  }
+  .stripes {
+    width: 60%;
+    background-image: url('../../assets/Color\ Stripes\ -\ \(250\ x\ 800px\).svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 43%;
   }
 }

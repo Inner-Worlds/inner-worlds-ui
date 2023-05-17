@@ -23,6 +23,7 @@
     float: right;
     height: 100%;
     align-items: flex-end;
+    margin-right: 5%;
 }
 
 .nav-links a {
@@ -46,5 +47,25 @@
     font-size: 3.0em;
     color: #FFAF00;
     margin: 0;
+}
+@media screen and (max-width: 1500px){
+    .nav-bar {
+        height: 10vh;
+        backdrop-filter: blur(0.5vw);
+        -webkit-backdrop-filter: blur(0.5vw);
+      }
+      
+      .logo {
+        height: 110%;
+      }
+      
+      .nav-links {
+        gap: 5%;
+        width: 30%;
+        font-size: clamp(1.5rem, 2vw, 6rem);
+        margin-right: 5%;
+      }
+      
+
 }
 

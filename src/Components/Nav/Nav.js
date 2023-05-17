@@ -16,6 +16,9 @@ const Nav = () => {
             <NavLink to="/Dreams" className='nav-link2'>
                 My Dreams
             </NavLink>
+            <NavLink to="/" className='nav-link2'>
+                Log Out
+            </NavLink>
         </div>
     </header>
     )
