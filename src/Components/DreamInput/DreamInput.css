@@ -249,3 +249,59 @@
   }
 }
 
+@media screen and (max-width: 1300px){
+  .dream-input form {
+    width: 90%;
+    max-width: 700px;
+    padding: 5%;
+    margin: 0 auto;
+    margin-top: 3vh;
+  }
+
+  .multi-select {
+    margin-top: -5%;
+   
+  }
+
+  .dream-input button {
+    display: block;
+    height: 5%;
+    width: 20%;
+    padding: 2vw;
+    border-radius: 2vw;
+    font-size: 2vw;
+
+  }
+  
+  .glow-on-hover {
+    height: 8vh;
+
+  }
+  
+  .glow-on-hover:before {
+  
+    filter: blur(0.8vw);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    border-radius: 2vw;
+  }
+  
+  .glow-on-hover:active {
+    color: #000;
+  }
+  
+  .glow-on-hover:active:after {
+    background: transparent;
+  }
+  
+  .glow-on-hover:hover:before {
+    opacity: 1;
+  }
+  
+  .glow-on-hover:after {
+
+    border-radius: 2vw;
+  }
+  
+  
+  }
