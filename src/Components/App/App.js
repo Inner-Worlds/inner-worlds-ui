@@ -11,24 +11,27 @@ import { useLazyQuery } from "@apollo/client";
 
 const App = () => {
   const [user, setUser] = useState({});
-  const [ getUser, {loading, error, data} ] = useLazyQuery(GET_USER)
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [getUser, { loading, error, data }] = useLazyQuery(GET_USER);
 
   useEffect(() => {
-    if(data?.user) {
+    if (data?.user) {
       setUser(data.user);
     }
-  }, [data])
+  }, [data]);
+
+  const tryLogin = () => setLoggedIn(true);
   
-  if (loading) {
+  if (loading && !loggedIn) {
     return <div>Loading...</div>
   } else if (error) {
     return <div>{error.message}</div>
-  }
+  };
 
   return (
       <div className="App">
         <Switch>
-          <Route exact path="/" render={() => <Login loginUser={getUser} />} />
+          <Route exact path="/" render={() => <Login loginUser={getUser} tryLogin={tryLogin}/>} />
           <Route
             exact
             path="/Home"
