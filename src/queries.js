@@ -6,14 +6,17 @@ import { gql } from "@apollo/client";
       name
       email
       dreams {
+        id
         title
         description
         lucidity
         dreamDate
         emotions {
+          id
           name
         }
         tags {
+          id
           name
         }
       }
