@@ -20,7 +20,7 @@
 
 .stripes {
   height: 23.15vh;
-  width: 41.67vw;
+  width: 47.67vw;
   background-image: url('../../assets/Color\ Stripes\ -\ \(250\ x\ 800px\).svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -35,7 +35,7 @@
   background-size: contain;
   background-repeat: no-repeat;
   position: absolute;
-  top: -41%;
+  top: -100%;
   right: -34%;
   rotate: -35deg;
   animation-name: float-login;
