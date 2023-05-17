@@ -26,7 +26,6 @@ const DreamList = ({ dreams }) => {
         <>
             <Swiper
                 effect="coverflow"
-                grabCursor={true}
                 slidesPerView={3}
                 spaceBetween={30}
                 centeredSlides={true}
