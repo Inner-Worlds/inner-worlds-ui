@@ -1,8 +1,9 @@
 import { gql } from "@apollo/client";
 
-  const GET_USER = gql`
+  export const GET_USER = gql`
   query ($id: ID!) {
     user(id: $id) {
+      id
       name
       email
       dreams {
@@ -25,4 +26,20 @@ import { gql } from "@apollo/client";
   `
 ;
 
-export default GET_USER;
+export const CREATE_DREAM = gql`
+  mutation CreateDream($input: CreateDreamInput!) {
+    createDream(input: $input) {
+      id
+      dreamDate
+      title
+      description
+      emotions {
+        name
+      }
+      tags {
+        name
+      }
+      lucidity
+    }
+  }
+`;

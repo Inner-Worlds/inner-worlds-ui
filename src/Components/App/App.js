@@ -6,7 +6,7 @@ import DreamInput from "../DreamInput/DreamInput";
 import DreamList from "../DreamList/DreamList";
 import NotFound from "../NotFound/NotFound";
 import Nav from "../Nav/Nav";
-import GET_USER from "../../queries";
+import { GET_USER  } from "../../queries";
 import { useLazyQuery } from "@apollo/client";
 
 const App = () => {
@@ -38,7 +38,7 @@ const App = () => {
             render={() => (
               <>
                 <Nav />
-                <DreamInput />
+                <DreamInput user={user}/>
               </>
             )}
           />
