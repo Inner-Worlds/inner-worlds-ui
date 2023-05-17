@@ -1,23 +1,23 @@
-import "./DreamList.css"
+import "./DreamList.css";
 import DreamCard from "../DreamCard/DreamCard";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, EffectCoverflow } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
-import "swiper/css/effect-coverflow"
+import "swiper/css/effect-coverflow";
 
 const DreamList = ({ dreams }) => {
     const dreamCards = dreams.map(dream => {
         return <SwiperSlide key={dream.id}>
-                    <DreamCard 
-                        id={dream.id} 
-                        date={dream.date} 
+                    <DreamCard
+                        id={dream.id}
+                        date={dream.dreamDate} 
                         title={dream.title} 
                         description={dream.description} 
                         emotions={dream.emotions} 
                         tags={dream.tags} 
-                        lucidity={dream.lucidityLevel}
+                        lucidity={dream.lucidity}
                     />
                 </SwiperSlide>
     });
@@ -26,7 +26,6 @@ const DreamList = ({ dreams }) => {
         <>
             <Swiper
                 effect="coverflow"
-                grabCursor={true}
                 slidesPerView={3}
                 spaceBetween={30}
                 centeredSlides={true}
