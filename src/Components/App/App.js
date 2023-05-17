@@ -21,6 +21,13 @@ const App = () => {
   }, [data]);
 
   const tryLogin = () => setLoggedIn(true);
+
+  const updateDreams = (newDream) => {
+    setUser((prevUser) => ({
+      ...prevUser,
+      dreams: [...prevUser.dreams, newDream],
+    }));
+  };
   
   if (loading && !loggedIn) {
     return <div>Loading...</div>
@@ -38,7 +45,7 @@ const App = () => {
             render={() => (
               <>
                 <Nav />
-                <DreamInput user={user}/>
+                <DreamInput user={user} updateDreams={updateDreams} />
               </>
             )}
           />

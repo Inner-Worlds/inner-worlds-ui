@@ -7,7 +7,7 @@ import { useMutation } from "@apollo/client";
 import { CREATE_DREAM } from "../../queries";
 import { getEmotionOptions, getTagOptions, colourStyles } from "../../options";
 
-const DreamInput = ( { user } ) => {
+const DreamInput = ( { user, updateDreams } ) => {
   const [date, setDate] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -36,7 +36,9 @@ const DreamInput = ( { user } ) => {
   
     try {
       const { data } = await createDream({ variables: { input: dreamData } });
-      console.log(data);
+      const newDream = data.createDream;
+      updateDreams(newDream); 
+      console.log(newDream);
     } catch (error) {
       console.log(error.message);
     }
