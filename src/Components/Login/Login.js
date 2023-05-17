@@ -5,7 +5,7 @@ import djText from "../../assets/Dream Journal - (600 x 100px).svg";
 import orSat from "../../assets/Saturn Orange - (140 x 85px).svg";
 import tealSat from "../../assets/Saturn Teal - (140 x 85px).svg";
 
-const Login = ({ loginUser }) => {
+const Login = ({ loginUser, tryLogin }) => {
   return (
     <main className="login">
       <div className="styling login-design">
@@ -22,17 +22,23 @@ const Login = ({ loginUser }) => {
           <NavLink
             to="/Home"
             className="user1 login-button"
-            onClick={() => loginUser( { variables: {id: 13} }) }
+            onClick={() => {
+              loginUser({ variables: { id: 13 } });
+              tryLogin();
+            }}
           >
-            <img src={orSat} alt="orange saturn"></img>
+            <img src={orSat} alt="orange saturn" />
             <p>User 1</p>
           </NavLink>
           <NavLink
             to="/Home"
             className="user2 login-button"
-            onClick={() =>  loginUser( { variables: {id: 33} }) }
+            onClick={() =>  {
+              loginUser({ variables: { id: 33 } });
+              tryLogin();
+            }}
           >
-            <img src={tealSat} alt="teal saturn"></img>
+            <img src={tealSat} alt="teal saturn" />
             <p>User 2</p>
           </NavLink>
         </section>
