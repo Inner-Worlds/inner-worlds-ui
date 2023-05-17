@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { mockEmotions, mockTags } from "../../mock-data";
 import Select from "react-select";
-import chroma from "chroma-js";
-import "./DreamInput.css";
 import Astronaut from "../../assets/Astronaut - (550 x 550px).svg";
+import "./DreamInput.css";
+import { useMutation } from "@apollo/client";
+import { CREATE_DREAM } from "../../queries";
+import { getEmotionOptions, getTagOptions, colourStyles } from "../../options";
 
-const DreamInput = () => {
+const DreamInput = ( { user } ) => {
   const [date, setDate] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -14,76 +15,31 @@ const DreamInput = () => {
   const [selectedTag, setSelectedTag] = useState([]);
   const [lucidityLevel, setLucidityLevel] = useState(0);
   const history = useHistory();
+  const [createDream] = useMutation(CREATE_DREAM);
 
-  const generateColor = () => chroma.random().css();
-  const emotionOptions = mockEmotions.data.emotions.map((emotion) => ({
-    value: emotion,
-    label: emotion,
-    color: generateColor(),
-  }));
-  const tagOptions = mockTags.data.tags.map((tag) => ({
-    value: tag,
-    label: tag,
-    color: generateColor(),
-  }));
+  const emotionOptions = getEmotionOptions();
+  const tagOptions = getTagOptions();
 
-  const colourStyles = {
-    control: (styles) => ({ ...styles, backgroundColor: "white" }),
-    option: (styles, { data, isDisabled, isFocused, isSelected }) => {
-      const color = data.color;
-      return {
-        ...styles,
-        backgroundColor: isDisabled
-          ? null
-          : isSelected
-          ? color
-          : isFocused
-          ? chroma(color).alpha(0.1).css()
-          : null,
-        color: isDisabled
-          ? "#ccc"
-          : isSelected
-          ? chroma.contrast(color, "white") > 2
-            ? "white"
-            : "black"
-          : color,
-        cursor: isDisabled ? "not-allowed" : "default",
-      };
-    },
-    multiValue: (styles, { data }) => {
-      const color = data.color;
-      return {
-        ...styles,
-        backgroundColor: color,
-      };
-    },
-    multiValueLabel: (styles, { data }) => ({
-      ...styles,
-      color: "white",
-    }),
-    multiValueRemove: (styles, { data }) => ({
-      ...styles,
-      color: "white",
-      ":hover": {
-        backgroundColor: data.color,
-        color: "white",
-      },
-    }),
-  };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     const dreamData = {
-      date,
+      userId: user.id, 
+      dreamDate: date,
       title: title,
-      description,
+      description: description,
       emotions: selectedEmotion.map((emotion) => emotion.value),
       tags: selectedTag.map((tag) => tag.value),
-      lucidityLevel,
+      lucidityLevel: lucidityLevel,
     };
-
-    console.log(dreamData);
+  
+    try {
+      const { data } = await createDream({ variables: { input: dreamData } });
+      console.log(data);
+    } catch (error) {
+      console.log(error.message);
+    }
 
     setDate("");
     setTitle("");
