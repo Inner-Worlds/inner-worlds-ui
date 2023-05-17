@@ -1,0 +1,43 @@
+
+{
+  "data": {
+    "user": {
+      "id": "123",
+      "name": "Azhar Zoya",
+      "email": "email@email.com",
+      "dreams": [
+        {
+          "id": "0",
+          "date": "01/01/2023",
+          "title": "Dream Title",
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+          "emotions": [
+              "Happy",
+              "Sad",
+              "Afraid"
+          ],
+          "tags": [
+              "Adventure",
+              "The Beach",
+              "Hot Air Balloon"
+          ],
+          "lucidityLevel": 3
+        },
+        {
+          "id": "1",
+          "date": "02/02/2023",
+          "title": "Dream Title",
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+          "emotions": [
+              "Scared"
+          ],
+          "tags": [
+              "Clowns",
+              "Monsters"
+          ],
+          "lucidityLevel": 0
+        }
+      ]
+    }
+  }
+}
