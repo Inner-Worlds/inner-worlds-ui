@@ -21,7 +21,7 @@ describe('Login page', () => {
       }
     }).as("getUser");
     cy.get('.user1').click().then(() => {
-      cy.url().should('include', '/Home');
+      cy.url().should('include', '/home');
     });
     it('should see a form to enter the details of their dreams', () => {
       cy.get('h2').contains('Dream Journal')
