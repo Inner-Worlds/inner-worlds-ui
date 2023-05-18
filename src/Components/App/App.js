@@ -6,13 +6,14 @@ import DreamInput from "../DreamInput/DreamInput";
 import DreamList from "../DreamList/DreamList";
 import NotFound from "../NotFound/NotFound";
 import Nav from "../Nav/Nav";
-import { GET_USER  } from "../../queries";
-import { useLazyQuery } from "@apollo/client";
+import { GET_USER, DELETE_DREAM } from "../../queries";
+import { useLazyQuery, useMutation } from "@apollo/client";
 
 const App = () => {
   const [user, setUser] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
   const [getUser, { loading, error, data }] = useLazyQuery(GET_USER);
+  const [deleteDream] = useMutation(DELETE_DREAM);
 
   useEffect(() => {
     if (data?.user) {
@@ -21,6 +22,14 @@ const App = () => {
   }, [data]);
 
   const tryLogin = () => setLoggedIn(true);
+
+  const deleteSingleDream = dreamId => {
+    deleteDream({ variables: { id: dreamId } });
+    setUser(prevUser => ({
+      ...prevUser,
+      dreams: prevUser.dreams.filter(dream => dream.id !== dreamId)
+    }));
+  };
   
   if (loading && !loggedIn) {
     return <div>Loading...</div>
@@ -48,7 +57,7 @@ const App = () => {
             render={() => (
               <>
                 <Nav />
-                <DreamList dreams={user.dreams} />
+                <DreamList dreams={user.dreams} deleteDream={deleteSingleDream}/>
               </>
             )}
           />
