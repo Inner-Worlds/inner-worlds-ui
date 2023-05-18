@@ -1,7 +1,7 @@
 import React from "react";
 import './DreamCard.css';
 
-const DreamCard = ({ id, date, title, description, emotions, tags, lucidity }) => {
+const DreamCard = ({ id, date, title, description, emotions, tags, lucidity, deleteDream }) => {
   
   const sort = type => {
     if (type === 'emotions') {
@@ -60,7 +60,7 @@ const DreamCard = ({ id, date, title, description, emotions, tags, lucidity }) =
       <h3 className="lucidity">Lucidity: {lucidity} / 5</h3>
       <div className="dream-buttons">
         <button className="edit-dream-button fa-solid fa-pen-to-square"></button>
-        <button className="delete-dream-button fa-solid fa-trash-can"></button>
+        <button className="delete-dream-button fa-solid fa-trash-can" onClick={() => deleteDream(id)}></button>
       </div>
     </section>
   );

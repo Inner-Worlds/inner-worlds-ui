@@ -1,6 +1,6 @@
 import { gql } from "@apollo/client";
 
-  export const GET_USER = gql`
+export const GET_USER = gql`
   query ($id: ID!) {
     user(id: $id) {
       id
@@ -23,8 +23,7 @@ import { gql } from "@apollo/client";
       }
     }
   }
-  `
-;
+`;
 
 export const CREATE_DREAM = gql`
   mutation CreateDream($input: CreateDreamInput!) {
@@ -40,6 +39,17 @@ export const CREATE_DREAM = gql`
         name
       }
       lucidity
+    }
+  }
+`;
+
+export const DELETE_DREAM = gql`
+  mutation ($id: ID!) {
+    deleteDream(input: {
+      id: $id
+    }) {
+      id
+      title
     }
   }
 `;
