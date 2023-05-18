@@ -18,7 +18,7 @@ const App = () => {
 
   useEffect(() => {
     if (user.id) history.push("/home");
-  }, [user]);
+  }, [user, history]);
 
   const tryLogin = () => setLoggedIn(true);
 
