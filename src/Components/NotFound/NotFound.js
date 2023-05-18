@@ -7,10 +7,6 @@ const NotFound = () => {
     const handleBackToLogin = () => {
         history.push("/");
       };
-    
-      const handleBackToHome = () => {
-        history.push("/Home");
-      };
 
   return (
     <div className="not-found">
