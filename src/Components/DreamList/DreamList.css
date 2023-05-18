@@ -8,3 +8,10 @@
 .swiper-button-prev {
   color: white !important;
 }
+
+.no-dreams {
+  color: white;
+  font-size: 3rem;
+  text-align: center;
+  margin-top: 10%;
+}
