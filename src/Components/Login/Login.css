@@ -92,6 +92,12 @@
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(4.9px);
   -webkit-backdrop-filter: blur(4.9px);
+  transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+  background: rgba(0, 0, 0, 0.9);
+  color: #fff;
 }
 
 @keyframes float-login {
@@ -151,8 +157,6 @@
     width: 100%;
   }
   .login-astronaut{
-    /* width: 50%;
-    height: 50%; */
     top: -30%;
     right: -80%;
   }
