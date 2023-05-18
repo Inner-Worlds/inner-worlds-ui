@@ -37,6 +37,11 @@ const App = () => {
       dreams: prevUser.dreams.filter(dream => dream.id !== dreamId)
     }));
   };
+
+  const handleLogOut = () => {
+    setUser({});
+    setLoggedIn(false)
+  };
   
   if (loading && !loggedIn) {
     return <div>Loading...</div>
@@ -53,7 +58,7 @@ const App = () => {
             path="/Home"
             render={() => (
               <>
-                <Nav />
+                <Nav handleLogOut={handleLogOut} />
                 <DreamInput user={user} updateDreams={updateDreams} />
               </>
             )}
@@ -63,7 +68,7 @@ const App = () => {
             path="/Dreams"
             render={() => (
               <>
-                <Nav />
+                <Nav handleLogOut={handleLogOut} />
                 <DreamList dreams={user.dreams} deleteDream={deleteSingleDream}/>
               </>
             )}
