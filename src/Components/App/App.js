@@ -23,6 +23,13 @@ const App = () => {
 
   const tryLogin = () => setLoggedIn(true);
 
+  const updateDreams = (newDream) => {
+    setUser((prevUser) => ({
+      ...prevUser,
+      dreams: [...prevUser.dreams, newDream],
+    }));
+  };
+  
   const deleteSingleDream = dreamId => {
     deleteDream({ variables: { id: dreamId } });
     setUser(prevUser => ({
@@ -47,7 +54,7 @@ const App = () => {
             render={() => (
               <>
                 <Nav />
-                <DreamInput user={user}/>
+                <DreamInput user={user} updateDreams={updateDreams} />
               </>
             )}
           />
@@ -65,7 +72,6 @@ const App = () => {
             path="*"
             render={() => (
               <>
-                <Nav />
                 <NotFound />
               </>
             )}

@@ -1,0 +1,22 @@
+.not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: clamp(100vh, 80vh, 100%);
+}
+
+.not-found-text {
+  font-size: clamp(24px, 5vw, 48px);
+  color: #fff;
+  margin-bottom: 2vh;
+}
+
+.back-button {
+  padding: clamp(10px, 2vw, 20px) clamp(20px, 4vw, 40px);
+  background-color: #fff;
+  color: #000;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
