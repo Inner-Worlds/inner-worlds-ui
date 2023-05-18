@@ -7,7 +7,7 @@ import { useMutation } from "@apollo/client";
 import { CREATE_DREAM } from "../../queries";
 import { getEmotionOptions, getTagOptions, colourStyles } from "../../options";
 
-const DreamInput = ( { user } ) => {
+const DreamInput = ({ user, updateDreams }) => {
   const [date, setDate] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -20,12 +20,11 @@ const DreamInput = ( { user } ) => {
   const emotionOptions = getEmotionOptions();
   const tagOptions = getTagOptions();
 
-
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     const dreamData = {
-      userId: user.id, 
+      userId: user.id,
       dreamDate: date,
       title: title,
       description: description,
@@ -33,10 +32,11 @@ const DreamInput = ( { user } ) => {
       tags: selectedTag.map((tag) => tag.value),
       lucidityLevel: lucidityLevel,
     };
-  
+
     try {
       const { data } = await createDream({ variables: { input: dreamData } });
-      console.log(data);
+      const newDream = data.createDream;
+      updateDreams(newDream);
     } catch (error) {
       console.log(error.message);
     }
@@ -53,11 +53,11 @@ const DreamInput = ( { user } ) => {
 
   return (
     <div className="dream-input">
-        <img
-          className="background-dream-astronaut"
-          src={Astronaut}
-          alt="Floating Astronaut"
-        />
+      <img
+        className="background-dream-astronaut"
+        src={Astronaut}
+        alt="Floating Astronaut"
+      />
       <div className="form-container">
         <form onSubmit={handleSubmit}>
           <h2>Dream Journal</h2>

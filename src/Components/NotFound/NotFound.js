@@ -1,9 +1,22 @@
-import "./NotFound.css"
+import "./NotFound.css";
+import { useHistory } from "react-router-dom";
 
 const NotFound = () => {
-    return (
-        <></>
-    )
-}
+    const history = useHistory();
+
+    const handleBackToLogin = () => {
+        history.push("/");
+      };
+
+  return (
+    <div className="not-found">
+    <h1 className="not-found-text">404 Lost in Space</h1>
+      <button className="back-button" onClick={handleBackToLogin}>
+        Please Try Again
+      </button>
+ 
+  </div>
+  );
+};
 
 export default NotFound;

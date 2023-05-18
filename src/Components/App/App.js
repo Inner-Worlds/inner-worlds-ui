@@ -23,12 +23,24 @@ const App = () => {
 
   const tryLogin = () => setLoggedIn(true);
 
+  const updateDreams = (newDream) => {
+    setUser((prevUser) => ({
+      ...prevUser,
+      dreams: [...prevUser.dreams, newDream],
+    }));
+  };
+  
   const deleteSingleDream = dreamId => {
     deleteDream({ variables: { id: dreamId } });
     setUser(prevUser => ({
       ...prevUser,
       dreams: prevUser.dreams.filter(dream => dream.id !== dreamId)
     }));
+  };
+
+  const handleLogOut = () => {
+    setUser({});
+    setLoggedIn(false)
   };
   
   if (loading && !loggedIn) {
@@ -46,8 +58,8 @@ const App = () => {
             path="/Home"
             render={() => (
               <>
-                <Nav />
-                <DreamInput user={user}/>
+                <Nav handleLogOut={handleLogOut} />
+                <DreamInput user={user} updateDreams={updateDreams} />
               </>
             )}
           />
@@ -56,7 +68,7 @@ const App = () => {
             path="/Dreams"
             render={() => (
               <>
-                <Nav />
+                <Nav handleLogOut={handleLogOut} />
                 <DreamList dreams={user.dreams} deleteDream={deleteSingleDream}/>
               </>
             )}
@@ -65,7 +77,6 @@ const App = () => {
             path="*"
             render={() => (
               <>
-                <Nav />
                 <NotFound />
               </>
             )}
