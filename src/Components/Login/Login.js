@@ -1,4 +1,3 @@
-import { NavLink } from "react-router-dom";
 import "./Login.css";
 import logo from "../../assets/Inner Worlds - Login Logo (500 × 300 px).svg";
 import djText from "../../assets/Dream Journal - (600 x 100px).svg";
@@ -19,8 +18,7 @@ const Login = ({ loginUser, tryLogin }) => {
           <img src={djText} alt="Dream Journal" className="dj-text"></img>
         </section>
         <section className="styling user-btns">
-          <NavLink
-            to="/Home"
+          <button
             className="user1 login-button"
             onClick={() => {
               loginUser({ variables: { id: 13 } });
@@ -29,9 +27,8 @@ const Login = ({ loginUser, tryLogin }) => {
           >
             <img src={orSat} alt="orange saturn" />
             <p>User 1</p>
-          </NavLink>
-          <NavLink
-            to="/Home"
+          </button>
+          <button
             className="user2 login-button"
             onClick={() =>  {
               loginUser({ variables: { id: 33 } });
@@ -40,7 +37,7 @@ const Login = ({ loginUser, tryLogin }) => {
           >
             <img src={tealSat} alt="teal saturn" />
             <p>User 2</p>
-          </NavLink>
+          </button>
         </section>
       </section>
     </main>
