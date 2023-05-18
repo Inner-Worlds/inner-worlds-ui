@@ -63,7 +63,6 @@ const App = () => {
             path="*"
             render={() => (
               <>
-                <Nav />
                 <NotFound />
               </>
             )}
