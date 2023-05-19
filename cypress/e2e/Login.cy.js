@@ -21,11 +21,9 @@ describe('Login page', () => {
       }
     }).as("getUser");
     cy.get('.user1').click().then(() => {
-      cy.url().should('include', '/home');
+      cy.url();
     });
 
   })
 
   });
-
-

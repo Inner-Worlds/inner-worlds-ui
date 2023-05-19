@@ -1,21 +1,23 @@
 {
-  "createDream": {
-    "description": "hi",
-    "dreamDate": "2023-05-03T00:00:00Z",
-    "emotions": [
+  "id": "302",
+  "dreamDate": "5/10/2023",
+  "title": "My Dream Label",
+  "description": "A detailed description of my dream.",
+  "emotions": [
       {
-        "name": "Happy",
-        "__typename": "Emotion"
-      }
-    ],
-    "id": "321",
-    "lucidity": 3,
-    "tags": [
+          "name": "Excitement"
+      },
       {
-
+          "name": "Happiness"
       }
-    ],
-    "title": "hi",
-    "__typename": "Dream"
-  }
+  ],
+  "tags": [
+      {
+          "name": "Adventure"
+      },
+      {
+          "name": "Mystery"
+      }
+  ],
+  "lucidity": 4
 }
