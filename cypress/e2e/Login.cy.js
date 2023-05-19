@@ -2,8 +2,9 @@ import { userJSON } from "../support/dreamFixtureHelper";
 
 describe('Login page', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000');
-  });
+    cy.intercept('POST', 'https://inner-worlds.onrender.com')
+  
+  })
 
   it('should display the logo', () => {
     cy.get('.login-logo').should('be.visible');

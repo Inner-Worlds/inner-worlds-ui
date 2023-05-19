@@ -20,68 +20,13 @@
             ],
             "tags": [
                 {
-                    "id": "13",
-                    "name": "cod"
+                    "name": "Adventure"
                 },
                 {
-                    "id": "14",
-                    "name": "mole"
+                    "name": "Mystery"
                 }
             ]
-        },
-        {
-            "id": "8",
-            "title": "Miracle Max",
-            "description": "Do you experience feelings of dread in your basement or attic?",
-            "lucidity": 3,
-            "dreamDate": "4/25/2023",
-            "emotions": [
-                {
-                    "id": "15",
-                    "name": "The Other Side of Things"
-                },
-                {
-                    "id": "16",
-                    "name": "Gents"
-                }
-            ],
-            "tags": [
-                {
-                    "id": "15",
-                    "name": "platypus"
-                },
-                {
-                    "id": "16",
-                    "name": "chinchilla"
-                }
-            ]
-        },
-        {
-            "id": "9",
-            "title": "Miracle Max",
-            "description": "Gozer the Gozerian... good evening. As a duly designated representative of the City, County and State of New York, I order you to cease any and all supernatural activity and return forthwith to your place of origin or to the nearest convenient parallel dimension.",
-            "lucidity": 4,
-            "dreamDate": "9/7/2023",
-            "emotions": [
-                {
-                    "id": "17",
-                    "name": "REW"
-                },
-                {
-                    "id": "18",
-                    "name": "Words"
-                }
-            ],
-            "tags": [
-                {
-                    "id": "17",
-                    "name": "herring"
-                },
-                {
-                    "id": "18",
-                    "name": "salmon"
-                }
-            ]
+            
         }
     ]
 }
