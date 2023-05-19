@@ -7,7 +7,7 @@ import { useMutation } from "@apollo/client";
 import { CREATE_DREAM } from "../../queries";
 import { getEmotionOptions, getTagOptions, colourStyles } from "../../options";
 
-const DreamInput = ({ user, updateDreams }) => {
+const DreamInput = ( { user } ) => {
   const [date, setDate] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -24,7 +24,7 @@ const DreamInput = ({ user, updateDreams }) => {
     event.preventDefault();
 
     const dreamData = {
-      userId: user.id,
+      userId: user.id, 
       dreamDate: date,
       title: title,
       description: description,
@@ -32,11 +32,10 @@ const DreamInput = ({ user, updateDreams }) => {
       tags: selectedTag.map((tag) => tag.value),
       lucidityLevel: lucidityLevel,
     };
-
+  
     try {
       const { data } = await createDream({ variables: { input: dreamData } });
-      const newDream = data.createDream;
-      updateDreams(newDream);
+      console.log(data);
     } catch (error) {
       console.log(error.message);
     }
@@ -53,11 +52,11 @@ const DreamInput = ({ user, updateDreams }) => {
 
   return (
     <div className="dream-input">
-      <img
-        className="background-dream-astronaut"
-        src={Astronaut}
-        alt="Floating Astronaut"
-      />
+        <img
+          className="background-dream-astronaut"
+          src={Astronaut}
+          alt="Floating Astronaut"
+        />
       <div className="form-container">
         <form onSubmit={handleSubmit}>
           <h2>Dream Journal</h2>
@@ -68,7 +67,6 @@ const DreamInput = ({ user, updateDreams }) => {
             onChange={(e) => setDate(e.target.value)}
             required
           />
-          <br />
           <input
             type="text"
             value={title}
@@ -77,7 +75,6 @@ const DreamInput = ({ user, updateDreams }) => {
             onChange={(e) => setTitle(e.target.value)}
             required
           />
-          <br />
           <textarea
             value={description}
             placeholder="My Dream Description.."
@@ -85,7 +82,6 @@ const DreamInput = ({ user, updateDreams }) => {
             onChange={(e) => setDescription(e.target.value)}
             required
           />
-          <br />
           <Select
             isMulti
             value={selectedEmotion}
@@ -96,7 +92,6 @@ const DreamInput = ({ user, updateDreams }) => {
             className="multi-select"
             classNamePrefix="select-styling"
           />
-          <br />
           <Select
             isMulti
             value={selectedTag}
@@ -107,7 +102,6 @@ const DreamInput = ({ user, updateDreams }) => {
             className="multi-select"
             classNamePrefix="select-styling"
           />
-          <br />
           <label>
             Lucidity Level: {lucidityLevel}
             <input
@@ -118,7 +112,6 @@ const DreamInput = ({ user, updateDreams }) => {
               onChange={(e) => setLucidityLevel(Number(e.target.value))}
             />
           </label>
-          <br />
           <button className="glow-on-hover" type="submit">
             Submit
           </button>

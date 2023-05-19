@@ -9,20 +9,24 @@
 }
 
 .dream-input form {
-  width: 700px;
-  padding: 40px;
-  margin: 0 auto;
-  margin-top: 30px;
+  font-family: 'Livvic', sans-serif;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+  align-items: center;
   background: rgba(255, 255, 255, 0.2);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.25);
-  font-family: 'Livvic', sans-serif;
 }
 
 .form-container {
+  width: 50%;
+  height: 90%;
   display: flex;
   position: relative;
   z-index: 1;
@@ -35,40 +39,36 @@
 
 .dream-input h2 {
   text-align: center;
-  font-size: 70px;
-  margin-top: 2px;
-  margin-bottom: 10px;
+  font-size: clamp(1.5rem, 6vw, 4rem);
   color: white;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
   pointer-events: none;
   font-family: 'Yellowtail', cursive;
+  margin: 2%;
 }
 
 .dream-input textarea {
   display: block;
-  width: 90%;
+  width: 85%;
   padding: 8px;
-  margin: 0 auto;
   border: 1px solid rgba(131, 202, 215, 0.16);
   border-radius: 4px;
-  height: 120px;
+  height: 25%;
   resize: none;
   overflow-y: scroll;
-
 }
 
 .dream-input label {
+  width: 30%;
   display: block;
   text-align: center;
   color: white;
-  margin-bottom: 5px;
 }
 
 .dream-input input[type="date"] {
   width: fit-content;
-  height: 30px;
+  height: 4%;
   padding: 5px;
-  margin: 0 auto;
   display: block;
   border-radius: 5px;
   cursor: pointer;
@@ -76,19 +76,16 @@
 
 .dream-input input[type="text"] {
   width: fit-content;
-  margin: 0 auto;
+  max-width: 90%;
   display: block;
-  font-size: 20px;
+  font-size: clamp(0.8rem, 4vw, 1.5rem);
   border-radius: 5px;
 }
 
 .multi-select {
   width: 30%;
-  height: 10%;
   margin: 0 auto;
   display: block;
-  padding: 8px;
-  margin-top: 5px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -113,12 +110,11 @@
   word-wrap: break-word;
 }
 
-
 .dream-input input[type="range"] {
-  width: 40%;
-  margin: 0 auto;
+  width: 80%;
   display: block;
   cursor: pointer;
+  margin: 0 auto;
 }
 
 .dream-input input[type="date"]::-webkit-calendar-picker-indicator {
@@ -144,20 +140,19 @@
 
 .dream-input button {
   display: block;
-  width: 20%;
-  margin: 0 auto;
-  padding: 10px;
+  width: 30%;
+  height: 8%;
   color: #fff;
   border: none;
   border-radius: 10px;
   cursor: pointer;
   font-weight: bold;
-  font-size: 20px;
+  font-size: clamp(0.9rem, 4vw, 1.5rem);
   font-family: "Livvic", sans-serif;
 }
 
 .glow-on-hover {
-  height: 50px;
+  height: 10%;
   outline: none;
   background: #111;
   position: relative;
@@ -249,59 +244,34 @@
   }
 }
 
-@media screen and (max-width: 1300px){
-  .dream-input form {
-    width: 90%;
-    max-width: 700px;
-    padding: 5%;
-    margin: 0 auto;
-    margin-top: 3vh;
+@media screen and (max-width: 1000px){
+  .multi-select {
+    width: 50%;
+  }
+
+  .dream-input label {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .form-container {
+    height: 90%;
   }
 
   .multi-select {
-    margin-top: -5%;
-   
+    width: 90%;
+  }
+
+  .dream-input input[type="range"] {
+    width: 90%;
+  }
+
+  .dream-input label {
+    width: 80%;
   }
 
   .dream-input button {
-    display: block;
-    height: 5%;
-    width: 20%;
-    padding: 2vw;
-    border-radius: 2vw;
-    font-size: 2vw;
-
+    width: 50%;
   }
-  
-  .glow-on-hover {
-    height: 8vh;
-
-  }
-  
-  .glow-on-hover:before {
-  
-    filter: blur(0.8vw);
-    width: calc(100% + 4px);
-    height: calc(100% + 4px);
-    border-radius: 2vw;
-  }
-  
-  .glow-on-hover:active {
-    color: #000;
-  }
-  
-  .glow-on-hover:active:after {
-    background: transparent;
-  }
-  
-  .glow-on-hover:hover:before {
-    opacity: 1;
-  }
-  
-  .glow-on-hover:after {
-
-    border-radius: 2vw;
-  }
-  
-  
-  }
+}
