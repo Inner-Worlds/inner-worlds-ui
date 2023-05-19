@@ -40,6 +40,11 @@ const DreamList = ({ dreams, deleteDream }) => {
                     modifier: 1,
                     slideShadows: true,
                 }}
+                breakpoints={{
+                    1000: { slidesPerView: 3 },
+                    600: { slidesPerView: 2 },
+                    1: { slidesPerView: 1 }
+                }}
                 modules={[ Navigation, EffectCoverflow ]}
                 className="mySwiper"
             >

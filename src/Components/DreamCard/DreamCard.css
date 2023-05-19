@@ -1,5 +1,5 @@
 .dream-card {
-  --card-font-size: clamp(0.8rem, 2vw, 2rem);
+  --card-font-size: clamp(1rem, 2vw, 2rem);
   font-family: 'Livvic', sans-serif;
   height: 90%;
   background: rgba(255, 255, 255, 0.4);
@@ -110,5 +110,12 @@
 @media screen and (max-width: 36rem) {
   .swiper-slide {
     transform-style: 0 !important;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .dream-card {
+    margin-left: 12%;
+    margin-right: 12%;
   }
 }
