@@ -20,13 +20,14 @@
             ],
             "tags": [
                 {
-                    "name": "Adventure"
+                    "id": "13",
+                    "name": "cod"
                 },
                 {
-                    "name": "Mystery"
+                    "id": "14",
+                    "name": "mole"
                 }
             ]
-            
         }
     ]
 }

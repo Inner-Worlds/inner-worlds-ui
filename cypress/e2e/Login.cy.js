@@ -25,6 +25,7 @@ describe('Login page', () => {
       cy.url();
     });
 
+
   })
 
   });

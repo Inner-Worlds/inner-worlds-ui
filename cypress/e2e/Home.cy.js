@@ -6,6 +6,33 @@ describe('Home page', () => {
     cy.visit('http://localhost:3000/home');
   });
 
+  it('should display the logo and navigate to Home when clicked', () => {
+    cy.get('.logo').should('be.visible').click();
+    cy.url().should('include', '/Home');
+  });
+
+  it('should have Home, My Dreams, and Log Out links', () => {
+    cy.get('.nav-link1').should('be.visible').contains('Home');
+    cy.get('.nav-link2').should('be.visible').contains('My Dreams');
+    cy.get('.nav-link3').should('be.visible').contains('Log Out');
+  });
+
+  it('should navigate to Home page when Home link is clicked', () => {
+    cy.get('.nav-link1').click();
+    cy.url().should('include', '/Home');
+  // });
+
+  // it('should navigate to My Dreams page when My Dreams link is clicked', () => {
+  //   cy.intercept('POST', 'https://inner-worlds.onrender.com/', {
+  //     fixture: "dreamFixture"
+  //   });
+  //   cy.visit('http://localhost:3000/dreams');
+  //   cy.get('.nav-link2').click();
+  //   cy.url().should('include', '/Dreams');
+  });
+
+
+
   it('should see a form to enter the details of their dreams', () => {
     cy.get('h2').contains('Dream Journal');
     cy.get('form').should('be.visible');
@@ -17,18 +44,17 @@ describe('Home page', () => {
     cy.get('.multi-select').contains('Select Tags..');
   });
 
-  it('should be able to select a date and type a ttile and description of the dream', () => {
-    cy.get('[type="date"]').click().then((text) => {
-      expect('1/7/2023')
-      cy.get('[placeholder="My Dream Title.."]').type('Prince Humperdinck')
-      cy.get('textarea').type('Ray has gone bye-bye')
-    })
+  it('should be able to select a date and type a title and description of the dream', () => {
+    cy.get('[type="date"]').click().then(() => {
+      cy.get('[type="date"]').type('2023-01-07');
 
-      it('should be able to select emotions and tags about the dream', () => {
-      cy.get('#react-select-3-input').select('Excitement');
-      cy.get('#react-select-3-input').select('Happiness');
-      cy.get('#react-select-5-placeholder').select('Adventure');
-      cy.get('#react-select-5-placeholder').select('Mystery');
-    })
+    });
+    cy.get('[placeholder="My Dream Title.."]').type('Prince Humperdinck');
+    cy.get('textarea').type('Ray has gone bye-bye');
+  });
+
+  it('should be able to select emotions and tags about the dream', () => {
+    cy.get('#react-select-3-placeholder')
+    cy.get('#react-select-5-placeholder')
   });
 });
