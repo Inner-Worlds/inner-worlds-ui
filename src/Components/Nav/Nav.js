@@ -6,17 +6,17 @@ import "./Nav.css";
 const Nav = ({ handleLogOut }) => {
   return (
     <header className="nav-bar">
-      <NavLink to="/Home">
+      <NavLink to="/home">
         <img src={Logo} className="logo" alt="Inner Worlds" />
       </NavLink>
       <div className="nav-links">
-        <NavLink to="/Home" className="nav-link1">
+        <NavLink to="/home" className="nav-link1">
           Home
         </NavLink>
-        <NavLink to="/Dreams" className="nav-link2">
+        <NavLink to="/dreams" className="nav-link2">
           My Dreams
         </NavLink>
-        <NavLink to="/" className="nav-link2" onClick={handleLogOut}>
+        <NavLink to="/" className="nav-link3" onClick={handleLogOut}>
           Log Out
         </NavLink>
       </div>

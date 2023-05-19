@@ -6,18 +6,25 @@ import DreamInput from "../DreamInput/DreamInput";
 import DreamList from "../DreamList/DreamList";
 import NotFound from "../NotFound/NotFound";
 import Nav from "../Nav/Nav";
-import { GET_USER, DELETE_DREAM } from "../../queries";
+import { GET_USER, DELETE_DREAM, UPDATE_DREAM } from "../../queries";
 import { useLazyQuery, useMutation } from "@apollo/client";
+
 
 const App = () => {
   const [user, setUser] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
-  const [getUser, { loading, error }] = useLazyQuery(GET_USER, { onCompleted: data => setUser(data.user) });
+  const [getUser, { client, loading, error }] = useLazyQuery(GET_USER, { onCompleted: data => setUser(data.user) });
   const [deleteDream] = useMutation(DELETE_DREAM);
+  const [updateDream] = useMutation(UPDATE_DREAM);
   const history = useHistory();
+ 
 
   useEffect(() => {
-    if (user.id) history.push("/home");
+    if (user.id && history.location.pathname !== '/dreams') {
+      history.push("/home");
+    } else if (!user.id) {
+      history.push("/")
+    }
   }, [user, history]);
 
   const tryLogin = () => setLoggedIn(true);
@@ -37,7 +44,21 @@ const App = () => {
     }));
   };
 
-  const handleLogOut = () => {
+  const updateSingleDream = (dreamId, dreamUpdates) => {
+    updateDream({ variables: { id: dreamId, ...dreamUpdates } });
+    setUser((prevUser) => {
+      const updatedDreams = prevUser.dreams.map((dream) => {
+        if (dream.id === dreamId) {
+          return { ...dream, ...dreamUpdates };
+        }
+        return dream;
+      });
+      return { ...prevUser, dreams: updatedDreams };
+    });
+  };
+
+  const handleLogOut = async () => {
+    await client.resetStore();
     setUser({});
     setLoggedIn(false);
   };
@@ -68,7 +89,7 @@ const App = () => {
             render={() => (
               <>
                 <Nav handleLogOut={handleLogOut} />
-                <DreamList dreams={user.dreams} deleteDream={deleteSingleDream}/>
+                <DreamList dreams={user.dreams} deleteDream={deleteSingleDream} updateDream={updateSingleDream} />
               </>
             )}
           />
