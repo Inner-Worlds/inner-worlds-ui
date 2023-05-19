@@ -16,7 +16,7 @@ const Nav = ({ handleLogOut }) => {
         <NavLink to="/dreams" className="nav-link2">
           My Dreams
         </NavLink>
-        <NavLink to="/" className="nav-link2" onClick={handleLogOut}>
+        <NavLink to="/" className="nav-link3" onClick={handleLogOut}>
           Log Out
         </NavLink>
       </div>
