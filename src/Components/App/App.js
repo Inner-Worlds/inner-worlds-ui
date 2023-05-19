@@ -9,16 +9,22 @@ import Nav from "../Nav/Nav";
 import { GET_USER, DELETE_DREAM, UPDATE_DREAM } from "../../queries";
 import { useLazyQuery, useMutation } from "@apollo/client";
 
+
 const App = () => {
   const [user, setUser] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
-  const [getUser, { loading, error }] = useLazyQuery(GET_USER, { onCompleted: data => setUser(data.user) });
+  const [getUser, { client, loading, error }] = useLazyQuery(GET_USER, { onCompleted: data => setUser(data.user) });
   const [deleteDream] = useMutation(DELETE_DREAM);
   const [updateDream] = useMutation(UPDATE_DREAM);
   const history = useHistory();
+ 
 
   useEffect(() => {
-    if (user.id && history.location.pathname !== '/dreams') history.push("/home");
+    if (user.id && history.location.pathname !== '/dreams') {
+      history.push("/home");
+    } else if (!user.id) {
+      history.push("/")
+    }
   }, [user, history]);
 
   const tryLogin = () => setLoggedIn(true);
@@ -51,7 +57,8 @@ const App = () => {
     });
   };
 
-  const handleLogOut = () => {
+  const handleLogOut = async () => {
+    await client.resetStore();
     setUser({});
     setLoggedIn(false);
   };
