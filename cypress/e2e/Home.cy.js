@@ -1,14 +1,14 @@
 describe('Home page', () => {
   beforeEach(() => {
     cy.intercept('POST', 'https://inner-worlds-graphql-api.onrender.com/graphql', {
-      fixture: "userFixture"
+      fixture: 'userFixture.json' 
     });
     cy.visit('http://localhost:3000/home');
   });
 
   it('should display the logo and navigate to Home when clicked', () => {
     cy.get('.logo').click();
-    cy.url().should('include', '/Home');
+    cy.url().should('include', '/home');
   });
 
   it('should have Home, My Dreams, and Log Out links', () => {
@@ -19,21 +19,40 @@ describe('Home page', () => {
 
   it('should navigate to Home page when Home link is clicked', () => {
     cy.get('.nav-link1').click();
-    cy.url().should('include', '/Home');
+    cy.url().should('include', '/home');
   });
 
   it('should navigate to My Dreams page when My Dreams link is clicked', () => {
-    cy.intercept('POST', 'https://inner-worlds-graphql-api.onrender.com/graphql', {
-      fixture: "dreamFixture"
-    });
+    cy.intercept('POST', 'https://inner-worlds-graphql-api.onrender.com/graphql');
     cy.get('.nav-link2').click();
-    cy.url().should('include', '/Dreams');
+    cy.url().should('include', '/dreams');
   });
 
   it('should navigate to Login page and trigger Log Out when Log Out link is clicked', () => {
     cy.get('.nav-link3').click();
     cy.url().should('include', '/');
   });
+  it('should handle dream submission error', () => {
+    cy.intercept('POST', '/graphql', (req) => {
+      req.reply({
+        statusCode: 500,
+        body: {
+          errors: [{ message: 'Please fill out this field' }]
+        }
+      });
+    });
+    
+    cy.get('[type="date"]').click().then(() => {
+      cy.get('[type="date"]');
+      cy.get('[placeholder="My Dream Title.."]').type('Prince Humperdinck');
+      cy.get('textarea').type('Ray has gone bye-bye');
+      cy.get(".multi-select").eq(0).click();
+      cy.get(".select-styling__option").eq(0).contains('Happy').click();
+      cy.get(".multi-select").eq(1).click();
+      cy.get(".select-styling__option").contains('Work').click();
+      cy.get('input[type="range"]').invoke("val", 4).trigger("change");
+      cy.get("button[type='submit']").click();
+    });
 
   it('should see a form to enter the details of their dreams', () => {
     cy.get('h2').contains('Dream Journal');
@@ -66,26 +85,5 @@ describe('Home page', () => {
     cy.get("button[type='submit']").click();
   });
 
-  it('should handle dream submission error', () => {
-    cy.intercept('POST', '/graphql', (req) => {
-      req.reply({
-        statusCode: 500,
-        body: {
-          errors: [{ message: 'Please fill out this field' }]
-        }
-      });
-    });
-    
-    cy.get('[type="date"]').click().then(() => {
-      cy.get('[type="date"]');
-      cy.get('[placeholder="My Dream Title.."]').type('Prince Humperdinck');
-      cy.get('textarea').type('Ray has gone bye-bye');
-      cy.get(".multi-select").eq(0).click();
-      cy.get(".select-styling__option").eq(0).contains('Happy').click();
-      cy.get(".multi-select").eq(1).click();
-      cy.get(".select-styling__option").contains('Work').click();
-      cy.get('input[type="range"]').invoke("val", 4).trigger("change");
-      cy.get("button[type='submit']").click();
-    });
   });
 });
