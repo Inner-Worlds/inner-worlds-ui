@@ -8,7 +8,7 @@ import "swiper/css/navigation";
 import "swiper/css/effect-coverflow";
 
 const DreamList = ({ dreams, deleteDream }) => {
-    if (!dreams.length) return <h1 className="no-dreams">Nothing logged, get dreamin!</h1>;
+    if (!dreams || dreams.length === 0) return <h1 className="no-dreams">Nothing logged, get dreamin!</h1>;
 
     const dreamCards = dreams.map(dream => {
         return <SwiperSlide key={dream.id}>

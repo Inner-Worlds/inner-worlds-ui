@@ -10,20 +10,12 @@
         {
           "__typename": "Emotion",
           "name": "Happy"
-        },
-        {
-          "__typename": "Emotion",
-          "name": "Sad"
         }
       ],
       "tags": [
         {
           "__typename": "Tag",
           "name": "Work"
-        },
-        {
-          "__typename": "Tag",
-          "name": "Fire"
         }
       ]
     },

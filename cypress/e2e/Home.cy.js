@@ -11,14 +11,12 @@ describe('Home page', () => {
   });
 
   it('should have Home, My Dreams, and Log Out links', () => {
-    // Find the nav links and assert their visibility and text content
     cy.get('.nav-link1').should('be.visible').contains('Home');
     cy.get('.nav-link2').should('be.visible').contains('My Dreams');
     cy.get('.nav-link3').should('be.visible').contains('Log Out');
   });
 
   it('should navigate to Home page when Home link is clicked', () => {
-    // Click the Home link and assert the URL change
     cy.get('.nav-link1').click();
     cy.url().should('include', '/Home');
   });
@@ -32,12 +30,8 @@ describe('Home page', () => {
   });
 
   it('should navigate to Login page and trigger Log Out when Log Out link is clicked', () => {
-    // Click the Log Out link and assert the URL change
     cy.get('.nav-link3').click();
     cy.url().should('include', '/');
-
-    // Assert that the log out function has been triggered (if applicable)
-    // You may need to stub/mock the handleLogOut function to check if it has been called
   });
 
 
@@ -61,8 +55,41 @@ describe('Home page', () => {
     cy.get('textarea').type('Ray has gone bye-bye');
   });
 
-  it('should be able to select emotions and tags about the dream', () => {
-    cy.get('#react-select-3-placeholder')
-    cy.get('#react-select-5-placeholder')
+  it('should be able to select emotions and tags about the dream and the lucidity level', () => {
+    cy.get(".multi-select").eq(0).click();
+    cy.get(".select-styling__option").eq(0).contains('Happy').click();
+    cy.get(".multi-select").eq(1).click();
+    cy.get(".select-styling__option").contains('Work').click();
+    cy.get('input[type="range"]').invoke("val", 4).trigger("change");
   });
-});
+
+  it('should be able to submit their dream', () => {
+    cy.get("button[type='submit']").click();
+  })
+  it('should handle dream submission error', () => {
+    cy.intercept('POST', '/graphql', (req) => {
+      req.reply({
+        statusCode: 500,
+        body: {
+          errors: [{ message: 'Please fill out this feild' }]
+        }
+      });
+    });
+
+    
+    cy.get('[type="date"]').click().then(() => {
+      cy.get('[type="date"]')
+      cy.get('[placeholder="My Dream Title.."]').type('Prince Humperdinck');
+      cy.get('textarea').type('Ray has gone bye-bye');
+      cy.get(".multi-select").eq(0).click();
+      cy.get(".select-styling__option").eq(0).contains('Happy').click();
+      cy.get(".multi-select").eq(1).click();
+      cy.get(".select-styling__option").contains('Work').click();
+      cy.get('input[type="range"]').invoke("val", 4).trigger("change");
+      cy.get("button[type='submit']").click();
+  
+  });
+  });
+  });
+  
+
