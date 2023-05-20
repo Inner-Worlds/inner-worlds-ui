@@ -20,7 +20,7 @@ const DreamCard = ({ id, date, title, description, emotions, tags, lucidity, del
       lucidity !== newLucidity
     ) {
       const updatedDream = {
-        date: newDate,
+        dreamDate: newDate,
         title: newTitle,
         description: newDescription,
         lucidity: newLucidity

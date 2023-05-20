@@ -18,7 +18,6 @@ const App = () => {
   const [updateDream] = useMutation(UPDATE_DREAM);
   const history = useHistory();
  
-
   useEffect(() => {
     if (user.id && history.location.pathname !== '/dreams') {
       history.push("/home");
