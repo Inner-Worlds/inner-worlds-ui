@@ -13,10 +13,12 @@ import { useLazyQuery, useMutation } from "@apollo/client";
 const App = () => {
   const [user, setUser] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
-  const [getUser, { client, loading, error }] = useLazyQuery(GET_USER, { onCompleted: data => setUser(data.user) });
+  const [getUser, { client, loading }] = useLazyQuery(GET_USER, { onCompleted: data => setUser(data.user) });
   const [deleteDream] = useMutation(DELETE_DREAM);
   const [updateDream] = useMutation(UPDATE_DREAM);
   const history = useHistory();
+
+  const error = { message: "This is a test" };
  
   useEffect(() => {
     if (user.id && history.location.pathname !== '/dreams') {
@@ -64,14 +66,12 @@ const App = () => {
   
   if (loading && !loggedIn) {
     return <div>Loading...</div>
-  } else if (error) {
-    return <div>{error.message}</div>
   }
 
   return (
       <div className="App">
         <Switch>
-          <Route exact path="/" render={() => <Login loginUser={getUser} tryLogin={tryLogin}/>} />
+          <Route exact path="/" render={() => <Login loginUser={getUser} tryLogin={tryLogin} error={error}/>} />
           <Route
             exact
             path="/home"
