@@ -53,3 +53,14 @@ export const DELETE_DREAM = gql`
     }
   }
 `;
+
+export const UPDATE_DREAM = gql`
+  mutation UpdateDream($id: ID!, $title: String!, $description: String!, $lucidity: Int!) {
+    updateDream(input: {id: $id, title: $title, description: $description, lucidity: $lucidity}) {
+      id
+      title
+      description
+      lucidity
+    }
+  }
+`;

@@ -1,8 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import './DreamCard.css';
 
-const DreamCard = ({ id, date, title, description, emotions, tags, lucidity, deleteDream }) => {
-  
+const DreamCard = ({ id, date, title, description, emotions, tags, lucidity, deleteDream, updateDream }) => {
+  const [editMode, setEditMode] = useState(false);
+  const [newDate, setNewDate] = useState(date || '');
+  const [newTitle, setNewTitle] = useState(title || '');
+  const [newLucidity, setNewLucidity] = useState(lucidity || 0)
+  const [newDescription, setNewDescription] = useState(description || '');
+
+  const handleEdit = () => {
+    setEditMode(true);
+  }
+
+  const handleSave = () => {
+    if (
+      date !== newDate ||
+      title !== newTitle ||
+      description !== newDescription ||
+      lucidity !== newLucidity
+    ) {
+      const updatedDream = {
+        date: newDate,
+        title: newTitle,
+        description: newDescription,
+        lucidity: newLucidity
+      };
+      updateDream(id, updatedDream);
+    }
+    setEditMode(false);
+  };
+
   const sort = type => {
     if (type === 'emotions') {
       return [...emotions].sort((x, y) => x.name.length - y.name.length);
@@ -39,9 +66,9 @@ const DreamCard = ({ id, date, title, description, emotions, tags, lucidity, del
   
   return (
     <section className="dream-card" id={`dream ${id}`}>
-      <p className="date">{date}</p>
-      <h1 className="title">{title}</h1>
-      <p className="description">{description}</p>
+      {editMode ? <input className="date-edit" type="date" value={newDate} onChange={(e) => setNewDate(e.target.value)} /> :<p className="date">{date}</p>}
+      {editMode ? <input className="title-edit" type="text" value={newTitle} onChange={(e) => setNewTitle(e.target.value)} /> : <h1 className="title">{title}</h1>}
+      {editMode ? <input className="description-edit" type="text" value={newDescription} onChange={(e) => setNewDescription(e.target.value)} /> : <p className="description">{description}</p>}
       <section className="list-container">
         <section className="emotions-container">
           <h2 className="list-head">Emotions</h2>
@@ -57,10 +84,11 @@ const DreamCard = ({ id, date, title, description, emotions, tags, lucidity, del
           </ul>
         </section>
       </section>
-      <h3 className="lucidity">Lucidity: {lucidity} / 5</h3>
+      {editMode ? <input className="lucidity-edit" type="number" min="1" max="5" value={newLucidity} onChange={(e) => setNewLucidity(Number(e.target.value))} /> : <p>Lucidity: {lucidity} / 5</p>}
       <div className="dream-buttons">
-        <button className="edit-dream-button fa-solid fa-pen-to-square"></button>
+        <button className="edit-dream-button fa-solid fa-pen-to-square" onClick={handleEdit}></button>
         <button className="delete-dream-button fa-solid fa-trash-can" onClick={() => deleteDream(id)}></button>
+        {editMode && <button className="save-dream-button" onClick={handleSave}>SAVE</button>}
       </div>
     </section>
   );

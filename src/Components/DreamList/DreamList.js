@@ -7,8 +7,8 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/effect-coverflow";
 
-const DreamList = ({ dreams, deleteDream }) => {
-    if (!dreams || dreams.length === 0) return <h1 className="no-dreams">Nothing logged, get dreamin!</h1>;
+const DreamList = ({ dreams, deleteDream, updateDream }) => {
+    if (!dreams.length) return <h1 className="no-dreams">Nothing logged, get dreamin!</h1>;
 
     const dreamCards = dreams.map(dream => {
         return <SwiperSlide key={dream.id}>
@@ -21,6 +21,7 @@ const DreamList = ({ dreams, deleteDream }) => {
                         tags={dream.tags} 
                         lucidity={dream.lucidity}
                         deleteDream={deleteDream}
+                        updateDream={updateDream}
                     />
                 </SwiperSlide>
     });
@@ -39,6 +40,11 @@ const DreamList = ({ dreams, deleteDream }) => {
                     depth: 200,
                     modifier: 1,
                     slideShadows: true,
+                }}
+                breakpoints={{
+                    1000: { slidesPerView: 3 },
+                    600: { slidesPerView: 2 },
+                    1: { slidesPerView: 1 }
                 }}
                 modules={[ Navigation, EffectCoverflow ]}
                 className="mySwiper"
