@@ -10,7 +10,7 @@ const DreamCard = ({ id, date, title, description, emotions, tags, lucidity, del
 
   const handleEdit = () => {
     setEditMode(true);
-  }
+  }  
 
   const handleSave = () => {
     if (
@@ -27,13 +27,14 @@ const DreamCard = ({ id, date, title, description, emotions, tags, lucidity, del
       };
       updateDream(id, updatedDream);
     } else {
-     formatDate(date);
+     setNewDate(formatDate(date));
     }
     setEditMode(false);
   };
 
   const formatDate = (inputDate) => {
     const [year, month, day] = inputDate.split('-');
+    console.log(year);
     return `${month}/${day}/${year}`;
   };
   
