@@ -4,7 +4,7 @@ import Select from "react-select";
 import Astronaut from "../../assets/Astronaut - (550 x 550px).svg";
 import "./DreamInput.css";
 import { useMutation } from "@apollo/client";
-import { CREATE_DREAM, GET_USER_DREAMS } from "../../queries";
+import { CREATE_DREAM } from "../../queries";
 import { getEmotionOptions, getTagOptions, colourStyles } from "../../options";
 
 const DreamInput = ({ user, updateDreams }) => {
