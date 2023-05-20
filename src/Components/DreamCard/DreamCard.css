@@ -107,6 +107,43 @@
   text-shadow: inherit;
 }
 
+.date-edit,
+.title-edit,
+.description-edit, 
+.lucidity-edit {
+  font-family: 'Livvic', sans-serif;
+  font-size: 1rem;
+  padding: 0.8rem;
+  border: 1px solid #423f3fb6;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-bottom: 1rem;
+}
+
+.lucidity-edit {
+ width: 15%;
+}
+
+.save-dream-button {
+  font-family: 'Livvic', sans-serif;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  /* background-color: #0b1118;
+  color: #fff; */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.edit-field {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-bottom: 1rem;
+}
+
 @media screen and (max-width: 36rem) {
   .swiper-slide {
     transform-style: 0 !important;

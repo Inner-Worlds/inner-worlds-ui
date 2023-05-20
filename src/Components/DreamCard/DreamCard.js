@@ -3,10 +3,10 @@ import './DreamCard.css';
 
 const DreamCard = ({ id, date, title, description, emotions, tags, lucidity, deleteDream, updateDream }) => {
   const [editMode, setEditMode] = useState(false);
-  const [newDate, setNewDate] = useState(date || '');
-  const [newTitle, setNewTitle] = useState(title || '');
-  const [newLucidity, setNewLucidity] = useState(lucidity || 0)
-  const [newDescription, setNewDescription] = useState(description || '');
+  const [newDate, setNewDate] = useState(date);
+  const [newTitle, setNewTitle] = useState(title);
+  const [newLucidity, setNewLucidity] = useState(lucidity)
+  const [newDescription, setNewDescription] = useState(description);
 
   const handleEdit = () => {
     setEditMode(true);
@@ -26,9 +26,17 @@ const DreamCard = ({ id, date, title, description, emotions, tags, lucidity, del
         lucidity: newLucidity
       };
       updateDream(id, updatedDream);
+    } else {
+     formatDate(date);
     }
     setEditMode(false);
   };
+
+  const formatDate = (inputDate) => {
+    const [year, month, day] = inputDate.split('-');
+    return `${month}/${day}/${year}`;
+  };
+  
 
   const sort = type => {
     if (type === 'emotions') {
