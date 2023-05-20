@@ -3,7 +3,8 @@ describe('Home page', () => {
     cy.intercept('POST', 'https://inner-worlds-graphql-api.onrender.com/graphql', {
       fixture: 'userFixture.json' 
     });
-    cy.visit('http://localhost:3000/home');
+    cy.visit('http://localhost:3000/');
+    cy.get('.user1').click()
   });
 
   it('should display the logo and navigate to Home when clicked', () => {
