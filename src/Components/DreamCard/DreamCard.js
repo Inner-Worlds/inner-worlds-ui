@@ -26,16 +26,18 @@ const DreamCard = ({ id, date, title, description, emotions, tags, lucidity, del
         lucidity: newLucidity
       };
       updateDream(id, updatedDream);
-    } else {
-     setNewDate(formatDate(date));
-    }
+      setNewDate(formatDate(newDate));
+    };
     setEditMode(false);
   };
 
   const formatDate = (inputDate) => {
-    const [year, month, day] = inputDate.split('-');
-    console.log(year);
-    return `${month}/${day}/${year}`;
+    if (inputDate.includes('-')) {
+      const [year, month, day] = inputDate.split("-");
+      return `${month[0] === '0' ? month[1] : month}/${day}/${year}`;
+    } else {
+      return inputDate;
+    };
   };
   
 
