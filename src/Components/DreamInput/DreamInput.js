@@ -15,15 +15,7 @@ const DreamInput = ({ user, updateDreams }) => {
   const [selectedTag, setSelectedTag] = useState([]);
   const [lucidityLevel, setLucidityLevel] = useState(0);
   const history = useHistory();
-  const [createDream] = useMutation(CREATE_DREAM, {
-    refetchQueries: [
-      {
-        query: GET_USER_DREAMS,
-        variables: { id: user.id },
-      },
-    ],
-    onCompleted: () => history.push("/dreams"),
-  });
+  const [createDream] = useMutation(CREATE_DREAM);
 
   const emotionOptions = getEmotionOptions();
   const tagOptions = getTagOptions();
@@ -43,7 +35,7 @@ const DreamInput = ({ user, updateDreams }) => {
 
     try {
       const { data } = await createDream({ variables: { input: dreamData } });
-      const newDream = data.createDream;
+      const newDream = data.createDream
       updateDreams(newDream);
       console.log(data);
     } catch (error) {
