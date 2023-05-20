@@ -10,22 +10,22 @@ const getUser = {
             "dreamDate": "1/7/2023",
             "emotions": [
                 {
-                    "id": "13",
-                    "name": "Skin the Cat"
+            
+                    "name": "Happy"
                 },
                 {
-                    "id": "14",
-                    "name": "Wife Soup"
+      
+                    "name": "Sad"
                 }
             ],
             "tags": [
                 {
-                    "id": "13",
-                    "name": "cod"
+              
+                    "name": "Work"
                 },
                 {
-                    "id": "14",
-                    "name": "mole"
+             
+                    "name": "Fire"
                 }
             ]
         },
@@ -37,22 +37,22 @@ const getUser = {
             "dreamDate": "4/25/2023",
             "emotions": [
                 {
-                    "id": "15",
-                    "name": "The Other Side of Things"
+            
+                    "name": "Anxious"
                 },
                 {
-                    "id": "16",
-                    "name": "Gents"
+      
+                    "name": "Curious"
                 }
             ],
             "tags": [
                 {
-                    "id": "15",
-                    "name": "platypus"
+      
+                    "name": "School"
                 },
                 {
-                    "id": "16",
-                    "name": "chinchilla"
+      
+                    "name": "Water"
                 }
             ]
         },
@@ -64,26 +64,26 @@ const getUser = {
             "dreamDate": "9/7/2023",
             "emotions": [
                 {
-                    "id": "17",
-                    "name": "REW"
+             
+                    "name": "Grateful"
                 },
                 {
-                    "id": "18",
-                    "name": "Words"
+             
+                    "name": "Curious"
                 }
             ],
             "tags": [
                 {
-                    "id": "17",
-                    "name": "herring"
+             
+                    "name": "Stange place"
                 },
                 {
-                    "id": "18",
-                    "name": "salmon"
+           
+                    "name": "School"
                 }
             ]
         }
-    ]
+      ]
 }
 const createDream = {
     "id": "302",
@@ -108,6 +108,14 @@ const createDream = {
     ],
     "lucidity": 4
 }
+
+// export const dreamJSON = (dreams) => {
+//     return {
+//         "data": {
+//          "createDream": createDream.map(user => user.dreams === dreams)   
+//     }
+//     }
+// }
 
 export const userJSON = (id) => {
     return {

@@ -1,24 +1,85 @@
-[{
-  "id": "302",
-  "dreamDate": "5/10/2023",
-  "title": "My Dream Label",
-  "description": "A detailed description of my dream.",
-  "emotions": [
-      {
-          "name": "Excitement"
-      },
-      {
-          "name": "Happiness"
-      }
-  ],
-  "tags": [
-      {
-          "name": "Adventure"
-      },
-      {
-          "name": "Mystery"
-      }
-  ],
-  "lucidity": 4
+{
+  "dreams": [
+    {
+      "id": "7",
+      "title": "Prince Humperdinck",
+      "description": "Ray has gone bye-bye, Egon... what've you got left?",
+      "lucidity": 4,
+      "dreamDate": "1/7/2023",
+      "emotions": [
+        {
+          "__typename": "Emotion",
+          "name": "Happy"
+        },
+        {
+          "__typename": "Emotion",
+          "name": "Sad"
+        }
+      ],
+      "tags": [
+        {
+          "__typename": "Tag",
+          "name": "Work"
+        },
+        {
+          "__typename": "Tag",
+          "name": "Fire"
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "title": "Miracle Max",
+      "description": "Do you experience feelings of dread in your basement or attic?",
+      "lucidity": 3,
+      "dreamDate": "4/25/2023",
+      "emotions": [
+        {
+          "__typename": "Emotion",
+          "name": "Anxious"
+        },
+        {
+          "__typename": "Emotion",
+          "name": "Curious"
+        }
+      ],
+      "tags": [
+        {
+          "__typename": "Tag",
+          "name": "School"
+        },
+        {
+          "__typename": "Tag",
+          "name": "Water"
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "title": "Miracle Max",
+      "description": "Gozer the Gozerian... good evening. As a duly designated representative of the City, County and State of New York, I order you to cease any and all supernatural activity and return forthwith to your place of origin or to the nearest convenient parallel dimension.",
+      "lucidity": 4,
+      "dreamDate": "9/7/2023",
+      "emotions": [
+        {
+          "__typename": "Emotion",
+          "name": "Grateful"
+        },
+        {
+          "__typename": "Emotion",
+          "name": "Curious"
+        }
+      ],
+      "tags": [
+        {
+          "__typename": "Tag",
+          "name": "Stange place"
+        },
+        {
+          "__typename": "Tag",
+          "name": "School"
+        }
+      ]
+    }
+  ]
 }
-]

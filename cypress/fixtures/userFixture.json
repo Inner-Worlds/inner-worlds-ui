@@ -10,22 +10,18 @@
             "dreamDate": "1/7/2023",
             "emotions": [
                 {
-                    "id": "13",
-                    "name": "Skin the Cat"
+                    "name": "Excitement"
                 },
                 {
-                    "id": "14",
-                    "name": "Wife Soup"
+                    "name": "Happiness"
                 }
             ],
             "tags": [
                 {
-                    "id": "13",
-                    "name": "cod"
+                    "name": "Adventure"
                 },
                 {
-                    "id": "14",
-                    "name": "mole"
+                    "name": "Mystery"
                 }
             ]
         }
