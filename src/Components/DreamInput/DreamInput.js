@@ -14,8 +14,9 @@ const DreamInput = ({ user, updateDreams }) => {
   const [selectedEmotion, setSelectedEmotion] = useState([]);
   const [selectedTag, setSelectedTag] = useState([]);
   const [lucidityLevel, setLucidityLevel] = useState(0);
-  const history = useHistory();
+  const [submitError, setSubmitError] = useState({});
   const [createDream] = useMutation(CREATE_DREAM);
+  const history = useHistory();
 
   const emotionOptions = getEmotionOptions();
   const tagOptions = getTagOptions();
@@ -34,12 +35,13 @@ const DreamInput = ({ user, updateDreams }) => {
     };
 
     try {
-      const { data } = await createDream({ variables: { input: dreamData } });
-      const newDream = data.createDream
+      const { data, error } = await createDream({ variables: { input: dreamData } });
+      const newDream = data.createDream;
       updateDreams(newDream);
-      console.log(data);
+      if (error) throw new Error(error);
     } catch (error) {
-      console.log(error.message);
+      setSubmitError(error);
+      return;
     }
 
     setDate("");
@@ -118,6 +120,7 @@ const DreamInput = ({ user, updateDreams }) => {
             Submit
           </button>
         </form>
+        {submitError.message && <h1 className="error">Something went wrong, try again later.</h1>}
       </div>
     </div>
   );

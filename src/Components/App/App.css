@@ -8,6 +8,7 @@
 }
 
 .error {
+  text-align: center;
   font-size: clamp(1rem, 2vw, 2rem);
   color: red;
   text-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
