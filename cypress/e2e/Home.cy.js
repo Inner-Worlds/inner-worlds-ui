@@ -46,27 +46,25 @@ describe('Home page', () => {
     cy.get('.multi-select').eq(1).contains('Select Tags..');
   });
   
-  // it('should handle dream submission error', () => {
-  //   cy.intercept('POST', '/graphql', (req) => {
-  //     req.reply({
-  //       statusCode: 500,
-  //       body: {
-  //         errors: [{ message: 'Please fill out this field' }]
-  //       }
-  //     });
-  //   });
+  it('should handle dream submission error', () => {
+    cy.intercept('POST', '/graphql', (req) => {
+      req.reply({
+        statusCode: 500,
+        body: {
+          errors: [{ message: 'Please fill out this field' }]
+        }
+      });
+    });
     
-  //   cy.get('[placeholder="My Dream Title.."]').type('Vizzini');
-  //   cy.get('textarea').type('I collect spores, molds, and fungus.');
-  //   cy.get(".multi-select").eq(0).click();
-  //   cy.get("#react-select-3-option-0").eq(0).select('Sad').click();
-  //   cy.get(".select-styling__option").eq(1).select('Happy').click();
-  //   cy.get(".multi-select").eq(1).click();
-  //   cy.get(".select-styling__option").eq(0).select('Flying').click();
-  //   cy.get(".select-styling__option").eq(1).select('Work').click();
-  //   cy.get('input[type="range"]').invoke("val", 2).trigger("change");
-  //   cy.get("button[type='submit']").click();
-  // });
+    cy.get('[placeholder="My Dream Title.."]').type('Vizzini');
+    cy.get('textarea').type('I collect spores, molds, and fungus.');
+    cy.get(".multi-select").eq(0).click();
+    cy.get(".select-styling__option").eq(0).contains('Happy').click();
+    cy.get(".multi-select").eq(1).click();
+    cy.get(".select-styling__option").eq(0).contains('Flying').click();
+    cy.get('input[type="range"]').invoke("val", 2).trigger("change");
+    cy.get("button[type='submit']").click();
+  });
 
   it('should be able to select a date and type a title and description of the dream', () => {
     cy.get('[type="date"]').click().then(() => {
@@ -77,12 +75,10 @@ describe('Home page', () => {
   });
 
   it('should be able to select emotions and tags about the dream and the lucidity level', () => {
-    cy.get(".multi-select").click();
-    cy.get(".select-styling__option").select('Angry').click();
-    cy.get(".select-styling__option").select('Confused').click();
-    cy.get(".multi-select").click();
-    cy.get(".select-styling__option").select('School').click();
-    cy.get(".select-styling__option").select('Falling').click();
+    cy.get(".multi-select").eq(0).click();
+    cy.get(".select-styling__option").contains('Angry').click();
+    cy.get(".multi-select").eq(1).click();
+    cy.get(".select-styling__option").contains('School').click();
     cy.get('input[type="range"]').invoke("val", 4).trigger("change");
   });
 
