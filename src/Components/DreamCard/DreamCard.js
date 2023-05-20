@@ -13,7 +13,6 @@ const DreamCard = ({ id, date, title, description, emotions, tags, lucidity, del
   }
 
   const handleSave = () => {
-    console.log(newDate)
     if (
       date !== newDate ||
       title !== newTitle ||
