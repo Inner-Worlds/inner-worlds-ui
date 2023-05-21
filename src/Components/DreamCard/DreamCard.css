@@ -37,6 +37,7 @@
   max-width: 40ch;
   font-size: calc(var(--card-font-size) / 1.7);
   text-align: center;
+  word-wrap: break-word;
 }
 
 .separator {
