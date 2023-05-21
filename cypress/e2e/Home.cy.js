@@ -25,7 +25,6 @@ describe('Home page', () => {
   });
 
   it('should navigate to My Dreams page when My Dreams link is clicked', () => {
-    cy.intercept('POST', 'https://inner-worlds-graphql-api.onrender.com/graphql');
     cy.get('.nav-link2').click();
     cy.url().should('include', '/dreams');
   });
@@ -83,6 +82,9 @@ describe('Home page', () => {
   });
 
   it('should be able to submit their dream', () => {
+    cy.intercept('POST', 'https://inner-worlds-graphql-api.onrender.com/graphql');
     cy.get("button[type='submit']").click();
+    cy.visit('http://localhost:3000/dreams');
+    cy.url().should('include', '/dreams');
   });
 });

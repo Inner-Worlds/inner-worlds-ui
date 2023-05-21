@@ -1,5 +1,10 @@
 {
-  "dreams": [
+  "data": {
+      "user": {
+          "id": "3",
+          "name": "Brown Widow",
+          "email": "dalton.hauck@brekke-murazik.test",
+          "dreams":[
     {
       "id": "7",
       "title": "Prince Humperdinck",
@@ -8,13 +13,13 @@
       "dreamDate": "1/7/2023",
       "emotions": [
         {
-          "__typename": "Emotion",
+          "id": "5",
           "name": "Happy"
         }
       ],
       "tags": [
         {
-          "__typename": "Tag",
+          "id": "5",
           "name": "Work"
         }
       ]
@@ -27,21 +32,21 @@
       "dreamDate": "4/25/2023",
       "emotions": [
         {
-          "__typename": "Emotion",
+          "id": "22",
           "name": "Anxious"
         },
         {
-          "__typename": "Emotion",
+          "id": "22",
           "name": "Curious"
         }
       ],
       "tags": [
         {
-          "__typename": "Tag",
+          "id": "10",
           "name": "School"
         },
         {
-          "__typename": "Tag",
+          "id": "10",
           "name": "Water"
         }
       ]
@@ -54,24 +59,80 @@
       "dreamDate": "9/7/2023",
       "emotions": [
         {
-          "__typename": "Emotion",
+          "id": "16",
           "name": "Grateful"
         },
         {
-          "__typename": "Emotion",
+          "id": "16",
           "name": "Curious"
         }
       ],
       "tags": [
         {
-          "__typename": "Tag",
+          "id": "45",
           "name": "Stange place"
         },
         {
-          "__typename": "Tag",
+          "id": "45",
           "name": "School"
         }
       ]
-    }
+    },
+    {
+      "id": "7",
+      "title": "Vizzini",
+      "description": "I collect spores, molds, and fungus.",
+      "lucidity": 2,
+      "dreamDate": "1/4/2023",
+      "emotions": [
+          {
+              "id": "13",
+              "name": "Sad"
+          },
+          {
+              "id": "14",
+              "name": "Happy"
+          }
+      ],
+      "tags": [
+          {
+              "id": "13",
+              "name": "Flying"
+          },
+          {
+              "id": "14",
+              "name": "Work"
+          }
+      ]
+  },
+  {
+      "id": "9",
+      "title": "Yellin",
+      "description": "We have the tools, and we have the talent!",
+      "lucidity": 4,
+      "dreamDate": "1/14/2023",
+      "emotions": [
+          {
+              "id": "17",
+              "name": "Angry"
+          },
+          {
+              "id": "18",
+              "name": "Confused"
+          }
+      ],
+      "tags": [
+          {
+              "id": "17",
+              "name": "School"
+          },
+          {
+              "id": "18",
+              "name": "Falling"
+          }
+      ]
+  }
   ]
+}
+}
 }
