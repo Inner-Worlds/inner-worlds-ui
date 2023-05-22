@@ -17,9 +17,6 @@ const DreamInput = ({ user, updateDreams }) => {
   const history = useHistory();
   const [createDream] = useMutation(CREATE_DREAM);
 
-  // const emotionOptions = getEmotionOptions();
-  // const tagOptions = getTagOptions();
-
   const { data: tagData } = useQuery(GET_DEFAULT_TAGS);
   const { data: emotionData } = useQuery(GET_DEFAULT_EMOTIONS);
 
