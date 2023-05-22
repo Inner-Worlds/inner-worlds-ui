@@ -90,3 +90,19 @@ export const UPDATE_DREAM = gql`
     }
   }
 `;
+
+export const GET_DEFAULT_TAGS = gql`
+query {
+  defaultTags {
+    name
+  }
+}
+`
+
+export const GET_DEFAULT_EMOTIONS = gql`
+query {
+  defaultEmotions {
+    name
+  }
+}
+`
