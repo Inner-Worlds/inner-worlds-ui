@@ -26,11 +26,12 @@ const DreamCard = ({ id, date, title, description, emotions, tags, lucidity, del
         lucidity: newLucidity
       };
       updateDream(id, updatedDream);
-      setNewDate(formatDate(newDate));
+      // setNewDate(formatDate(newDate));
     };
     setEditMode(false);
   };
 
+  
   const formatDate = (inputDate) => {
     if (inputDate.includes('-')) {
       const [year, month, day] = inputDate.split("-");
@@ -38,8 +39,7 @@ const DreamCard = ({ id, date, title, description, emotions, tags, lucidity, del
     } else {
       return inputDate;
     };
-  };
-  
+  }
 
   const sort = type => {
     if (type === 'emotions') {
@@ -77,7 +77,7 @@ const DreamCard = ({ id, date, title, description, emotions, tags, lucidity, del
   
   return (
     <section className="dream-card" id={`dream ${id}`}>
-      {editMode ? <input className="date-edit" type="date" value={newDate} onChange={(e) => setNewDate(e.target.value)} /> :<p className="date">{date}</p>}
+      {editMode ? <input className="date-edit" type="date" value={newDate} onChange={(e) => setNewDate(e.target.value)} /> :<p className="date">{formatDate(date)}</p>}
       {editMode ? <input className="title-edit" type="text" value={newTitle} onChange={(e) => setNewTitle(e.target.value)} /> : <h1 className="title">{title}</h1>}
       {editMode ? <input className="description-edit" type="text" value={newDescription} onChange={(e) => setNewDescription(e.target.value)} /> : <p className="description">{description}</p>}
       <section className="list-container">
