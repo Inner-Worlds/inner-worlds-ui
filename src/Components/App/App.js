@@ -6,18 +6,23 @@ import DreamInput from "../DreamInput/DreamInput";
 import DreamList from "../DreamList/DreamList";
 import NotFound from "../NotFound/NotFound";
 import Nav from "../Nav/Nav";
-import { GET_USER, DELETE_DREAM, UPDATE_DREAM } from "../../queries";
+import { GET_USER, DELETE_DREAM, UPDATE_DREAM, GET_USER_DREAMS } from "../../queries";
 import { useLazyQuery, useMutation } from "@apollo/client";
 
 
 const App = () => {
   const [user, setUser] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
-  const [getUser, { client, loading, error }] = useLazyQuery(GET_USER, { onCompleted: data => setUser(data.user) });
+  const [getUser, { client, loading, error, data }] = useLazyQuery(GET_USER, { onCompleted: data => setUser(data.user) });
   const [deleteDream] = useMutation(DELETE_DREAM);
-  const [updateDream] = useMutation(UPDATE_DREAM);
+  const [updateDream] = useMutation(UPDATE_DREAM, {
+    refetchQueries: [{ query: GET_USER_DREAMS, variables: { id: user.id } }]
+  });
+
   const history = useHistory();
- 
+  // console.log('this is our user: ', user)
+  console.log('data', data)
+
   useEffect(() => {
     if (user.id && history.location.pathname !== '/dreams') {
       history.push("/home");
@@ -44,6 +49,7 @@ const App = () => {
   };
 
   const updateSingleDream = (dreamId, dreamUpdates) => {
+    console.log('Updating dream with ID:', dreamId, 'Updates:', dreamUpdates);
     updateDream({ variables: { id: dreamId, ...dreamUpdates } });
     setUser((prevUser) => {
       const updatedDreams = prevUser.dreams.map((dream) => {
@@ -52,6 +58,7 @@ const App = () => {
         }
         return dream;
       });
+      console.log('anything; ', { ...prevUser, dreams: updatedDreams })
       return { ...prevUser, dreams: updatedDreams };
     });
   };
@@ -88,7 +95,7 @@ const App = () => {
             render={() => (
               <>
                 <Nav handleLogOut={handleLogOut} />
-                <DreamList dreams={user.dreams} deleteDream={deleteSingleDream} updateDream={updateSingleDream} />
+                <DreamList userID={user.id} dreams={user.dreams} deleteDream={deleteSingleDream} updateDream={updateSingleDream} />
               </>
             )}
           />

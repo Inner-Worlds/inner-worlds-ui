@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import { useMutation } from "@apollo/client";
+import { DELETE_DREAM_EMOTION, DELETE_DREAM_TAG, GET_USER_DREAMS } from "../../queries";
 import "./DreamCard.css";
 
 const DreamCard = ({
+  userID, 
   id,
   date,
   title,
@@ -17,6 +20,27 @@ const DreamCard = ({
   const [newTitle, setNewTitle] = useState(title);
   const [newLucidity, setNewLucidity] = useState(lucidity);
   const [newDescription, setNewDescription] = useState(description);
+  const [newEmotions, setNewEmotions] = useState(emotions);
+  const [newTags, setNewTags] = useState(tags);
+
+  const [deleteEmotion] = useMutation(DELETE_DREAM_EMOTION, {
+    refetchQueries: [{ query: GET_USER_DREAMS, variables: { id: userID } }],
+  });
+  
+  const [deleteTag] = useMutation(DELETE_DREAM_TAG, {
+    refetchQueries: [{ query: GET_USER_DREAMS, variables: { id: userID } }],
+  });
+
+  const handleDeleteEmotion = (emotionId) => {
+    deleteEmotion({ variables: { dreamId: id, emotionId } });
+    setNewEmotions((prevEmotions) => prevEmotions.filter((emotion) => emotion.id !== emotionId));
+  };
+
+  const handleDeleteTag = (tagId) => {
+    deleteTag({ variables: { dreamId: id, tagId } });
+    setNewTags((prevTags) => prevTags.filter((tag) => tag.id !== tagId));
+  };
+  
 
   const handleEdit = () => {
     setEditMode(true);
@@ -51,9 +75,9 @@ const DreamCard = ({
 
   const sort = (type) => {
     if (type === "emotions") {
-      return [...emotions].sort((x, y) => x.name.length - y.name.length);
+      return [...newEmotions].sort((x, y) => x.name.length - y.name.length);
     } else if (type === "tags") {
-      return [...tags].sort((x, y) => x.name.length - y.name.length);
+      return [...newTags].sort((x, y) => x.name.length - y.name.length);
     }
   };
 
@@ -62,10 +86,18 @@ const DreamCard = ({
       return (
         <li
           key={`tag${tag.id}`}
-          className={tag.name.length > 10 ? "span-across" : ""}
+          className={newTags.length > 10 ? "span-across" : ""}
           data-tagid={tag.id}
         >
           {tag.name}
+          {editMode && (
+          <button
+            className="delete-button"
+            onClick={() => handleDeleteTag(tag.id)}
+          >
+            X
+          </button>
+        )}
         </li>
       );
     });
@@ -76,10 +108,18 @@ const DreamCard = ({
       return (
         <li
           key={`emotion${emotion.id}`}
-          className={emotion.name.length > 9 ? "span-across" : ""}
+          className={newEmotions.length > 9 ? "span-across" : ""}
           data-emotionid={emotion.id}
         >
           {emotion.name}
+          {editMode && (
+          <button
+            className="delete-button"
+            onClick={() => handleDeleteEmotion(emotion.id)}
+          >
+            X
+          </button>
+        )}
         </li>
       );
     });
@@ -121,18 +161,18 @@ const DreamCard = ({
         <section className="emotions-container">
           <h2 className="list-head">Emotions</h2>
           <ul
-            className={emotions.length > 5 ? "card-list" : "card-list no-grid"}
+            className={newEmotions.length > 5 ? "card-list" : "card-list no-grid"}
           >
-            {emotions.length > 1
+            {newEmotions.length > 1
               ? mapEmotions(sort("emotions"))
-              : mapEmotions(emotions)}
+              : mapEmotions(newEmotions)}
           </ul>
         </section>
         <div className="styling separator"></div>
         <section className="tags-container">
           <h2 className="list-head">Tags</h2>
           <ul className={tags.length > 5 ? "card-list" : "card-list no-grid"}>
-            {tags.length > 1 ? mapTags(sort("tags")) : mapTags(tags)}
+            {tags.length > 1 ? mapTags(sort("tags")) : mapTags(newTags)}
           </ul>
         </section>
       </section>

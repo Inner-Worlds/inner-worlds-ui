@@ -106,3 +106,19 @@ query {
   }
 }
 `
+
+export const DELETE_DREAM_TAG = gql`
+  mutation deleteDreamTag($dreamId: ID!, $tagId: ID!) {
+    deleteDreamTag(input: { dreamId: $dreamId, tagId: $tagId }) {
+      id
+    }
+  }
+`;
+
+export const DELETE_DREAM_EMOTION = gql`
+  mutation deleteDreamEmotion($dreamId: ID!, $emotionId: ID!) {
+    deleteDreamEmotion(input: { dreamId: $dreamId, emotionId: $emotionId }) {
+      id
+    }
+  }
+`;
