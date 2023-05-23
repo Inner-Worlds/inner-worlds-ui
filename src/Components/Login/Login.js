@@ -4,7 +4,7 @@ import djText from "../../assets/Dream Journal - (600 x 100px).svg";
 import orSat from "../../assets/Saturn Orange - (140 x 85px).svg";
 import tealSat from "../../assets/Saturn Teal - (140 x 85px).svg";
 
-const Login = ({ loginUser, tryLogin }) => {
+const Login = ({ loginUser, tryLogin, error }) => {
   return (
     <main className="login">
       <div className="styling login-design">
@@ -39,6 +39,7 @@ const Login = ({ loginUser, tryLogin }) => {
             <p>User 2</p>
           </button>
         </section>
+        {error?.message && <h1 className="error">Something went wrong, please try again.</h1>}
       </section>
     </main>
   );

@@ -21,6 +21,8 @@ const App = () => {
   const [updateDream] = useMutation(UPDATE_DREAM, {
     refetchQueries: [{ query: GET_USER, variables: { id: user.id } }],
 });
+const [deleteError, setDeleteError] = useState({});
+const [saveError, setSaveError] = useState({});
 
   useEffect(() => {
     if (user.id && history.location.pathname !== '/dreams') {
@@ -39,36 +41,46 @@ const App = () => {
     }));
   };
   
-  const deleteSingleDream = dreamId => {
-    deleteDream({ variables: { id: dreamId } });
-    setUser(prevUser => ({
-      ...prevUser,
-      dreams: prevUser.dreams.filter(dream => dream.id !== dreamId)
-    }));
+  const deleteSingleDream = async dreamId => {
+    try {
+      const { error } = await deleteDream({ variables: { id: dreamId } });
+      if (error) throw new Error(error);
+      setUser(prevUser => ({
+        ...prevUser,
+        dreams: prevUser.dreams.filter(dream => dream.id !== dreamId)
+      }));
+    } catch (error) {
+      setDeleteError(error);
+    }
   };
 
-  const updateSingleDream = (dreamId, dreamUpdates) => {
-    updateDream({ variables: { id: dreamId, ...dreamUpdates } });
-    setUser(prevUser => {
-      const prevDreams = [...prevUser.dreams];
-      const updatedDream = {...prevUser.dreams.find(dream => dream.id === dreamId)};
-
-      updatedDream.dreamDate = dreamUpdates.dreamDate;
-      updatedDream.title = dreamUpdates.title;
-      updatedDream.description = dreamUpdates.description;
-      updatedDream.lucidity = dreamUpdates.lucidity;
-
-      return {
-        ...prevUser,
-        dreams: prevDreams.map(dream => {
-          if (dream.id === dreamId) {
-            return updatedDream;
-          } else {
-            return dream;
-          }
-        })
-      };
-    });
+  const updateSingleDream = async (dreamId, dreamUpdates) => {
+    try {
+      const { error } = updateDream({ variables: { id: dreamId, ...dreamUpdates } });
+      if (error) throw new Error (error);
+      setUser(prevUser => {
+        const prevDreams = [...prevUser.dreams];
+        const updatedDream = {...prevUser.dreams.find(dream => dream.id === dreamId)};
+  
+        updatedDream.dreamDate = dreamUpdates.dreamDate;
+        updatedDream.title = dreamUpdates.title;
+        updatedDream.description = dreamUpdates.description;
+        updatedDream.lucidity = dreamUpdates.lucidity;
+  
+        return {
+          ...prevUser,
+          dreams: prevDreams.map(dream => {
+            if (dream.id === dreamId) {
+              return updatedDream;
+            } else {
+              return dream;
+            }
+          })
+        };
+      });
+    } catch (error) {
+      setSaveError(error);
+    }
   };
 
   const updateEmotionsAndTags = (dreamId, emotions, tags) => {
@@ -111,7 +123,7 @@ const App = () => {
   return (
       <div className="App">
         <Switch>
-          <Route exact path="/" render={() => <Login loginUser={getUser} tryLogin={tryLogin}/>} />
+          <Route exact path="/" render={() => <Login loginUser={getUser} tryLogin={tryLogin} error={error}/>} />
           <Route
             exact
             path="/home"
@@ -128,7 +140,7 @@ const App = () => {
             render={() => (
               <>
                 <Nav handleLogOut={handleLogOut} currentlyEditing={currentlyEditing} />
-                <DreamList userID={user.id} dreams={user.dreams} deleteDream={deleteSingleDream} updateDream={updateSingleDream} updateEmotionsAndTags={updateEmotionsAndTags} setEditing={setCurrentlyEditing} currentlyEditing={currentlyEditing}/>
+                <DreamList userID={user.id} dreams={user.dreams} deleteDream={deleteSingleDream} updateDream={updateSingleDream} updateEmotionsAndTags={updateEmotionsAndTags} setEditing={setCurrentlyEditing} currentlyEditing={currentlyEditing} deleteCardError={deleteError} saveError={saveError}/>
               </>
             )}
           />
