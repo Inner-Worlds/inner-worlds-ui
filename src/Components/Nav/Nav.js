@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
+import { NavLink } from "react-router-dom";
 import Logo from "../../assets/Inner Worlds - HOME Logo (500 × 300 px).svg";
 import "./Nav.css";
 
@@ -16,7 +16,10 @@ const Nav = ({ handleLogOut }) => {
         <NavLink to="/dreams" className="nav-link2">
           My Dreams
         </NavLink>
-        <NavLink to="/" className="nav-link3" onClick={handleLogOut}>
+        <NavLink to="/chart" className="nav-link3">
+          DreamChart
+        </NavLink>
+        <NavLink to="/" className="nav-link4" onClick={handleLogOut}>
           Log Out
         </NavLink>
       </div>

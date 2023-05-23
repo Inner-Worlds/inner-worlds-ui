@@ -1,0 +1,18 @@
+.chart{
+    --card-font-size: clamp(1rem, 2vw, 2rem);
+    font-family: 'Livvic', sans-serif;
+    height: 90%;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
+  }

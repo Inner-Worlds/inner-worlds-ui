@@ -8,6 +8,7 @@ import NotFound from "../NotFound/NotFound";
 import Nav from "../Nav/Nav";
 import { GET_USER, DELETE_DREAM, UPDATE_DREAM } from "../../queries";
 import { useLazyQuery, useMutation } from "@apollo/client";
+import DreamChart from "../DreamChart/DreamChart";
 
 
 const App = () => {
@@ -92,6 +93,16 @@ const App = () => {
               </>
             )}
           />
+             <Route
+            exact path="/chart" 
+            render={() => (
+              <>
+                <Nav handleLogOut={handleLogOut} />
+                <DreamChart />
+              </>
+            )}
+          />
+  
           <Route
             path="*"
             render={() => (
