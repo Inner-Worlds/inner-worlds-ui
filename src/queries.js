@@ -90,3 +90,27 @@ export const UPDATE_DREAM = gql`
     }
   }
 `;
+export const GET_USER_STATS = gql`
+  query {
+    user(id: 1) {
+      stats {
+        currentStreak
+        longestStreak
+        dreamNumMonth
+        dreamNumWeek
+        totalDreams
+        averageLucidity
+        top5Emotions {
+          name
+          frequency
+          percent
+        }
+        top5Tags {
+          name
+          frequency
+          percent
+        }
+      }
+    }
+  }
+`;
