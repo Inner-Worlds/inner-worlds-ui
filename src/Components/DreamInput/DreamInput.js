@@ -69,7 +69,7 @@ const DreamInput = ({ user, updateDreams }) => {
         alt="Floating Astronaut"
       />
       <div className="form-container">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={(e) => handleSubmit(e)}>
           <h2>Dream Journal</h2>
           <input
             type="date"
@@ -84,6 +84,7 @@ const DreamInput = ({ user, updateDreams }) => {
             placeholder="My Dream Title.."
             aria-label="Title"
             onChange={(e) => setTitle(e.target.value)}
+            maxLength={50}
             required
           />
           <textarea

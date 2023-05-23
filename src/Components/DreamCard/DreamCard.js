@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
-import { DELETE_DREAM_EMOTION, DELETE_DREAM_TAG, GET_USER_DREAMS } from "../../queries";
+import { DELETE_DREAM_EMOTION, DELETE_DREAM_TAG } from "../../queries";
 import "./DreamCard.css";
 
 const DreamCard = ({
@@ -14,6 +14,8 @@ const DreamCard = ({
   lucidity,
   deleteDream,
   updateDream,
+  updateEmotionsAndTags,
+  setEditing
 }) => {
   const [editMode, setEditMode] = useState(false);
   const [newDate, setNewDate] = useState(date);
@@ -23,13 +25,8 @@ const DreamCard = ({
   const [newEmotions, setNewEmotions] = useState(emotions);
   const [newTags, setNewTags] = useState(tags);
 
-  const [deleteEmotion] = useMutation(DELETE_DREAM_EMOTION, {
-    refetchQueries: [{ query: GET_USER_DREAMS, variables: { id: userID } }],
-  });
-  
-  const [deleteTag] = useMutation(DELETE_DREAM_TAG, {
-    refetchQueries: [{ query: GET_USER_DREAMS, variables: { id: userID } }],
-  });
+  const [deleteEmotion] = useMutation(DELETE_DREAM_EMOTION);
+  const [deleteTag] = useMutation(DELETE_DREAM_TAG);
 
   const handleDeleteEmotion = (emotionId) => {
     deleteEmotion({ variables: { dreamId: id, emotionId } });
@@ -40,28 +37,47 @@ const DreamCard = ({
     deleteTag({ variables: { dreamId: id, tagId } });
     setNewTags((prevTags) => prevTags.filter((tag) => tag.id !== tagId));
   };
-  
 
   const handleEdit = () => {
     setEditMode(true);
+    setEditing(true);
   };
 
   const handleSave = () => {
-    if (
+    const updatedDream = {
+      dreamDate: newDate,
+      title: newTitle,
+      description: newDescription,
+      lucidity: newLucidity,
+    };
+
+    if ((
+        date !== newDate || 
+        title !== newTitle || 
+        description !== newDescription || 
+        lucidity !== newLucidity
+      ) && (
+        emotions.length !== newEmotions.length || 
+        tags.length !== newTags.length
+      )) {
+      updateDream(id, updatedDream);
+      updateEmotionsAndTags(id, newEmotions, newTags);
+    } else if (
       date !== newDate ||
       title !== newTitle ||
       description !== newDescription ||
       lucidity !== newLucidity
     ) {
-      const updatedDream = {
-        dreamDate: newDate,
-        title: newTitle,
-        description: newDescription,
-        lucidity: newLucidity,
-      };
       updateDream(id, updatedDream);
-    }
+    } else if (
+      emotions.length !== newEmotions.length ||
+      tags.length !== newTags.length
+    ) {
+      updateEmotionsAndTags(id, newEmotions, newTags);
+    };
+
     setEditMode(false);
+    setEditing(false);
   };
 
   const formatDate = (inputDate) => {
@@ -143,12 +159,13 @@ const DreamCard = ({
           type="text"
           value={newTitle}
           onChange={(e) => setNewTitle(e.target.value)}
+          maxLength={50}
         />
       ) : (
         <h1 className="title">{title}</h1>
       )}
       {editMode ? (
-        <input
+        <textarea
           className="description-edit"
           type="text"
           value={newDescription}
@@ -188,21 +205,28 @@ const DreamCard = ({
       ) : (
         <p>Lucidity: {lucidity} / 5</p>
       )}
-      <div className="dream-buttons">
-        <button
-          className="edit-dream-button fa-solid fa-pen-to-square"
-          onClick={handleEdit}
-        ></button>
-        <button
-          className="delete-dream-button fa-solid fa-trash-can"
-          onClick={() => deleteDream(id)}
-        ></button>
-        {editMode && (
-          <button className="save-dream-button" onClick={handleSave}>
+      {editMode ? (
+        <div className="dream-buttons">
+          <button className="save-dream-button" onClick={() => handleSave()}>
             SAVE
           </button>
+          <button
+            className="delete-dream-button fa-solid fa-trash-can"
+            onClick={() => deleteDream(id)}
+          ></button>
+        </div>
+        ) : (
+        <div className="dream-buttons">
+          <button
+            className="edit-dream-button fa-solid fa-pen-to-square"
+            onClick={() => handleEdit()}
+          ></button>
+          <button
+            className="delete-dream-button fa-solid fa-trash-can"
+            onClick={() => deleteDream(id)}
+          ></button>
+        </div>
         )}
-      </div>
     </section>
   );
 };
