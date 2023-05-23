@@ -1,0 +1,15 @@
+{
+  "data": {
+    "defaultTags": [
+      {
+        "name": "Flying"
+      },
+      {
+        "name": "Falling"
+      },
+      {
+        "name": "Chased"
+      }
+    ]
+  }
+}
