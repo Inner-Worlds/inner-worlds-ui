@@ -16,8 +16,6 @@ const DreamChart = ({ dreamStats }) => {
 
   useEffect(() => {
     if (!loading && !error) {
-      const stats = data.user.stats;
-
       if (chartInstanceRef.current) {
         chartInstanceRef.current.destroy();
       }
@@ -48,9 +46,6 @@ const DreamChart = ({ dreamStats }) => {
     return <div>Error: {error.message}</div>;
   }
 
-  const stats = data.user.stats;
-  console.log("hi", data.user.stats);
-
   const pieOptions = {
     plugins: {
       legend: {
@@ -67,10 +62,10 @@ const DreamChart = ({ dreamStats }) => {
   };
 
   const pieEmotionsData = {
-    labels: stats.top5Emotions.map((emotion) => emotion.name),
+    labels: data.user.stats.top5Emotions.map((emotion) => emotion.name),
     datasets: [
       {
-        data: stats.top5Emotions.map((emotion) => emotion.frequency),
+        data: data.user.stats.top5Emotions.map((emotion) => emotion.frequency),
         backgroundColor: ["#FFAF00", "#D34A24", "#992800", "#47DFD1", "white"],
         borderWidth: 1,
       },
@@ -78,10 +73,10 @@ const DreamChart = ({ dreamStats }) => {
   };
 
   const pieTagsData = {
-    labels: stats.top5Tags.map((tag) => tag.name),
+    labels: data.user.stats.top5Tags.map((tag) => tag.name),
     datasets: [
       {
-        data: stats.top5Tags.map((tag) => tag.frequency),
+        data: data.user.stats.top5Tags.map((tag) => tag.frequency),
         backgroundColor: ["#FFAF00", "#D34A24", "#992800", "#47DFD1", "white"],
         borderWidth: 1,
       },
@@ -143,27 +138,27 @@ const DreamChart = ({ dreamStats }) => {
           </h2>
           <div className="number-stat">
             <div className="number-title">Current Streak</div>
-            <div className="number-value">{stats.currentStreak}</div>
+            <div className="number-value">{data.user.stats.currentStreak}</div>
           </div>
           <div className="number-stat">
             <div className="number-title">Longest Streak</div>
-            <div className="number-value">{stats.longestStreak}</div>
+            <div className="number-value">{data.user.stats.longestStreak}</div>
           </div>
           <div className="number-stat">
             <div className="number-title">Dreams (Month)</div>
-            <div className="number-value">{stats.dreamNumMonth}</div>
+            <div className="number-value">{data.user.stats.dreamNumMonth}</div>
           </div>
           <div className="number-stat">
             <div className="number-title">Dreams (Week)</div>
-            <div className="number-value">{stats.dreamNumWeek}</div>
+            <div className="number-value">{data.user.stats.dreamNumWeek}</div>
           </div>
           <div className="number-stat">
             <div className="number-title">Total Dreams</div>
-            <div className="number-value">{stats.totalDreams}</div>
+            <div className="number-value">{data.user.stats.totalDreams}</div>
           </div>
           <div className="number-stat">
             <div className="number-title">Average Lucidity</div>
-            <div className="number-value">{stats.averageLucidity}</div>
+            <div className="number-value">{data.user.stats.averageLucidity}</div>
           </div>
         </div>
         <div
