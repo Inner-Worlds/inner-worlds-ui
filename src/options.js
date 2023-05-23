@@ -2,19 +2,22 @@ import chroma from "chroma-js";
 
 export const generateColor = () => chroma.random().css();
 
-export const getEmotionOptions = (emotions) =>
+export const getEmotionOptions = (emotions) => 
   emotions.map((emotion) => ({
     value: emotion.name,
     label: emotion.name,
     color: generateColor(),
   }));
+  
 
-export const getTagOptions = (tags) =>
-  tags.map((tag) => ({
-    value: tag.name,
-    label: tag.name,
-    color: generateColor(),
-  }));
+export const getTagOptions = (tags) => 
+    tags.map((tag) => ({
+      value: tag.name,
+      label: tag.name,
+      color: generateColor(),
+    }));
+  
+ 
 
 export const colourStyles = {
   control: (styles) => ({ ...styles, backgroundColor: "white" }),
