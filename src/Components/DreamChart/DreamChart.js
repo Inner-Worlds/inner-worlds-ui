@@ -1,6 +1,6 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
-import { Line, Pie } from "react-chartjs-2";
+import {  Pie } from "react-chartjs-2";
 import { GET_USER_STATS } from "../../queries";
 import { Chart as chartJS } from "chart.js/auto";
 
@@ -20,6 +20,7 @@ const DreamChart = ({ dreamStats }) => {
   }
 
   const stats = data.user.stats;
+  console.log('hi', data.user.stats)
 
   const chartOptions = {
     scales: {
@@ -86,17 +87,18 @@ const DreamChart = ({ dreamStats }) => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        height: "100vh",
+        minHeight: "100vh",
       }}
     >
       <div
         className="dream-chart"
         style={{
           display: "flex",
-          justifyContent: "center",
+          flexDirection: "row",
+          justifyContent: "space-between",
           alignItems: "center",
-          height: "60%",
-          width: "60%",
+          height: "60vh",
+          width: "60vw",
           overflow: "hidden",
           position: "relative",
           background: "rgba(255, 255, 255, 0.4)",
@@ -162,6 +164,7 @@ const DreamChart = ({ dreamStats }) => {
             display: "flex",
             justifyContent: "space-between",
             marginTop: "20px",
+            width: "100%",
           }}
         >
           <div className="pie-chart">

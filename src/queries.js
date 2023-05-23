@@ -90,6 +90,38 @@ export const UPDATE_DREAM = gql`
     }
   }
 `;
+
+export const GET_DEFAULT_TAGS = gql`
+query {
+  defaultTags {
+    name
+  }
+}
+`
+
+export const GET_DEFAULT_EMOTIONS = gql`
+query {
+  defaultEmotions {
+    name
+  }
+}
+`
+
+export const DELETE_DREAM_TAG = gql`
+  mutation deleteDreamTag($dreamId: ID!, $tagId: ID!) {
+    deleteDreamTag(input: { dreamId: $dreamId, tagId: $tagId }) {
+      id
+    }
+  }
+`;
+
+export const DELETE_DREAM_EMOTION = gql`
+  mutation deleteDreamEmotion($dreamId: ID!, $emotionId: ID!) {
+    deleteDreamEmotion(input: { dreamId: $dreamId, emotionId: $emotionId }) {
+      id
+    }
+  }
+`;
 export const GET_USER_STATS = gql`
   query {
     user(id: 1) {

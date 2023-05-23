@@ -17,6 +17,9 @@ const Nav = ({ handleLogOut, currentlyEditing }) => {
           <NavLink to="/dreams" className="nav-link2">
             My Dreams
           </NavLink>
+          <NavLink to="/stats" className="nav-link4">
+            Dream Stats
+          </NavLink>
           <NavLink to="/" className="nav-link3" onClick={handleLogOut}>
             Log Out
           </NavLink>
@@ -30,6 +33,9 @@ const Nav = ({ handleLogOut, currentlyEditing }) => {
         <div className="nav-links">
           <NavLink to="/dreams" className="nav-link2">
             My Dreams
+          </NavLink>
+          <NavLink to="/stats" className="nav-link4"> 
+            Dream Stats
           </NavLink>
           <NavLink to="/" className="nav-link3" onClick={handleLogOut}>
             Log Out
