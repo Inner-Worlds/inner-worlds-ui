@@ -80,7 +80,7 @@ const DreamCard = ({
     setEditing(false);
   };
 
-  const formatDate = (inputDate) => {
+  const formatDateForDisplay = (inputDate) => {
     if (inputDate.includes("-")) {
       const [year, month, day] = inputDate.split("-");
       return `${month[0] === "0" ? month[1] : month}/${day}/${year}`;
@@ -88,6 +88,16 @@ const DreamCard = ({
       return inputDate;
     }
   };
+  
+  const formatDateForInput = (inputDate) => {
+    if (inputDate.includes("/")) {
+      const [month, day, year] = inputDate.split("/");
+      return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
+    } else {
+      return inputDate;
+    }
+  };
+  
 
   const sort = (type) => {
     if (type === "emotions") {
@@ -147,11 +157,11 @@ const DreamCard = ({
         <input
           className="date-edit"
           type="date"
-          value={newDate}
+          value={formatDateForInput(newDate)}
           onChange={(e) => setNewDate(e.target.value)}
         />
       ) : (
-        <p className="date">{formatDate(date)}</p>
+        <p className="date">{formatDateForDisplay(date)}</p>
       )}
       {editMode ? (
         <input

@@ -9,16 +9,18 @@ import Nav from "../Nav/Nav";
 import { GET_USER, DELETE_DREAM, UPDATE_DREAM } from "../../queries";
 import { useLazyQuery, useMutation } from "@apollo/client";
 
-
 const App = () => {
+  const history = useHistory();
   const [user, setUser] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
   const [currentlyEditing, setCurrentlyEditing] = useState(false);
   const [getUser, { client, loading, error }] = useLazyQuery(GET_USER, { onCompleted: data => setUser(data.user) });
-  const [deleteDream] = useMutation(DELETE_DREAM);
-  const [updateDream] = useMutation(UPDATE_DREAM);
-
-  const history = useHistory();
+  const [deleteDream] = useMutation(DELETE_DREAM, {
+    refetchQueries: [{ query: GET_USER, variables: { id: user.id } }],
+});
+  const [updateDream] = useMutation(UPDATE_DREAM, {
+    refetchQueries: [{ query: GET_USER, variables: { id: user.id } }],
+});
 
   useEffect(() => {
     if (user.id && history.location.pathname !== '/dreams') {
@@ -67,16 +69,6 @@ const App = () => {
         })
       };
     });
-    // setUser((prevUser) => {
-    //   const updatedDreams = prevUser.dreams.map((dream) => {
-    //     if (dream.id === dreamId) {
-    //       return { ...dream, ...dreamUpdates };
-    //     }
-    //     return dream;
-    //   });
-      
-    //   return { ...prevUser, dreams: updatedDreams };
-    // });
   };
 
   const updateEmotionsAndTags = (dreamId, emotions, tags) => {
@@ -107,7 +99,11 @@ const App = () => {
   };
   
   if (loading && !loggedIn) {
-    return <div>Loading...</div>
+    return (
+    <div className="loading-msg">
+      <span className="loading-text">Loading...</span>
+    </div>
+    )
   } else if (error) {
     return <div>{error.message}</div>
   }
