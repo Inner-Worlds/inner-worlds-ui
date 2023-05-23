@@ -3,8 +3,8 @@ import { useHistory } from "react-router-dom";
 import Select from "react-select";
 import Astronaut from "../../assets/Astronaut - (550 x 550px).svg";
 import "./DreamInput.css";
-import { useMutation } from "@apollo/client";
-import { CREATE_DREAM } from "../../queries";
+import { useMutation, useQuery } from "@apollo/client";
+import { CREATE_DREAM, GET_DEFAULT_EMOTIONS, GET_DEFAULT_TAGS } from "../../queries";
 import { getEmotionOptions, getTagOptions, colourStyles } from "../../options";
 
 const DreamInput = ({ user, updateDreams }) => {
@@ -17,8 +17,18 @@ const DreamInput = ({ user, updateDreams }) => {
   const history = useHistory();
   const [createDream] = useMutation(CREATE_DREAM);
 
-  const emotionOptions = getEmotionOptions();
-  const tagOptions = getTagOptions();
+  const { data: tagData } = useQuery(GET_DEFAULT_TAGS);
+  const { data: emotionData } = useQuery(GET_DEFAULT_EMOTIONS);
+
+  let emotionOptions = [];
+  let tagOptions = [];
+  if (emotionData) {
+    emotionOptions = getEmotionOptions(emotionData.defaultEmotions);
+  }
+
+  if (tagData) {
+    tagOptions = getTagOptions(tagData.defaultTags);
+  }
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -37,7 +47,6 @@ const DreamInput = ({ user, updateDreams }) => {
       const { data } = await createDream({ variables: { input: dreamData } });
       const newDream = data.createDream
       updateDreams(newDream);
-      console.log(data);
     } catch (error) {
       console.log(error.message);
     }
@@ -60,7 +69,7 @@ const DreamInput = ({ user, updateDreams }) => {
         alt="Floating Astronaut"
       />
       <div className="form-container">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={(e) => handleSubmit(e)}>
           <h2>Dream Journal</h2>
           <input
             type="date"
@@ -75,6 +84,7 @@ const DreamInput = ({ user, updateDreams }) => {
             placeholder="My Dream Title.."
             aria-label="Title"
             onChange={(e) => setTitle(e.target.value)}
+            maxLength={50}
             required
           />
           <textarea

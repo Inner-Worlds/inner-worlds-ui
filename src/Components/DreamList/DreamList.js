@@ -7,12 +7,14 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/effect-coverflow";
 
-const DreamList = ({ dreams, deleteDream, updateDream }) => {
-    if (!dreams.length) return <h1 className="no-dreams">Nothing logged, get dreamin!</h1>;
+const DreamList = ({ userID, dreams, deleteDream, updateDream, updateEmotionsAndTags, setEditing, currentlyEditing }) => {
+    if (!dreams?.length) return <h1 className="no-dreams">Nothing logged, get dreamin!</h1>;
 
     const dreamCards = dreams.map(dream => {
-        return <SwiperSlide key={dream.id}>
+        return <SwiperSlide key={`slide${dream.id}`}>
                     <DreamCard
+                        key={dream.id}
+                        userID={userID}
                         id={dream.id}
                         date={dream.dreamDate} 
                         title={dream.title} 
@@ -22,12 +24,15 @@ const DreamList = ({ dreams, deleteDream, updateDream }) => {
                         lucidity={dream.lucidity}
                         deleteDream={deleteDream}
                         updateDream={updateDream}
+                        updateEmotionsAndTags={updateEmotionsAndTags}
+                        setEditing={setEditing}
                     />
                 </SwiperSlide>
     });
     
     return (
         <>
+            {currentlyEditing && <h2 className="save-changes-msg">Please save your changes to leave edit mode!</h2>}
             <Swiper
                 effect="coverflow"
                 slidesPerView={3}

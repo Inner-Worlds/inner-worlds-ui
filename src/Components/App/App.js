@@ -10,20 +10,24 @@ import { GET_USER, DELETE_DREAM, UPDATE_DREAM } from "../../queries";
 import { useLazyQuery, useMutation } from "@apollo/client";
 import DreamChart from "../DreamChart/DreamChart";
 
-
 const App = () => {
+  const history = useHistory();
   const [user, setUser] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
+  const [currentlyEditing, setCurrentlyEditing] = useState(false);
   const [getUser, { client, loading, error }] = useLazyQuery(GET_USER, { onCompleted: data => setUser(data.user) });
-  const [deleteDream] = useMutation(DELETE_DREAM);
-  const [updateDream] = useMutation(UPDATE_DREAM);
-  const history = useHistory();
- 
+  const [deleteDream] = useMutation(DELETE_DREAM, {
+    refetchQueries: [{ query: GET_USER, variables: { id: user.id } }],
+});
+  const [updateDream] = useMutation(UPDATE_DREAM, {
+    refetchQueries: [{ query: GET_USER, variables: { id: user.id } }],
+});
+
   useEffect(() => {
     if (user.id && history.location.pathname !== '/dreams') {
       history.push("/home");
-    } else if (!user.id) {
-      history.push("/")
+    } else if (!user.id && (history.location.pathname === '/Dreams' || history.location.pathname === '/Home' || history.location.pathname === '/dreams' || history.location.pathname === '/home')) {
+      history.push("/");
     }
   }, [user, history]);
 
@@ -46,14 +50,46 @@ const App = () => {
 
   const updateSingleDream = (dreamId, dreamUpdates) => {
     updateDream({ variables: { id: dreamId, ...dreamUpdates } });
-    setUser((prevUser) => {
-      const updatedDreams = prevUser.dreams.map((dream) => {
-        if (dream.id === dreamId) {
-          return { ...dream, ...dreamUpdates };
-        }
-        return dream;
-      });
-      return { ...prevUser, dreams: updatedDreams };
+    setUser(prevUser => {
+      const prevDreams = [...prevUser.dreams];
+      const updatedDream = {...prevUser.dreams.find(dream => dream.id === dreamId)};
+
+      updatedDream.dreamDate = dreamUpdates.dreamDate;
+      updatedDream.title = dreamUpdates.title;
+      updatedDream.description = dreamUpdates.description;
+      updatedDream.lucidity = dreamUpdates.lucidity;
+
+      return {
+        ...prevUser,
+        dreams: prevDreams.map(dream => {
+          if (dream.id === dreamId) {
+            return updatedDream;
+          } else {
+            return dream;
+          }
+        })
+      };
+    });
+  };
+
+  const updateEmotionsAndTags = (dreamId, emotions, tags) => {
+    setUser(prevUser => {
+      const prevDreams = [...prevUser.dreams];
+      const newDream = {...prevUser.dreams.find(dream => dream.id === dreamId)};
+
+      newDream.emotions = emotions;
+      newDream.tags = tags;
+
+      return {
+        ...prevUser,
+        dreams: prevDreams.map(dream => {
+          if (dream.id === dreamId) {
+            return newDream;
+          } else {
+            return dream;
+          }
+        }),
+      };
     });
   };
 
@@ -64,7 +100,11 @@ const App = () => {
   };
   
   if (loading && !loggedIn) {
-    return <div>Loading...</div>
+    return (
+    <div className="loading-msg">
+      <span className="loading-text">Loading...</span>
+    </div>
+    )
   } else if (error) {
     return <div>{error.message}</div>
   }
@@ -88,8 +128,8 @@ const App = () => {
             path="/dreams"
             render={() => (
               <>
-                <Nav handleLogOut={handleLogOut} />
-                <DreamList dreams={user.dreams} deleteDream={deleteSingleDream} updateDream={updateSingleDream} />
+                <Nav handleLogOut={handleLogOut} currentlyEditing={currentlyEditing} />
+                <DreamList userID={user.id} dreams={user.dreams} deleteDream={deleteSingleDream} updateDream={updateSingleDream} updateEmotionsAndTags={updateEmotionsAndTags} setEditing={setCurrentlyEditing} currentlyEditing={currentlyEditing}/>
               </>
             )}
           />
