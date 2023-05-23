@@ -1,15 +1,44 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { useQuery } from "@apollo/client";
-import {  Pie } from "react-chartjs-2";
+import { Pie } from "react-chartjs-2";
 import { GET_USER_STATS } from "../../queries";
-import { Chart as chartJS } from "chart.js/auto";
+import Chart from "chart.js/auto";
 
 const DreamChart = ({ dreamStats }) => {
   const { loading, error, data } = useQuery(GET_USER_STATS, {
     variables: {
-      id: dreamStats,
+      id: dreamStats
     },
   });
+
+  const chartRef = useRef(null);
+  const chartInstanceRef = useRef(null);
+
+  useEffect(() => {
+    if (!loading && !error) {
+      const stats = data.user.stats;
+
+      if (chartInstanceRef.current) {
+        chartInstanceRef.current.destroy();
+      }
+
+      const chartInstance = new Chart(chartRef.current, {
+        type: "line",
+        data: {
+          labels: ["January", "February", "March", "April", "May", "June"],
+          datasets: [
+            {
+              label: "My Dataset",
+              data: [10, 20, 30, 40, 50, 60],
+            },
+          ],
+        },
+        options: {},
+      });
+
+      chartInstanceRef.current = chartInstance;
+    }
+  }, [loading, error, data]);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -20,28 +49,7 @@ const DreamChart = ({ dreamStats }) => {
   }
 
   const stats = data.user.stats;
-  console.log('hi', data.user.stats)
-
-  const chartOptions = {
-    scales: {
-      y: {
-        ticks: {
-          color: "white",
-          font: {
-            weight: "bold",
-          },
-        },
-      },
-      x: {
-        ticks: {
-          color: "white",
-          font: {
-            weight: "bold",
-          },
-        },
-      },
-    },
-  };
+  console.log("hi", data.user.stats);
 
   const pieOptions = {
     plugins: {
@@ -175,6 +183,9 @@ const DreamChart = ({ dreamStats }) => {
             <h3>Top 5 Tags</h3>
             <Pie data={pieTagsData} options={pieOptions} />
           </div>
+        </div>
+        <div>
+          <canvas ref={chartRef} />
         </div>
       </div>
     </div>
