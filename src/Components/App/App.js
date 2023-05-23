@@ -153,14 +153,20 @@ const App = () => {
             </>
           )}
         />
-        <Route exact path="/stats" render={() => ( 
-        <>
+     <Route
+  exact
+  path="/stats"
+  render={() =>
+    user.id ? (
+      <>
         <Nav handleLogOut={handleLogOut} />
-         <DreamChart stats={user.id} 
-         />
-         </> 
-         )} 
-         />
+        <DreamChart dreamStats={user.id} />
+      </>
+    ) : (
+      <div>Loading...</div> // Add a loading state or handle the case when user is not defined
+    )
+  }
+/>
         <Route
           path="*"
           render={() => (
