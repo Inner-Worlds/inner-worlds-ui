@@ -47,8 +47,8 @@ const DreamInput = ({ user, updateDreams }) => {
     try {
       const { data, error } = await createDream({ variables: { input: dreamData } });
       const newDream = data.createDream;
-      updateDreams(newDream);
       if (error) throw new Error(error);
+      updateDreams(newDream);
     } catch (error) {
       setSubmitError(error);
       return;
