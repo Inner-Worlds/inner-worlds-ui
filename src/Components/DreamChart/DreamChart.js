@@ -46,21 +46,6 @@ const DreamChart = ({ dreamStats }) => {
     },
   };
 
-  const pieOptions = {
-    plugins: {
-      legend: {
-        labels: {
-          color: "white",
-          font: {
-            family: "'Livvic', sans-serif",
-            size: 12,
-            weight: "bold",
-          },
-        },
-      },
-    },
-  };
-
   const pieEmotionsData = {
     labels: stats.top5Emotions.map((emotion) => emotion.name),
     datasets: [
