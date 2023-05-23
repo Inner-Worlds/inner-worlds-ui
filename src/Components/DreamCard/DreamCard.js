@@ -15,7 +15,9 @@ const DreamCard = ({
   deleteDream,
   updateDream,
   updateEmotionsAndTags,
-  setEditing
+  setEditing,
+  saveError,
+  deleteCardError
 }) => {
   const [editMode, setEditMode] = useState(false);
   const [newDate, setNewDate] = useState(date);
@@ -24,18 +26,29 @@ const DreamCard = ({
   const [newDescription, setNewDescription] = useState(description);
   const [newEmotions, setNewEmotions] = useState(emotions);
   const [newTags, setNewTags] = useState(tags);
+  const [deleteError, setDeleteError] = useState({});
 
   const [deleteEmotion] = useMutation(DELETE_DREAM_EMOTION);
   const [deleteTag] = useMutation(DELETE_DREAM_TAG);
 
-  const handleDeleteEmotion = (emotionId) => {
-    deleteEmotion({ variables: { dreamId: id, emotionId } });
-    setNewEmotions((prevEmotions) => prevEmotions.filter((emotion) => emotion.id !== emotionId));
+  const handleDeleteEmotion = async (emotionId) => {
+    try {
+      const { error } = await deleteEmotion({ variables: { dreamId: id, emotionId } });
+      if (error) throw new Error(error);
+      setNewEmotions((prevEmotions) => prevEmotions.filter((emotion) => emotion.id !== emotionId));
+    } catch (error) {
+      setDeleteError(error);
+    }
   };
 
-  const handleDeleteTag = (tagId) => {
-    deleteTag({ variables: { dreamId: id, tagId } });
-    setNewTags((prevTags) => prevTags.filter((tag) => tag.id !== tagId));
+  const handleDeleteTag = async (tagId) => {
+    try {
+      const { error } = await deleteTag({ variables: { dreamId: id, tagId } });
+      if (error) throw new Error(error);
+      setNewTags((prevTags) => prevTags.filter((tag) => tag.id !== tagId));
+    } catch (error) {
+      setDeleteError(error);
+    }
   };
 
   const handleEdit = () => {
@@ -43,7 +56,7 @@ const DreamCard = ({
     setEditing(true);
   };
 
-  const handleSave = () => {
+  const handleSave = async () => {
     const updatedDream = {
       dreamDate: newDate,
       title: newTitle,
@@ -184,6 +197,7 @@ const DreamCard = ({
       ) : (
         <p className="description">{description}</p>
       )}
+      {deleteError.message && <h3 className="error card-error">Issue deleting, try again later.</h3> }
       <section className="list-container">
         <section className="emotions-container">
           <h2 className="list-head">Emotions</h2>
@@ -203,6 +217,8 @@ const DreamCard = ({
           </ul>
         </section>
       </section>
+      {saveError.message && <h3 className="error card-error">Issue saving, try again later.</h3> }
+      {deleteCardError.message && <h3 className="error card-error">Error deleting dream, try again later.</h3> }
       {editMode ? (
         <input
           className="lucidity-edit"
