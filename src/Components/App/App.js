@@ -98,7 +98,7 @@ const App = () => {
             render={() => (
               <>
                 <Nav handleLogOut={handleLogOut} />
-                <DreamChart />
+                <DreamChart  dreamStats={user.id}/>
               </>
             )}
           />
