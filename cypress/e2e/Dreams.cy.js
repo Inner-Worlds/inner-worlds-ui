@@ -33,19 +33,27 @@ describe('Dreams page', () => {
         cy.get('.dream-buttons > .edit-dream-button').eq(0).click();
         cy.get('.save-changes-msg').contains('Please save your changes to leave edit mode!')
         cy.get('.date-edit').type('2023-01-14')
-        
-
+        cy.get('.title-edit').type('{selectAll}{backspace}').type('Pizza')
+        cy.get('.description-edit').type('{selectAll}{backspace}').type('I had the perfect pizza in a gondola while the dogs shared spaghetti')
+        cy.get('.emotions-container > .card-list > li > .delete-button').click()
+        cy.get('.lucidity-edit').type('{enter}{downArrow}{enter}')
+        cy.get('.save-dream-button').click()
     })
-    // it('should give a message if no dreams have been saved', () => {
-    //     cy.intercept('POST', 'https://inner-worlds-graphql-api.onrender.com/graphql', {
-    //       fixture: 'errorFixture.json'
-    //     });
-    //     cy.visit('http://localhost:3000/');
-    //     cy.get('.user1').click();
-    //     cy.url();
-    //     cy.get('.nav-link2').click();
-    //     cy.url().should('include', '/dreams');
-    //     cy.get('.no-dreams').contains('Nothing logged, get dreamin!')
-    //   });
+
+    it('should be able to delete the dream', () => {
+        cy.get('.delete-dream-button').eq(0).click();
+    })
+    
+    it('should give a message if no dreams have been saved', () => {
+        cy.intercept('POST', 'https://inner-worlds-graphql-api.onrender.com/graphql', {
+          fixture: 'errorFixture.json'
+        });
+        cy.visit('http://localhost:3000/');
+        cy.get('.user1').click();
+        cy.url();
+        cy.get('.nav-link2').click();
+        cy.url().should('include', '/dreams');
+        cy.get('.no-dreams').contains('Nothing logged, get dreamin!')
+      });
 
 })
