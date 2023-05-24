@@ -66,6 +66,10 @@ describe('Home page', () => {
   });  
   
   it('should display an error message when submit fails', () => {
+    cy.visit('http://localhost:3000/');
+    cy.get('.user1').click();
+    cy.url().should('include', '/home');
+
     cy.intercept('POST', 'https://inner-worlds-graphql-api.onrender.com/graphql', {
       statusCode: 500,
       body: {
@@ -76,10 +80,6 @@ describe('Home page', () => {
         ],
       },
     }).as('submitError');
-  
-    cy.visit('http://localhost:3000/');
-    cy.get('.user1').click();
-    cy.url().should('include', '/home');
   
     cy.get('[type="date"]').type('2023-01-14');
     cy.get('[placeholder="My Dream Title.."]').type('Yellin');
@@ -94,10 +94,8 @@ describe('Home page', () => {
     cy.get("button[type='submit']").click();
   
     cy.wait('@submitError').then(() => {
-      cy.get('.error').should('be.visible').and('contain', 'An error occurred');
+      cy.get('.error').should('be.visible').and('contain', 'Something went wrong, try again later.');
     });
   });
-  
-  
 });
 
