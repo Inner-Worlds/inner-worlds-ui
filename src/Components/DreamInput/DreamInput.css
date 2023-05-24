@@ -28,6 +28,8 @@
   width: 50%;
   height: 90%;
   display: flex;
+  flex-flow: column;
+  align-items: center;
   position: relative;
   z-index: 1;
 }

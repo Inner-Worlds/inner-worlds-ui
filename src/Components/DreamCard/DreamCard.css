@@ -163,6 +163,11 @@
   margin-bottom: 1rem;
 }
 
+.card-error {
+  font-size: clamp(1rem, 1.5vw, 2rem);
+  margin: 0;
+}
+
 @media screen and (max-width: 36rem) {
   .swiper-slide {
     transform-style: 0 !important;

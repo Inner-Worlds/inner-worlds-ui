@@ -132,6 +132,12 @@
   }
 }
 
+@media screen and (min-width: 1800px) {
+  .login-astronaut {
+    right: -41%;
+  }
+}
+
 @media screen and (max-width: 1300px) {
   .login {
     flex-direction: column;
@@ -233,7 +239,7 @@
   }
 
   .login-astronaut {
-    right: -40%;
+    right: -45%;
   }
 }
 
@@ -282,7 +288,7 @@
 
 @media screen and (max-width: 415px) {
   .login-astronaut {
-    right: -50%;
+    right: -52%;
   }
 
   .dj-text {
@@ -319,7 +325,8 @@
   }
 
   .login-astronaut {
-    right: -53%;
+    top: -36%;
+    right: -55%;
   }
 }
 
