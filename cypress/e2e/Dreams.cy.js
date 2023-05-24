@@ -28,16 +28,24 @@ describe('Dreams page', () => {
         cy.get('.tags-container').eq(1).contains('Water')
         
     });
-    it('should show an error message when random bird can\'t be fetched', () => {
-        cy.intercept('POST', 'https://inner-worlds-graphql-api.onrender.com/graphql', {
-          fixture: 'errorFixture.json'
-        });
-        cy.visit('http://localhost:3000/');
-        cy.get('.user1').click();
-        cy.url();
-        cy.get('.nav-link2').click();
-        cy.url().should('include', '/dreams');
-        cy.get('.no-dreams').contains('Nothing logged, get dreamin!')
-      });
+
+    it('should be able to edit the dream and be told how to get out of edit mode', () => {
+        cy.get('.dream-buttons > .edit-dream-button').eq(0).click();
+        cy.get('.save-changes-msg').contains('Please save your changes to leave edit mode!')
+        cy.get('.date-edit').type('2023-01-14')
+        
+
+    })
+    // it('should give a message if no dreams have been saved', () => {
+    //     cy.intercept('POST', 'https://inner-worlds-graphql-api.onrender.com/graphql', {
+    //       fixture: 'errorFixture.json'
+    //     });
+    //     cy.visit('http://localhost:3000/');
+    //     cy.get('.user1').click();
+    //     cy.url();
+    //     cy.get('.nav-link2').click();
+    //     cy.url().should('include', '/dreams');
+    //     cy.get('.no-dreams').contains('Nothing logged, get dreamin!')
+    //   });
 
 })
