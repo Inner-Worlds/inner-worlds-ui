@@ -70,11 +70,9 @@ const App = () => {
 
   const updateSingleDream = async (dreamId, dreamUpdates) => {
     try {
-      const { error } = updateDream({
-        variables: { id: dreamId, ...dreamUpdates },
-      });
-      if (error) throw new Error(error);
-      setUser((prevUser) => {
+      const { error } = await updateDream({ variables: { id: dreamId, ...dreamUpdates } });
+      if (error) throw new Error (error);
+      setUser(prevUser => {
         const prevDreams = [...prevUser.dreams];
         const updatedDream = {
           ...prevUser.dreams.find((dream) => dream.id === dreamId),
@@ -132,13 +130,12 @@ const App = () => {
 
   if (loading && !loggedIn) {
     return (
-      <div className="loading-msg">
-        <span className="loading-text">Loading...</span>
-      </div>
-    );
-  } else if (error) {
-    return <div>{error.message}</div>;
-  }
+    <div className="loading-msg">
+      <span className="loading-text">Loading...</span>
+    </div>
+    )
+  } 
+
 
   return (
     <div className="App">
