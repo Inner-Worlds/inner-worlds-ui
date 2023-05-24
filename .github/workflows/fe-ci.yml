@@ -21,11 +21,9 @@ jobs:
       uses: cypress-io/github-action@v5.7.1
       with:
         browser: chrome
-          project: ./site
-          browser: chrome
-          build: npm build
-          start: npm start
-          wait-on: "http://localhost:3000"
+        build: npm build
+        start: npm start
+        wait-on: "http://localhost:3000"
       
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
