@@ -56,7 +56,7 @@ const [saveError, setSaveError] = useState({});
 
   const updateSingleDream = async (dreamId, dreamUpdates) => {
     try {
-      const { error } = updateDream({ variables: { id: dreamId, ...dreamUpdates } });
+      const { error } = await updateDream({ variables: { id: dreamId, ...dreamUpdates } });
       if (error) throw new Error (error);
       setUser(prevUser => {
         const prevDreams = [...prevUser.dreams];
