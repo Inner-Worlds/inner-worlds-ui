@@ -20,10 +20,28 @@ describe('Login page', () => {
         req.reply(userJSON(req.body.variables.id));
       }
     }).as("getUser");
-    cy.get('.user1').click().then(() => {
-      cy.url();
-    });
-
-  })
-
+    
+    cy.get('.user1').click();
+    cy.url().should('contain', '/home');
+    cy.get('.nav-link2').click();
   });
+
+  it('should show an error message when the user query fails', () => {
+    cy.intercept('POST', 'https://inner-worlds-graphql-api.onrender.com/graphql', {
+      statusCode: 500,
+      body: {
+        errors: [
+          {
+            message: 'An error occurred',
+          },
+        ],
+      },
+    }).as('userError');
+
+    cy.get('.user1').click();
+
+    cy.wait('@userError').then(() => {
+      cy.get('.error').should('be.visible').and('contain', 'Something went wrong, please try again.');
+    });
+  });
+});
