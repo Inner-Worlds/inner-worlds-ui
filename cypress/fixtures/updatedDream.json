@@ -1,0 +1,89 @@
+{
+  "data": {
+      "user": {
+          "id": "3",
+          "name": "Brown Widow",
+          "email": "dalton.hauck@brekke-murazik.test",
+          "dreams": [
+              {
+                  "id": "7",
+                  "title": "Pizza",
+                  "description": "I had the perfect pizza in a gondola while the dogs shared spaghetti",
+                  "lucidity": 1,
+                  "dreamDate": "1/14/2023",
+                  "emotions": [
+                      {
+                          "id": "14",
+                          "name": "Happy"
+                      }
+                  ],
+                  "tags": [
+                      {
+                          "id": "13",
+                          "name": "Flying"
+                      },
+                      {
+                          "id": "14",
+                          "name": "Work"
+                      }
+                  ]
+              },
+              {
+                  "id": "9",
+                  "title": "Yellin",
+                  "description": "We have the tools, and we have the talent!",
+                  "lucidity": 4,
+                  "dreamDate": "1/14/2023",
+                  "emotions": [
+                      {
+                          "id": "17",
+                          "name": "Angry"
+                      },
+                      {
+                          "id": "18",
+                          "name": "Confused"
+                      }
+                  ],
+                  "tags": [
+                      {
+                          "id": "17",
+                          "name": "School"
+                      },
+                      {
+                          "id": "18",
+                          "name": "Falling"
+                      }
+                  ]
+              },
+              {
+                  "id": "8",
+                  "title": "Westley",
+                  "description": "Everybody can relax, I found the car. Needs some suspension work and shocks. Brakes, brake pads, lining, steering box, transmission, rear-end.",
+                  "lucidity": 3,
+                  "dreamDate": "11/10/2023",
+                  "emotions": [
+                      {
+                          "id": "15",
+                          "name": "Scared"
+                      },
+                      {
+                          "id": "16",
+                          "name": "Happy"
+                      }
+                  ],
+                  "tags": [
+                      {
+                          "id": "15",
+                          "name": "Chased"
+                      },
+                      {
+                          "id": "16",
+                          "name": "Flying"
+                      }
+                  ]
+              }
+              
+          ]
+      }
+  }
+}
