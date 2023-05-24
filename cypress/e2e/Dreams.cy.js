@@ -79,4 +79,30 @@ describe('Dreams page', () => {
       cy.get('.error').should('be.visible').and('contain', 'Issue saving, try again later.');
     });
   });
-})
+
+  it('should give an error message when a tag or an emotion fail to delete', () => {
+    cy.intercept('POST', 'https://inner-worlds-graphql-api.onrender.com/graphql', {
+        statusCode: 500,
+        body: {
+          errors: [
+            {
+              message: 'An error occurred',
+            },
+          ],
+        },
+    }).as('deleteTagOrEmotionError');
+
+    cy.get('.edit-dream-button').first().click()
+    cy.get('.delete-button').first().click()
+
+    cy.wait('@deleteTagOrEmotionError').then(() => {
+      cy.get('.error').should('be.visible').and('contain', 'Issue deleting, try again later.');
+    });
+
+    cy.get('.delete-button').last().click()
+
+    cy.wait('@deleteTagOrEmotionError').then(() => {
+      cy.get('.error').should('be.visible').and('contain', 'Issue deleting, try again later.');
+    });
+  });
+});
