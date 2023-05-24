@@ -13,6 +13,7 @@ describe('Dreams page', () => {
     it('should show a list of the dreams', () => {
         cy.get('.dream-card').should('have.length', 5)
     });
+    
     it('should show the details of each of the dreams', () => {
         cy.get('.dream-card').first().contains('1/7/2023')
         cy.get('.dream-card').first().contains('Prince Humperdinck')

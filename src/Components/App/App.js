@@ -116,9 +116,8 @@ const [saveError, setSaveError] = useState({});
       <span className="loading-text">Loading...</span>
     </div>
     )
-  } else if (error) {
-    return <div>{error.message}</div>
-  }
+  } 
+
 
   return (
       <div className="App">
