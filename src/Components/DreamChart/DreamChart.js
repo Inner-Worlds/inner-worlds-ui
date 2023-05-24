@@ -13,7 +13,7 @@ const DreamChart = ({ dreamUser }) => {
     variables: {
       id: dreamUser,
     },
-    fetchPolicy: "no-cache",
+    fetchPolicy: "network-only",
   });
 
   if (loading) {
