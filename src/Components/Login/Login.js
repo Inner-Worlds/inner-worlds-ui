@@ -21,7 +21,7 @@ const Login = ({ loginUser, tryLogin, error }) => {
           <button
             className="user1 login-button"
             onClick={() => {
-              loginUser({ variables: { id: 13 } });
+              loginUser({ variables: { id: 1 } });
               tryLogin();
             }}
           >
@@ -31,7 +31,7 @@ const Login = ({ loginUser, tryLogin, error }) => {
           <button
             className="user2 login-button"
             onClick={() =>  {
-              loginUser({ variables: { id: 33 } });
+              loginUser({ variables: { id: 2 } });
               tryLogin();
             }}
           >

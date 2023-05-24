@@ -13,7 +13,7 @@ describe('Login page', () => {
   });
 
   it('should login as User 1 when User 1 button is clicked', () => {
-    cy.intercept('POST', 'https://inner-worlds.onrender.com', (req) => {
+    cy.intercept('POST', 'https://inner-worlds-graphql-api.onrender.com/graphql', (req) => {
       if (req.body.query.includes('user')) {
         req.reply({ fixture: 'userFixture.json' });
       }

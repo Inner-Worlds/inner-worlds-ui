@@ -111,6 +111,10 @@
   bottom: 2%;
 }
 
+li {
+  text-transform: capitalize;
+}
+
 .edit-dream-button,
 .delete-dream-button {
   font-size: calc(var(--card-font-size) / 1.1);
