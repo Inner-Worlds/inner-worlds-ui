@@ -1,49 +1,44 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
-import {  Pie } from "react-chartjs-2";
+import { Pie } from "react-chartjs-2";
 import { GET_USER_STATS } from "../../queries";
-import { Chart, registerables } from 'chart.js'
-import './DreamChart.css'
+import { Chart, registerables } from "chart.js";
+import Astronaut from "../../assets/Astronaut - (550 x 550px).svg";
+import "./DreamChart.css";
 
-Chart.register(...registerables)
-
+Chart.register(...registerables);
 
 const DreamChart = ({ dreamUser }) => {
   const { loading, error, data } = useQuery(GET_USER_STATS, {
     variables: {
       id: dreamUser,
     },
+    fetchPolicy: "no-cache",
   });
 
   if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error.message}</div>;
+    return (
+      <div className="loading-msg">
+        <span className="loading-text">Loading...</span>
+      </div>
+    );
   }
 
   const stats = data.user.stats;
-  console.log(data.user.stats)
 
   const chartOptions = {
-    scales: {
-      y: {
-        ticks: {
-          color: "white",
+    plugins: {
+      legend: {
+        labels: {
           font: {
-            weight: "bold",
+            size: 14,
+            family: "Livvic",
           },
+          color: "#fff",
         },
       },
-      x: {
-        ticks: {
-          color: "white",
-          font: {
-            weight: "bold",
-          },
-        },
-      },
+      responsive: true,
+      maintainAspectRatio: false,
     },
   };
 
@@ -51,8 +46,15 @@ const DreamChart = ({ dreamUser }) => {
     labels: stats.top5Emotions.map((emotion) => emotion.name),
     datasets: [
       {
-        data: stats.top5Emotions.map((emotion) => emotion.frequency),
-        backgroundColor: ["#FFAF00", "#D34A24", "#992800", "#47DFD1", "white"],
+        data: stats.top5Emotions.map((emotion) => emotion.percent),
+        backgroundColor: [
+          "rgba(255, 175, 0, 0.8)",
+          "rgba(211, 74, 36, 0.8)",
+          "rgba(153, 40, 0, 0.8)",
+          "rgba(71, 223, 209, 0.8)",
+          "rgba(255, 255, 255, 0.8)",
+          "rgba(65, 105, 225, 0.8)",
+        ],
         borderWidth: 1,
       },
     ],
@@ -62,8 +64,15 @@ const DreamChart = ({ dreamUser }) => {
     labels: stats.top5Tags.map((tag) => tag.name),
     datasets: [
       {
-        data: stats.top5Tags.map((tag) => tag.frequency),
-        backgroundColor: ["#FFAF00", "#D34A24", "#992800", "#47DFD1", "white"],
+        data: stats.top5Tags.map((tag) => tag.percent),
+        backgroundColor: [
+          "rgba(255, 175, 0, 0.8)",
+          "rgba(211, 74, 36, 0.8)",
+          "rgba(153, 40, 0, 0.8)",
+          "rgba(71, 223, 209, 0.8)",
+          "rgba(255, 255, 255, 0.8)",
+          "rgba(65, 105, 225, 0.8)",
+        ],
         borderWidth: 1,
       },
     ],
@@ -71,47 +80,58 @@ const DreamChart = ({ dreamUser }) => {
 
   return (
     <div className="dream-chart-container">
-      <div className="dream-chart">
-        <div className="chart-content">
-          <h2 className="list-head">Dream Stats</h2>
-          <div className="number-stat">
-            <div className="number-title">Current Streak</div>
-            <div className="number-value">{stats.currentStreak}</div>
+      {error?.message ? (
+        <div className="stats-error">Sorry! Something went wrong!</div>
+      ) : (
+        <>
+          <img
+            className="background-stats-astronaut"
+            src={Astronaut}
+            alt="Floating Astronaut"
+          />
+          <div className="stats-container">
+            <div className="chart-content">
+              <h2 className="list-head">Dream Stats</h2>
+              <div className="number-stat">
+                <div className="number-title">Current Streak:</div>
+                <div className="number-value">{stats.currentStreak}</div>
+              </div>
+              <div className="number-stat">
+                <div className="number-title">Longest Streak:</div>
+                <div className="number-value">{stats.longestStreak}</div>
+              </div>
+              <div className="number-stat">
+                <div className="number-title">Dreams This Month:</div>
+                <div className="number-value">{stats.dreamNumMonth}</div>
+              </div>
+              <div className="number-stat">
+                <div className="number-title">Dreams This Week:</div>
+                <div className="number-value">{stats.dreamNumWeek}</div>
+              </div>
+              <div className="number-stat">
+                <div className="number-title">Total Dreams:</div>
+                <div className="number-value">{stats.totalDreams}</div>
+              </div>
+              <div className="number-stat">
+                <div className="number-title">Average Lucidity:</div>
+                <div className="number-value">{stats.averageLucidity}</div>
+              </div>
+            </div>
           </div>
-          <div className="number-stat">
-            <div className="number-title">Longest Streak</div>
-            <div className="number-value">{stats.longestStreak}</div>
+          <div className="chart-container">
+            <div className="pie-chart">
+              <h3>Top 5 Emotions</h3>
+              <Pie data={pieEmotionsData} options={chartOptions} />
+            </div>
+            <div className="pie-chart">
+              <h3>Top 5 Tags</h3>
+              <Pie data={pieTagsData} options={chartOptions} />
+            </div>
           </div>
-          <div className="number-stat">
-            <div className="number-title">Dreams (Month)</div>
-            <div className="number-value">{stats.dreamNumMonth}</div>
-          </div>
-          <div className="number-stat">
-            <div className="number-title">Dreams (Week)</div>
-            <div className="number-value">{stats.dreamNumWeek}</div>
-          </div>
-          <div className="number-stat">
-            <div className="number-title">Total Dreams</div>
-            <div className="number-value">{stats.totalDreams}</div>
-          </div>
-          <div className="number-stat">
-            <div className="number-title">Average Lucidity</div>
-            <div className="number-value">{stats.averageLucidity}</div>
-          </div>
-        </div>
-        <div className="chart-container">
-          <div className="pie-chart">
-            <h3>Top 5 Emotions</h3>
-            <Pie data={pieEmotionsData} options={chartOptions} />
-          </div>
-          <div className="pie-chart">
-            <h3>Top 5 Tags</h3>
-            <Pie data={pieTagsData} options={chartOptions} />
-          </div>
-        </div>
-      </div>
+        </>
+      )}
     </div>
-  );  
+  );
 };
 
 export default DreamChart;

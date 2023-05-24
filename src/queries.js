@@ -47,7 +47,6 @@ export const GET_USER_DREAMS = gql`
   }
 `;
 
-
 export const CREATE_DREAM = gql`
   mutation CreateDream($input: CreateDreamInput!) {
     createDream(input: $input) {
@@ -122,9 +121,10 @@ export const DELETE_DREAM_EMOTION = gql`
     }
   }
 `;
+
 export const GET_USER_STATS = gql`
-  query {
-    user(id: 1) {
+  query ($id: ID!) {
+    user(id: $id) {
       stats {
         currentStreak
         longestStreak
