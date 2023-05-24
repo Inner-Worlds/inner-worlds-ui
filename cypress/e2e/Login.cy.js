@@ -1,8 +1,6 @@
-import { userJSON } from "../support/dreamFixtureHelper";
-
 describe('Login page', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000')
+    cy.visit('http://localhost:3000');
   })
 
   it('should display the logo', () => {
@@ -16,8 +14,8 @@ describe('Login page', () => {
 
   it('should login as User 1 when User 1 button is clicked', () => {
     cy.intercept('POST', 'https://inner-worlds.onrender.com', (req) => {
-      if (req.body.operationName.includes('getUser')) {
-        req.reply(userJSON(req.body.variables.id));
+      if (req.body.query.includes('user')) {
+        req.reply({ fixture: 'userFixture.json' });
       }
     }).as("getUser");
     

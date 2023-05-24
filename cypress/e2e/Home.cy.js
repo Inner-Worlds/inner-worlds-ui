@@ -1,19 +1,43 @@
 describe('Home page', () => {
   beforeEach(() => {
     cy.intercept('POST', 'https://inner-worlds-graphql-api.onrender.com/graphql', (req) => {
-      if (req.body.operationName === "defaultTags") {
-        req.reply({ fixture: 'defaultTags.json' });
-      } else if (req.body.operationName === "defaultEmotions") {
+      if (req.body.query.includes('user')) {
+        req.reply({ fixture: 'userFixture.json' });
+      } else if (req.body.query.includes('defaultEmotions')) {
         req.reply({ fixture: 'defaultEmotions.json' });
-      } else {
-        req.continue();
+      } else if (req.body.query.includes('defaultTags')) {
+        req.reply({ fixture: 'defaultTags.json' });
+      } else if (req.body.query.includes('createDream')) {
+        req.reply({
+            "data": {
+                "createDream": {
+                    "id": "52",
+                    "dreamDate": "2023-05-10T00:00:00Z",
+                    "title": "My Dream Title...",
+                    "description": "We have the tools, and we have the talent!",
+                    "emotions": [
+                        {
+                            "id": 1,
+                            "name": "Happy"
+                        },
+                    ],
+                    "tags": [
+                        {
+                            "id": 1,
+                            "name": "Flying"
+                        },
+                    ],
+                    "lucidity": 3
+                }
+            }
+        })
       }
     });
 
     cy.visit('http://localhost:3000/');
     cy.get('.user1').click();
     cy.url().should('include', '/home');
-  });  
+  });
   
   it('should have a Logo, Home, My Dreams, and Log Out links', () => {
     cy.get('.nav-link1').should('be.visible').contains('Home');
@@ -43,7 +67,7 @@ describe('Home page', () => {
     cy.get('.multi-select').eq(0).click();
     cy.get('.select-styling__option').contains('Happy').click();
     cy.get('.multi-select').eq(1).click();
-    cy.get('.select-styling__option').contains('School').click();
+    cy.get('.select-styling__option').contains('Flying').click();
     cy.get('input[type="range"]').invoke('val', 3).trigger('change');
     cy.get('input[type="range"]').should('have.value', '3');
 
@@ -70,6 +94,16 @@ describe('Home page', () => {
     cy.get('.user1').click();
     cy.url().should('include', '/home');
 
+    cy.get('[type="date"]').type('2023-01-14');
+    cy.get('[placeholder="My Dream Title.."]').type('Yellin');
+    cy.get('textarea').type('We have the tools, and we have the talent!');
+    cy.get('.multi-select').eq(0).click();
+    cy.get('.select-styling__option').contains('Happy').click();
+    cy.get('.multi-select').eq(1).click();
+    cy.get('.select-styling__option').contains('Flying').click();
+    cy.get('input[type="range"]').invoke('val', 3).trigger('change');
+    cy.get('input[type="range"]').should('have.value', '3');
+
     cy.intercept('POST', 'https://inner-worlds-graphql-api.onrender.com/graphql', {
       statusCode: 500,
       body: {
@@ -80,16 +114,6 @@ describe('Home page', () => {
         ],
       },
     }).as('submitError');
-  
-    cy.get('[type="date"]').type('2023-01-14');
-    cy.get('[placeholder="My Dream Title.."]').type('Yellin');
-    cy.get('textarea').type('We have the tools, and we have the talent!');
-    cy.get('.multi-select').eq(0).click();
-    cy.get('.select-styling__option').contains('Happy').click();
-    cy.get('.multi-select').eq(1).click();
-    cy.get('.select-styling__option').contains('School').click();
-    cy.get('input[type="range"]').invoke('val', 3).trigger('change');
-    cy.get('input[type="range"]').should('have.value', '3');
   
     cy.get("button[type='submit']").click();
   
