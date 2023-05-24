@@ -1,0 +1,63 @@
+.dream-chart-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.dream-chart {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 70%;
+  width: 70%;
+  overflow: auto;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-sizing: border-box;
+  color: white;
+  text-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
+  padding: 1rem;
+}
+
+.chart-content {
+  --card-font-size: clamp(0.8rem, 2vw, 1.5rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+  font-family: 'Livvic', sans-serif;
+}
+
+.list-head {
+  font-family: 'Yellowtail', cursive;
+  font-size: clamp(1.2rem, 4vw, 3rem);
+}
+
+.number-stat {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.number-title, .number-value {
+  font-size: var(--card-font-size);
+}
+
+.chart-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.pie-chart {
+  width: 30%;
+}

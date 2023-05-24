@@ -3,14 +3,15 @@ import { useQuery } from "@apollo/client";
 import {  Pie } from "react-chartjs-2";
 import { GET_USER_STATS } from "../../queries";
 import { Chart, registerables } from 'chart.js'
+import './DreamChart.css'
 
 Chart.register(...registerables)
 
 
-const DreamChart = ({ dreamStats }) => {
+const DreamChart = ({ dreamUser }) => {
   const { loading, error, data } = useQuery(GET_USER_STATS, {
     variables: {
-      id: dreamStats,
+      id: dreamUser,
     },
   });
 
@@ -69,58 +70,10 @@ const DreamChart = ({ dreamStats }) => {
   };
 
   return (
-    <div
-      className="dream-chart-container"
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        minHeight: "100vh",
-      }}
-    >
-      <div
-        className="dream-chart"
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
-          alignItems: "center",
-          height: "60vh",
-          width: "60vw",
-          overflow: "hidden",
-          position: "relative",
-          background: "rgba(255, 255, 255, 0.4)",
-          borderRadius: "16px",
-          boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
-          backdropFilter: "blur(6px)",
-          WebkitBackdropFilter: "blur(8px)",
-          border: "1px solid rgba(255, 255, 255, 0.25)",
-          boxSizing: "border-box",
-          color: "white",
-          textShadow: "0px 0px 10px rgba(0, 0, 0, 1)",
-        }}
-      >
-        <div
-          style={{
-            "--card-font-size": "clamp(1rem, 2vw, 2rem)",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "space-between",
-            height: "80%",
-            width: "80%",
-            fontFamily: "'Livvic', sans-serif",
-          }}
-        >
-          <h2
-            className="list-head"
-            style={{
-              fontFamily: "Yellowtail, cursive",
-              fontSize: `clamp(1.5rem, 6vw, 4rem)`,
-            }}
-          >
-            Dream Stats
-          </h2>
+    <div className="dream-chart-container">
+      <div className="dream-chart">
+        <div className="chart-content">
+          <h2 className="list-head">Dream Stats</h2>
           <div className="number-stat">
             <div className="number-title">Current Streak</div>
             <div className="number-value">{stats.currentStreak}</div>
@@ -146,15 +99,7 @@ const DreamChart = ({ dreamStats }) => {
             <div className="number-value">{stats.averageLucidity}</div>
           </div>
         </div>
-        <div
-          className="chart-container"
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            marginTop: "20px",
-            width: "100%",
-          }}
-        >
+        <div className="chart-container">
           <div className="pie-chart">
             <h3>Top 5 Emotions</h3>
             <Pie data={pieEmotionsData} options={chartOptions} />
@@ -166,7 +111,7 @@ const DreamChart = ({ dreamStats }) => {
         </div>
       </div>
     </div>
-  );
+  );  
 };
 
 export default DreamChart;
