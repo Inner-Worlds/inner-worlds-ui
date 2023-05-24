@@ -1,0 +1,138 @@
+{
+  "data": {
+      "user": {
+          "id": "3",
+          "name": "Brown Widow",
+          "email": "dalton.hauck@brekke-murazik.test",
+          "dreams":[
+    {
+      "id": "7",
+      "title": "Prince Humperdinck",
+      "description": "Ray has gone bye-bye, Egon... what've you got left?",
+      "lucidity": 4,
+      "dreamDate": "1/7/2023",
+      "emotions": [
+        {
+          "id": "5",
+          "name": "Happy"
+        }
+      ],
+      "tags": [
+        {
+          "id": "5",
+          "name": "Work"
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "title": "Miracle Max",
+      "description": "Do you experience feelings of dread in your basement or attic?",
+      "lucidity": 3,
+      "dreamDate": "4/25/2023",
+      "emotions": [
+        {
+          "id": "22",
+          "name": "Anxious"
+        },
+        {
+          "id": "22",
+          "name": "Curious"
+        }
+      ],
+      "tags": [
+        {
+          "id": "10",
+          "name": "School"
+        },
+        {
+          "id": "10",
+          "name": "Water"
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "title": "Miracle Max",
+      "description": "Gozer the Gozerian... good evening. As a duly designated representative of the City, County and State of New York, I order you to cease any and all supernatural activity and return forthwith to your place of origin or to the nearest convenient parallel dimension.",
+      "lucidity": 4,
+      "dreamDate": "9/7/2023",
+      "emotions": [
+        {
+          "id": "16",
+          "name": "Grateful"
+        },
+        {
+          "id": "16",
+          "name": "Curious"
+        }
+      ],
+      "tags": [
+        {
+          "id": "45",
+          "name": "Stange place"
+        },
+        {
+          "id": "45",
+          "name": "School"
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "title": "Vizzini",
+      "description": "I collect spores, molds, and fungus.",
+      "lucidity": 2,
+      "dreamDate": "1/4/2023",
+      "emotions": [
+          {
+              "id": "13",
+              "name": "Sad"
+          },
+          {
+              "id": "14",
+              "name": "Happy"
+          }
+      ],
+      "tags": [
+          {
+              "id": "13",
+              "name": "Flying"
+          },
+          {
+              "id": "14",
+              "name": "Work"
+          }
+      ]
+  },
+  {
+      "id": "9",
+      "title": "Yellin",
+      "description": "We have the tools, and we have the talent!",
+      "lucidity": 4,
+      "dreamDate": "1/14/2023",
+      "emotions": [
+          {
+              "id": "17",
+              "name": "Angry"
+          },
+          {
+              "id": "18",
+              "name": "Confused"
+          }
+      ],
+      "tags": [
+          {
+              "id": "17",
+              "name": "School"
+          },
+          {
+              "id": "18",
+              "name": "Falling"
+          }
+      ]
+  }
+  ]
+}
+}
+}
