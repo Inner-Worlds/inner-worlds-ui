@@ -3,6 +3,7 @@ import logo from "../../assets/Inner Worlds - Login Logo (500 × 300 px).svg";
 import djText from "../../assets/Dream Journal - (600 x 100px).svg";
 import orSat from "../../assets/Saturn Orange - (140 x 85px).svg";
 import tealSat from "../../assets/Saturn Teal - (140 x 85px).svg";
+import PropTypes from 'prop-types';
 
 const Login = ({ loginUser, tryLogin, error }) => {
   return (
@@ -43,6 +44,12 @@ const Login = ({ loginUser, tryLogin, error }) => {
       </section>
     </main>
   );
+};
+
+Login.propTypes = {
+  loginUser: PropTypes.func.isRequired,
+  tryLogin: PropTypes.func.isRequired,
+  error: PropTypes.object,
 };
 
 export default Login;

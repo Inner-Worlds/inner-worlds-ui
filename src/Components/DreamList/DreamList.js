@@ -1,11 +1,11 @@
 import "./DreamList.css";
 import DreamCard from "../DreamCard/DreamCard";
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, EffectCoverflow } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/effect-coverflow";
+import PropTypes from 'prop-types';
 
 const DreamList = ({ userID, dreams, deleteDream, updateDream, updateEmotionsAndTags, setEditing, currentlyEditing, deleteCardError, saveError }) => {
     if (!dreams?.length) return <h1 className="no-dreams">Nothing logged, get dreamin!</h1>;
@@ -61,5 +61,27 @@ const DreamList = ({ userID, dreams, deleteDream, updateDream, updateEmotionsAnd
         </>
     )
 }
+
+DreamList.propTypes = {
+    userID: PropTypes.string.isRequired,
+    dreams: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        dreamDate: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
+        emotions: PropTypes.arrayOf(PropTypes.string).isRequired,
+        tags: PropTypes.arrayOf(PropTypes.string).isRequired,
+        lucidity: PropTypes.number.isRequired,
+      })
+    ).isRequired,
+    deleteDream: PropTypes.func.isRequired,
+    updateDream: PropTypes.func.isRequired,
+    updateEmotionsAndTags: PropTypes.func.isRequired,
+    setEditing: PropTypes.func.isRequired,
+    currentlyEditing: PropTypes.bool.isRequired,
+    deleteCardError: PropTypes.object,
+    saveError: PropTypes.object,
+  };
 
 export default DreamList;

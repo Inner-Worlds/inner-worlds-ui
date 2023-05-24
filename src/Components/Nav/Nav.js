@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 import Logo from "../../assets/Inner Worlds - HOME Logo (500 × 300 px).svg";
 import "./Nav.css";
+import PropTypes from 'prop-types';
 
 const Nav = ({ handleLogOut, currentlyEditing }) => {
   if (!currentlyEditing) {
@@ -38,6 +39,11 @@ const Nav = ({ handleLogOut, currentlyEditing }) => {
       </header>
     );
   }
+};
+
+Nav.propTypes = {
+  handleLogOut: PropTypes.func.isRequired,
+  currentlyEditing: PropTypes.bool.isRequired,
 };
 
 export default Nav;

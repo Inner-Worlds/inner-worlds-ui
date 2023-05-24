@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { DELETE_DREAM_EMOTION, DELETE_DREAM_TAG } from "../../queries";
 import "./DreamCard.css";
+import PropTypes from 'prop-types';
 
 const DreamCard = ({
   userID, 
@@ -255,6 +256,23 @@ const DreamCard = ({
         )}
     </section>
   );
+};
+
+DreamCard.propTypes = {
+  userID: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  emotions: PropTypes.array.isRequired,
+  tags: PropTypes.array.isRequired,
+  lucidity: PropTypes.number.isRequired,
+  deleteDream: PropTypes.func.isRequired,
+  updateDream: PropTypes.func.isRequired,
+  updateEmotionsAndTags: PropTypes.func.isRequired,
+  setEditing: PropTypes.func.isRequired,
+  saveError: PropTypes.object.isRequired,
+  deleteCardError: PropTypes.object.isRequired
 };
 
 export default DreamCard;

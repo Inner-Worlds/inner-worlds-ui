@@ -6,6 +6,7 @@ import "./DreamInput.css";
 import { useMutation, useQuery } from "@apollo/client";
 import { CREATE_DREAM, GET_DEFAULT_EMOTIONS, GET_DEFAULT_TAGS } from "../../queries";
 import { getEmotionOptions, getTagOptions, colourStyles } from "../../options";
+import PropTypes from 'prop-types';
 
 const DreamInput = ({ user, updateDreams }) => {
   const [date, setDate] = useState("");
@@ -135,6 +136,11 @@ const DreamInput = ({ user, updateDreams }) => {
       </div>
     </div>
   );
+};
+
+DreamInput.propTypes = {
+  user: PropTypes.object.isRequired,
+  updateDreams: PropTypes.func.isRequired,
 };
 
 export default DreamInput;
