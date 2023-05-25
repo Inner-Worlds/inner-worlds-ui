@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="src/assets/Inner Worlds - HOME Logo (500 × 300 px).gif" alt="Inner Worlds Logo" width="300" height="150">
+  <img src="https://github.com/Inner-Worlds/inner-worlds-ui/assets/114787710/7727e5f8-abe0-4773-a5fd-691524c35abe" alt="GIF">
 </p>
 
 ## Table of Contents
