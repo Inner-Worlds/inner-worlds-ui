@@ -8,6 +8,7 @@
   - [Contributors](#Contributors)
   - [Illustrations](#Illustrations)
   - [Deployed Page](#Deployed-Page)
+  - [Back End Repo](#Back-End)
   - [Wins](#Wins)
   - [Challenges & Improvements](#Challenges-&-Improvements)
   - [Set Up](#Set-Up)
@@ -46,9 +47,74 @@ With Inner Worlds, you can:
 [![Inner Worlds FE CI](https://github.com/Inner-Worlds/inner-worlds-ui/actions/workflows/fe-ci.yml/badge.svg?branch=main)](https://github.com/Inner-Worlds/inner-worlds-ui/actions/workflows/fe-ci.yml)
 
 ## Contributors
-- Lauren "Larry" Seward [GitHub](https://github.com/LSeward0421) | [LinkedIn](https://www.linkedin.com/in/l-seward/)
-- Lexye Jordan [GitHub](https://github.com/Lexyful) | [LinkedIn](https://www.linkedin.com/in/lexye-jordan-175879260/)
-- Daniel Curtin [GitHub](https://github.com/danielcurtin) | [LinkedIn](https://www.linkedin.com/in/daniel-curtin-39954a192/)
+### Front End
+
+<table>
+  <tr>
+    <td><img src="https://avatars.githubusercontent.com/LSeward0421"></td>
+    <td><img src="https://avatars.githubusercontent.com/danielcurtin"></td>
+    <td><img src="https://avatars.githubusercontent.com/Lexyful"></td>
+  </tr>
+  <tr>
+    <td>Lauren Seward</td>
+    <td>Daniel Curtin</td>
+    <td>Lexye Jordan</td>
+  </tr>
+  <tr>
+    <td>
+      <a href="https://github.com/LSeward0421">GitHub</a><br>
+      <a href="https://www.linkedin.com/in/l-seward/">LinkedIn</a>
+    </td>
+    <td>
+      <a href="https://github.com/danielcurtin">GitHub</a><br>
+      <a href="https://www.linkedin.com/in/daniel-curtin-39954a192/">LinkedIn</a>
+    </td>
+    <td>
+      <a href="https://github.com/Lexyful">GitHub</a><br>
+      <a href="https://www.linkedin.com/in/lexye-jordan-175879260/">LinkedIn</a>
+    </td>
+  </tr>
+</table>
+
+### Back End
+<table>
+  <tr>
+    <td><img src="https://avatars.githubusercontent.com/jadekstewart3"></td>
+    <td><img src="https://avatars.githubusercontent.com/Bobsters986"></td>
+    <td><img src="https://avatars.githubusercontent.com/kassandraleyba"></td>
+    <td><img src="https://avatars.githubusercontent.com/sandfortw"></td>
+    <td><img src="https://avatars.githubusercontent.com/sgwalker327"></td>
+  </tr>
+  <tr>
+    <td>Jade Stewart</td>
+    <td>Bobby Luly</td>
+    <td>Kassandra Leyba</td>
+    <td>Weston Sandfort</td>
+    <td>Sam Walker</td>
+  </tr>
+  <tr>
+    <td>
+      <a href="https://github.com/jadekstewart3">GitHub</a><br>
+      <a href="https://www.linkedin.com/in/jadestewart-software-engineer/">LinkedIn</a>
+    </td>
+    <td>
+      <a href="https://github.com/Bobsters986">GitHub</a><br>
+      <a href="https://www.linkedin.com/in/bobbyy-luly-217653260/">LinkedIn</a>
+    </td>
+    <td>
+      <a href="https://github.com/kassandraleyba">GitHub</a><br>
+      <a href="https://www.linkedin.com/in/kassandra-leyba/">LinkedIn</a>
+    </td>
+    <td>
+      <a href="https://github.com/sandfortw">GitHub</a><br>
+      <a href="https://www.linkedin.com/in/westonsandfort/">LinkedIn</a>
+    </td>
+    <td>
+      <a href="https://github.com/sgwalker327">GitHub</a><br>
+      <a href="https://www.linkedin.com/in/sam-walker-95a49630/">LinkedIn</a>
+    </td>
+  </tr>
+</table>
 
 ## Illustrations
 <details>
@@ -88,6 +154,9 @@ With Inner Worlds, you can:
 
 ## Deployed Page
 Our live application can be used [HERE](https://inner-worlds-ui.vercel.app/)!
+
+## Back End 
+Visit our Back End [repo](https://github.com/Inner-Worlds/inner_worlds_be)!
 
 ## Wins
 - Successful collaboration as a cohesive 8-person full-stack team
