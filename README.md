@@ -24,6 +24,7 @@
 - CSS
 - Swiper
 - Chroma.js
+- Chart.js
 
 ## Contributors
 - Lauren "Larry" Seward [GitHub](https://github.com/LSeward0421) | [LinkedIn](https://www.linkedin.com/in/l-seward/)
@@ -51,11 +52,13 @@
 
 ![Screen Recording 2023-05-22 at 12 01 50 PM (1)](https://github.com/Inner-Worlds/inner-worlds-ui/assets/114776048/cc5c2b9d-0888-4442-b1e6-4c079463c2af)
 
+![]()
+
 
 </details>
   
 ## Deployed Page
-Our live application can be used [here](https://inner-worlds.onrender.com) (Beware a long loading time)
+Our live application can be used [here](https://inner-worlds.onrender.com) 
 
 ## Wins
 
@@ -79,6 +82,7 @@ Our live application can be used [here](https://inner-worlds.onrender.com) (Bewa
   - [Cypress Docs](https://docs.cypress.io/guides/overview/why-cypress.html)
   - [Swiper Docs](https://swiperjs.com/)
   - [Chroma.js Docs](https://www.vis4.net/chromajs/)
+  - [Chart.js Docs](https://www.chartjs.org/)
 
 ## Project Specs
   - The project spec & rubric can be found [here](https://mod4.turing.edu/projects/capstone/)
