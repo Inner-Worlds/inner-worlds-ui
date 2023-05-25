@@ -1,0 +1,79 @@
+{
+    "data": {
+        "user": {
+            "stats": {
+                "currentStreak": 0,
+                "longestStreak": 3,
+                "dreamNumMonth": 8,
+                "dreamNumWeek": 7,
+                "totalDreams": 8,
+                "averageLucidity": 3.57,
+                "top5Emotions": [
+                    {
+                        "name": "Excited",
+                        "frequency": 6,
+                        "percent": 33.33
+                    },
+                    {
+                        "name": "Angry",
+                        "frequency": 3,
+                        "percent": 16.67
+                    },
+                    {
+                        "name": "Confused",
+                        "frequency": 3,
+                        "percent": 16.67
+                    },
+                    {
+                        "name": "Happy",
+                        "frequency": 3,
+                        "percent": 16.67
+                    },
+                    {
+                        "name": "Sad",
+                        "frequency": 2,
+                        "percent": 11.11
+                    },
+                    {
+                        "name": "other",
+                        "frequency": 1,
+                        "percent": 5.549999999999997
+                    }
+                ],
+                "top5Tags": [
+                    {
+                        "name": "future",
+                        "frequency": 2,
+                        "percent": 11.11
+                    },
+                    {
+                        "name": "human",
+                        "frequency": 2,
+                        "percent": 11.11
+                    },
+                    {
+                        "name": "Nature",
+                        "frequency": 2,
+                        "percent": 11.11
+                    },
+                    {
+                        "name": "robot",
+                        "frequency": 2,
+                        "percent": 11.11
+                    },
+                    {
+                        "name": "strange place",
+                        "frequency": 2,
+                        "percent": 11.11
+                    },
+                    {
+                        "name": "other",
+                        "frequency": 8,
+                        "percent": 44.45
+                    }
+                ]
+            }
+        }
+    }
+}
+
