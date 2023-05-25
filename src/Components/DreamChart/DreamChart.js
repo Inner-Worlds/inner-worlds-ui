@@ -113,7 +113,7 @@ const DreamChart = ({ dreamUser }) => {
                 <div className="number-value">{stats.totalDreams}</div>
               </div>
               <div className="number-stat">
-                <div className="number-title">Average Lucidity:</div>
+                <div className="number-title">Avg Lucidity Weekly:</div>
                 <div className="number-value">{stats.averageLucidity}</div>
               </div>
             </div>

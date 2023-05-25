@@ -26,7 +26,7 @@ describe('Dreams page', () => {
         cy.get('.number-value').contains('8')
         cy.get('.number-title').contains('Total Dreams:')
         cy.get('.number-value').contains('8')
-        cy.get('.number-title').contains('Average Lucidity:')
+        cy.get('.number-title').contains('Avg Lucidity Weekly:')
         cy.get('.number-value').contains('3.57')
     })
     it('should show a graph of the top 5 emotions and tags', () => {
