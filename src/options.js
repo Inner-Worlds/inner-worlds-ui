@@ -1,21 +1,23 @@
 import chroma from "chroma-js";
-import { mockEmotions, mockTags } from './mock-data'
 
 export const generateColor = () => chroma.random().css();
 
-export const getEmotionOptions = () =>
-  mockEmotions.data.emotions.map((emotion) => ({
-    value: emotion,
-    label: emotion,
+export const getEmotionOptions = (emotions) => 
+  emotions?.map((emotion) => ({
+    value: emotion.name,
+    label: emotion.name,
     color: generateColor(),
   }));
+  
 
-export const getTagOptions = () =>
-  mockTags.data.tags.map((tag) => ({
-    value: tag,
-    label: tag,
-    color: generateColor(),
-  }));
+export const getTagOptions = (tags) => 
+    tags?.map((tag) => ({
+      value: tag.name,
+      label: tag.name,
+      color: generateColor(),
+    }));
+  
+ 
 
 export const colourStyles = {
   control: (styles) => ({ ...styles, backgroundColor: "white" }),

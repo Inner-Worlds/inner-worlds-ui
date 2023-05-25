@@ -3,8 +3,8 @@ import { useHistory } from "react-router-dom";
 import Select from "react-select";
 import Astronaut from "../../assets/Astronaut - (550 x 550px).svg";
 import "./DreamInput.css";
-import { useMutation } from "@apollo/client";
-import { CREATE_DREAM } from "../../queries";
+import { useMutation, useQuery } from "@apollo/client";
+import { CREATE_DREAM, GET_DEFAULT_EMOTIONS, GET_DEFAULT_TAGS } from "../../queries";
 import { getEmotionOptions, getTagOptions, colourStyles } from "../../options";
 
 const DreamInput = ({ user, updateDreams }) => {
@@ -14,11 +14,22 @@ const DreamInput = ({ user, updateDreams }) => {
   const [selectedEmotion, setSelectedEmotion] = useState([]);
   const [selectedTag, setSelectedTag] = useState([]);
   const [lucidityLevel, setLucidityLevel] = useState(0);
-  const history = useHistory();
+  const [submitError, setSubmitError] = useState({});
   const [createDream] = useMutation(CREATE_DREAM);
+  const history = useHistory();
 
-  const emotionOptions = getEmotionOptions();
-  const tagOptions = getTagOptions();
+  const { data: tagData } = useQuery(GET_DEFAULT_TAGS);
+  const { data: emotionData } = useQuery(GET_DEFAULT_EMOTIONS);
+
+  let emotionOptions = [];
+  let tagOptions = [];
+  if (emotionData) {
+    emotionOptions = getEmotionOptions(emotionData.defaultEmotions);
+  }
+
+  if (tagData) {
+    tagOptions = getTagOptions(tagData.defaultTags);
+  }
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -34,12 +45,13 @@ const DreamInput = ({ user, updateDreams }) => {
     };
 
     try {
-      const { data } = await createDream({ variables: { input: dreamData } });
-      const newDream = data.createDream
+      const { data, error } = await createDream({ variables: { input: dreamData } });
+      const newDream = data.createDream;
+      if (error) throw new Error(error);
       updateDreams(newDream);
-      console.log(data);
     } catch (error) {
-      console.log(error.message);
+      setSubmitError(error);
+      return;
     }
 
     setDate("");
@@ -60,7 +72,7 @@ const DreamInput = ({ user, updateDreams }) => {
         alt="Floating Astronaut"
       />
       <div className="form-container">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={(e) => handleSubmit(e)}>
           <h2>Dream Journal</h2>
           <input
             type="date"
@@ -75,6 +87,7 @@ const DreamInput = ({ user, updateDreams }) => {
             placeholder="My Dream Title.."
             aria-label="Title"
             onChange={(e) => setTitle(e.target.value)}
+            maxLength={50}
             required
           />
           <textarea
@@ -93,6 +106,7 @@ const DreamInput = ({ user, updateDreams }) => {
             styles={colourStyles}
             className="multi-select"
             classNamePrefix="select-styling"
+            aria-label="Emotion select dropdown"
           />
           <Select
             isMulti
@@ -103,6 +117,7 @@ const DreamInput = ({ user, updateDreams }) => {
             styles={colourStyles}
             className="multi-select"
             classNamePrefix="select-styling"
+            aria-label="Tag select dropdown"
           />
           <label>
             Lucidity Level: {lucidityLevel}
@@ -118,6 +133,7 @@ const DreamInput = ({ user, updateDreams }) => {
             Submit
           </button>
         </form>
+        {submitError.message && <h1 className="error">Something went wrong, try again later.</h1>}
       </div>
     </div>
   );

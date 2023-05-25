@@ -19,17 +19,29 @@
 
 .date {
   font-size: calc(var(--card-font-size) / 1.4);
-  margin-top: 5%;
+  margin: 5% 0 0 0;
 }
 
 .title {
   font-family: "Yellowtail", cursive;
   font-size: calc(var(--card-font-size) * 1.3);
+  max-width: 90%;
+  word-wrap: break-word;
+}
+
+.description-edit {
+  display: block;
+  width: 85%;
+  padding: 8px;
+  border: 1px solid rgba(131, 202, 215, 0.16);
+  border-radius: 4px;
+  height: 25%;
+  resize: none;
+  overflow-y: scroll;
 }
 
 .date,
 .title {
-  margin: 2% 0;
   text-align: center;
 }
 
@@ -37,6 +49,7 @@
   max-width: 40ch;
   font-size: calc(var(--card-font-size) / 1.7);
   text-align: center;
+  word-wrap: break-word;
 }
 
 .separator {
@@ -98,6 +111,10 @@
   bottom: 2%;
 }
 
+li {
+  text-transform: capitalize;
+}
+
 .edit-dream-button,
 .delete-dream-button {
   font-size: calc(var(--card-font-size) / 1.1);
@@ -105,6 +122,54 @@
   border: 0;
   color: inherit;
   text-shadow: inherit;
+}
+
+.date-edit,
+.title-edit,
+.description-edit, 
+.lucidity-edit {
+  font-family: 'Livvic', sans-serif;
+  font-size: 1rem;
+  padding: 0.8rem;
+  border: 1px solid #423f3fb6;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-bottom: 1rem;
+}
+
+.date-edit {
+  margin-top: 5%;
+}
+
+.title-edit {
+  font-size: 1.2rem;
+}
+
+.lucidity-edit {
+ width: 15%;
+}
+
+.save-dream-button {
+  font-family: 'Livvic', sans-serif;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.edit-field {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-bottom: 1rem;
+}
+
+.card-error {
+  font-size: clamp(1rem, 1.5vw, 2rem);
+  margin: 0;
 }
 
 @media screen and (max-width: 36rem) {
