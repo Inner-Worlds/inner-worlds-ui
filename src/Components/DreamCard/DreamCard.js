@@ -127,12 +127,14 @@ const DreamCard = ({
           key={`tag${tag.id}`}
           className={newTags.length > 10 ? "span-across" : ""}
           data-tagid={tag.id}
+          tabIndex="0"
         >
           {tag.name}
           {editMode && (
           <button
             className="delete-button"
             onClick={() => handleDeleteTag(tag.id)}
+            tabIndex="0"
           >
             X
           </button>
@@ -149,12 +151,14 @@ const DreamCard = ({
           key={`emotion${emotion.id}`}
           className={newEmotions.length > 9 ? "span-across" : ""}
           data-emotionid={emotion.id}
+          tabIndex="0"
         >
           {emotion.name}
           {editMode && (
           <button
             className="delete-button"
             onClick={() => handleDeleteEmotion(emotion.id)}
+            tabIndex="0"
           >
             X
           </button>
@@ -165,16 +169,17 @@ const DreamCard = ({
   };
 
   return (
-    <section className="dream-card" id={`dream ${id}`}>
+    <section className="dream-card" id={`dream ${id}`} tabIndex="0">
       {editMode ? (
         <input
           className="date-edit"
           type="date"
           value={formatDateForInput(newDate)}
           onChange={(e) => setNewDate(e.target.value)}
+          tabIndex="0"
         />
       ) : (
-        <p className="date">{formatDateForDisplay(date)}</p>
+        <h3 className="date" tabIndex="0">{formatDateForDisplay(date)}</h3>
       )}
       {editMode ? (
         <input
@@ -183,9 +188,10 @@ const DreamCard = ({
           value={newTitle}
           onChange={(e) => setNewTitle(e.target.value)}
           maxLength={50}
+          tabIndex="0"
         />
       ) : (
-        <h1 className="title">{title}</h1>
+        <h1 className="title" tabIndex="0">{title}</h1>
       )}
       {editMode ? (
         <textarea
@@ -193,14 +199,15 @@ const DreamCard = ({
           type="text"
           value={newDescription}
           onChange={(e) => setNewDescription(e.target.value)}
+          tabIndex="0"
         />
       ) : (
-        <p className="description">{description}</p>
+        <p className="description" tabIndex="0">{description}</p>
       )}
-      {deleteError.message && <h3 className="error card-error">Issue deleting, try again later.</h3> }
+      {deleteError.message && <h3 className="error card-error" tabIndex="0">Issue deleting, try again later.</h3> }
       <section className="list-container">
         <section className="emotions-container">
-          <h2 className="list-head">Emotions</h2>
+          <h2 className="list-head" tabIndex="0">Emotions</h2>
           <ul
             className={newEmotions.length > 5 ? "card-list" : "card-list no-grid"}
           >
@@ -211,14 +218,14 @@ const DreamCard = ({
         </section>
         <div className="styling separator"></div>
         <section className="tags-container">
-          <h2 className="list-head">Tags</h2>
+          <h2 className="list-head" tabIndex="0">Tags</h2>
           <ul className={tags.length > 5 ? "card-list" : "card-list no-grid"}>
             {tags.length > 1 ? mapTags(sort("tags")) : mapTags(newTags)}
           </ul>
         </section>
       </section>
-      {saveError.message && <h3 className="error card-error">Issue saving, try again later.</h3> }
-      {deleteCardError.message && <h3 className="error card-error">Error deleting dream, try again later.</h3> }
+      {saveError.message && <h3 className="error card-error" tabIndex="0">Issue saving, try again later.</h3> }
+      {deleteCardError.message && <h3 className="error card-error" tabIndex="0">Error deleting dream, try again later.</h3> }
       {editMode ? (
         <input
           className="lucidity-edit"
@@ -227,29 +234,40 @@ const DreamCard = ({
           max="5"
           value={newLucidity}
           onChange={(e) => setNewLucidity(Number(e.target.value))}
+          tabIndex="0"
         />
       ) : (
-        <p>Lucidity: {lucidity} / 5</p>
+        <p tabIndex="0">Lucidity: {lucidity} / 5</p>
       )}
       {editMode ? (
         <div className="dream-buttons">
-          <button className="save-dream-button" onClick={() => handleSave()}>
+          <button 
+            className="save-dream-button" 
+            onClick={() => handleSave()}
+            tabIndex="0"
+          >
             SAVE
           </button>
           <button
+            aria-label="Delete Dream"
             className="delete-dream-button fa-solid fa-trash-can"
             onClick={() => deleteDream(id)}
+            tabIndex="0"
           ></button>
         </div>
         ) : (
         <div className="dream-buttons">
           <button
+            aria-label="Edit Dream"
             className="edit-dream-button fa-solid fa-pen-to-square"
             onClick={() => handleEdit()}
+            tabIndex="0"
           ></button>
           <button
+            aria-label="Delete Dream"
             className="delete-dream-button fa-solid fa-trash-can"
             onClick={() => deleteDream(id)}
+            tabIndex="0"
           ></button>
         </div>
         )}

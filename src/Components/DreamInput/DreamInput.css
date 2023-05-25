@@ -93,6 +93,11 @@
   cursor: pointer;
 }
 
+#react-select-3-placeholder,
+#react-select-5-placeholder {
+  color: rgb(81, 81, 81);
+}
+
 .select-styling__control {
   min-height: 50px;
   max-height: 75px;

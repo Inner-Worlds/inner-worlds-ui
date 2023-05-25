@@ -106,6 +106,7 @@ const DreamInput = ({ user, updateDreams }) => {
             styles={colourStyles}
             className="multi-select"
             classNamePrefix="select-styling"
+            aria-label="Emotion select dropdown"
           />
           <Select
             isMulti
@@ -116,6 +117,7 @@ const DreamInput = ({ user, updateDreams }) => {
             styles={colourStyles}
             className="multi-select"
             classNamePrefix="select-styling"
+            aria-label="Tag select dropdown"
           />
           <label>
             Lucidity Level: {lucidityLevel}
