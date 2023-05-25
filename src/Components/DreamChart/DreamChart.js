@@ -120,11 +120,11 @@ const DreamChart = ({ dreamUser }) => {
           </div>
           <div className="chart-container">
             <div className="pie-chart">
-              <h3>Top 5 Emotions</h3>
+              <h3 className="top-5-header">Top 5 Emotions</h3>
               <Pie data={pieEmotionsData} options={chartOptions} />
             </div>
             <div className="pie-chart">
-              <h3>Top 5 Tags</h3>
+              <h3 className="top-5-header">Top 5 Tags</h3>
               <Pie data={pieTagsData} options={chartOptions} />
             </div>
           </div>
