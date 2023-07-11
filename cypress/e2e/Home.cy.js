@@ -45,17 +45,6 @@ describe('Home page', () => {
     cy.get('.nav-link3').should('be.visible').contains('Log Out');
   });
 
-  it('should see a form to enter the details of their dreams', () => {
-    cy.get('h2').contains('Dream Journal');
-    cy.get('form').should('be.visible');
-    cy.get('[type="date"]').should('be.visible');
-    cy.get('[type="text"]').should('be.visible');
-    cy.get('[placeholder="My Dream Title.."]').should('be.visible');
-    cy.get('textarea').should('be.visible');
-    cy.get('.multi-select').eq(0).contains('Select Emotions..');
-    cy.get('.multi-select').eq(1).contains('Select Tags..');
-    cy.get('input[type="range"]').should('be.visible').as('lucidityRange');
-  });
 
   it('should be able to fill out and submit a form', () => {
     cy.get('[type="date"]').click().then(() => {

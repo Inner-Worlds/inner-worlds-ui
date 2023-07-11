@@ -205,3 +205,13 @@
     width: 100%;
   }
 }
+
+@media screen and (max-width: 1280px) {
+  .stats-container {
+    width: 60%;
+  }
+
+  .chart-container {
+    width: 100%;
+  }
+}
